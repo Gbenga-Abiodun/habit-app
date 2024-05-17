@@ -1,0 +1,11 @@
+import 'dart:ui';
+
+class AppColors{
+  static const Color sunSet = const Color(0xFFF65B4E);
+  static const Color twilight = const Color(0xFF29319F);
+  static const Color morning = const Color(0xFFFFBA7C);
+  static const Color fog = const Color(0xFFFFDEEF);
+  static const Color scaffoldBg = const Color(0xFFE5E5E5);
+  static const Color eclipse = const Color(0xFF573353);
+
+}
