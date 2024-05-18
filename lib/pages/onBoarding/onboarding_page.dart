@@ -43,7 +43,7 @@ class OnboardingPage extends StatelessWidget {
                     index != 0 ? SvgPicture.asset(onBoardingController.onBoardingList[index].svgAsset, width: onBoardingController.onBoardingList[index].imgWidth, height: onBoardingController.onBoardingList[index].imgHeight, fit: BoxFit.scaleDown,) : Image.asset(onBoardingController.onBoardingList[0].svgAsset, width: onBoardingController.onBoardingList[0].imgWidth, height: onBoardingController.onBoardingList[0].imgHeight, fit: BoxFit.scaleDown,),
                     SizedBox(height: index !=0 ? 66 : Dimensions.height10 * 2),
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: Dimensions.height12 *2.666666666666667,),
+                      padding:  EdgeInsets.symmetric(horizontal: Dimensions.height12 *2.666666666666667 ,),
                       child: SmallText(text: onBoardingController.onBoardingList[index].description, size: 17, fontWeight: FontWeight.bold, textAlign: TextAlign.center,),
                     )
                   ],
