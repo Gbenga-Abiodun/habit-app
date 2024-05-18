@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 3), () => Get.toNamed(RouteHelpers.getOnBoarding()));
+    Timer(const Duration(seconds: 3), () => Get.offAllNamed(RouteHelpers.getOnBoarding()));
   }
   @override
   Widget build(BuildContext context) {

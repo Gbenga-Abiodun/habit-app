@@ -3,38 +3,45 @@ import 'package:flutter/material.dart';
 
 import '../utils/dimensions.dart';
 
-class BigText extends StatelessWidget {
+class SmallText extends StatelessWidget {
   final String text;
   final Color? color;
 
-  final String? fontFamily;
+  final TextDecoration? decoration;
 
   final FontWeight? fontWeight;
 
+  final String? fontFamily;
+
   final TextAlign? textAlign;
+
+  final Color? decorationColor;
 
   double size;
 
-  BigText({
+  SmallText({
     Key? key,
     required this.text,
     this.color = const Color(0xFF000000),
     this.fontWeight = FontWeight.w200,
     this.size = 0,
-    this.fontFamily = "Manrope", this.textAlign ,
+    this.decoration,
+    this.decorationColor,
+    this.fontFamily = "Manrope", this.textAlign,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AutoSizeText(
       text,
-      // maxLines: 1,
       textAlign: textAlign,
       style: TextStyle(
+        decoration: decoration,
+        decorationColor: decorationColor,
         color: color,
         fontWeight: fontWeight,
         fontFamily: fontFamily,
-        fontSize: size == 0 ? Dimensions.font18 : size,
+        fontSize: size == 0 ? 12 : size,
       ),
     );
   }
