@@ -41,7 +41,7 @@ class SmallText extends StatelessWidget {
         color: color,
         fontWeight: fontWeight,
         fontFamily: fontFamily,
-        fontSize: size == 0 ? 12 : size,
+        fontSize: size == 0 ? Dimensions.font12 : size,
       ),
     );
   }

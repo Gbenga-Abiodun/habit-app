@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:habit_app/utils/dimensions.dart';
+import 'package:habit_app/widgets/small_text.dart';
 
 import '../utils/colors.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({Key? key, this.onTap, required this.buttonColor}) : super(key: key);
-
   final void Function()? onTap;
-  final Color buttonColor;
+  final Color? buttonColor;
+
+  final Color? textColor;
+
+  final String? fontFamily;
+
+  final String text;
+  const CustomButton({Key? key, this.onTap,  this.buttonColor = const Color(0xFF573353), required this.text, this.textColor =const  Color(0xFFFDA758),this.fontFamily = "Manrope",}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +26,9 @@ class CustomButton extends StatelessWidget {
           color: AppColors.morning,
 
         ),
-        // child: Center(
-        //   Sma
-        // ),
+        child: Center(
+          child: SmallText(text: text, color: textColor, fontWeight: FontWeight.bold, fontFamily: fontFamily, size: Dimensions.font16,),
+        ),
       ),
     );
   }

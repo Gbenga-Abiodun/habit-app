@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:habit_app/pages/onBoarding/onboarding_page.dart';
 import 'package:habit_app/pages/splash/splash_page.dart';
+import 'package:habit_app/pages/supportive/supportive_page.dart';
 
 class RouteHelpers{
 
@@ -11,6 +12,9 @@ class RouteHelpers{
   static const String onBoarding = "/onboarding-page";
 
   static String getOnBoarding() => '$onBoarding';
+  static const String supportive = "/supportive-page";
+
+  static String getSupportive() => '$supportive';
 
 
   static List<GetPage> routes = [
@@ -22,6 +26,12 @@ class RouteHelpers{
     GetPage(
       name: onBoarding,
       page: () => OnboardingPage(),
+      transition: Transition.fade,
+    ),
+
+    GetPage(
+      name: supportive,
+      page: () => SupportivePage(),
       transition: Transition.fade,
     ),
 

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/pages/splash/splash_page.dart';
 import 'package:habit_app/routes/route_helper.dart';
+import 'package:habit_app/utils/colors.dart';
 
 import 'helpers/dependencies.dart' as dep;
 
@@ -27,10 +28,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Monumental Habits',
+
       getPages: RouteHelpers.routes,
       initialRoute: RouteHelpers.getInitial(),
       theme: ThemeData(
         fontFamily: "Manrope",
+        // primarySwatch: Colors.,
       ),
       // home: SplashPage(),
     );
