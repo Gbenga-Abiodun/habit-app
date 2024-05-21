@@ -25,7 +25,7 @@ class OnboardingController extends GetxController {
   List<OnBoardingModel> onBoardingList = [
     OnBoardingModel(
       Assets.imagesOnboardingOneImg,
-      "WELCOME TO Monumental habits",
+      "Monumental habits",
       "We can help you to be a better version of yourself.",
       Dimensions.height15 * 23.33333333333333,
       Dimensions.height15 * 32.46666666666667,
