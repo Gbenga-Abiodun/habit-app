@@ -119,7 +119,7 @@ class SupportivePage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2),
-            child: CustomButton(text: "Get Started"),
+            child: CustomButton(text: "Get Started", textColor: AppColors.eclipse,),
           )
         ],
       ),
