@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String fontsAliceRegular = 'assets/fonts/Alice-Regular.ttf';
   static const String fontsKlasikRegular = 'assets/fonts/Klasik Regular.otf';
   static const String fontsKlasikRough = 'assets/fonts/Klasik Rough.otf';
   static const String fontsKlasikShadow = 'assets/fonts/Klasik Shadow.otf';
