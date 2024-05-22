@@ -115,7 +115,7 @@ class SupportivePage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: Dimensions.height10 * 5,
+            height: Dimensions.height10 * 3,
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2),
