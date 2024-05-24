@@ -14,6 +14,7 @@ class Assets {
   static const String imagesBackground = 'assets/images/Background.jpg';
   static const String imagesOnboardingOneImg = 'assets/images/onboarding_one_img.png';
   static const String imagesSplashScreen = 'assets/images/Splash Screen.jpg';
+  static const String svgsAuth1 = 'assets/svgs/auth1.svg';
   static const String svgsBackground = 'assets/svgs/Background.svg';
   static const String svgsOnBoardingTwo = 'assets/svgs/onBoarding_two.svg';
   static const String svgsOnboardingOne = 'assets/svgs/onboarding_one.svg';

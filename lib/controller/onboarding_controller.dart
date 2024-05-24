@@ -9,11 +9,17 @@ import '../model/onboarding_model.dart';
 class OnboardingController extends GetxController {
   var selectedPageIndex = 0.obs;
 
+  bool get isLastPage => selectedPageIndex.value == onBoardingList.length -1;
+
   var pageController = PageController();
 
   void forwardAction() {
-    pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
-    update();
+   if(isLastPage){
+     Get.toNamed(RouteHelpers.getSupportive(),);
+   }else{
+     pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
+     update();
+   }
   }
 
   void goToSupportive() {
