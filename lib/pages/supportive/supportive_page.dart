@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:habit_app/routes/route_helper.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/widgets/custom_button.dart';
 
@@ -120,8 +122,9 @@ class SupportivePage extends StatelessWidget {
               height: Dimensions.height10 * 3,
             ),
             Padding(
+              
               padding: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2),
-              child: CustomButton(text: "Get Started", textColor: AppColors.eclipse,),
+              child: CustomButton(text: "Get Started", textColor: AppColors.eclipse, onTap: () => Get.toNamed(RouteHelpers.getSignUp(),),),
             )
           ],
         ),

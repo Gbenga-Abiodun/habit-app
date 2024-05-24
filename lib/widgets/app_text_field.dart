@@ -1,0 +1,118 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import '../utils/colors.dart';
+import '../utils/dimensions.dart';
+
+class AppTextField extends StatelessWidget {
+
+  final String hintText;
+  final TextEditingController? controller;
+
+  final bool autoFocus;
+
+  final Widget? prefix;
+
+  final bool obscureText;
+
+  final Widget? suffix;
+
+  final Decoration? decoration;
+
+  final void Function(String?)? onSaved;
+  final Color? fillColor;
+  final Color? inputColor;
+  final Color? cursorColor;
+  final void Function(String)? onFieldSubmitted;
+
+  final BorderSide borderSide;
+
+  final TextInputType? keyboardType;
+
+  final List<TextInputFormatter>? inputFormatters;
+
+  final String? Function(String?)? validator;
+  const AppTextField({Key? key, required this.hintText, this.controller, required this.autoFocus, this.prefix, required this.obscureText, this.suffix, this.decoration, this.onSaved, this.fillColor = Colors.white, this.onFieldSubmitted, this.borderSide = const BorderSide(
+    width: 1.0,
+    color: AppColors.textInputColor,
+  ), this.keyboardType, this.inputFormatters, this.validator, this.cursorColor = const Color(0xFFFDA758), this.inputColor= const Color(0xFFFDA758)}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: decoration,
+      margin: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2,),
+      child: TextFormField(
+        style: TextStyle(
+          color: inputColor,
+          fontWeight: FontWeight.bold,
+          height: Dimensions.font16,
+
+        ),
+        controller: controller,
+        validator: validator,
+        obscureText: obscureText,
+        onSaved: onSaved,
+        inputFormatters: inputFormatters,
+        cursorColor: cursorColor,
+        onFieldSubmitted: onFieldSubmitted,
+        decoration: InputDecoration(
+          fillColor: fillColor,
+          filled: true,
+          prefixIcon: prefix,
+          hintText: hintText,
+          suffixIcon: suffix,
+          hintStyle: TextStyle(
+            color: AppColors.eclipse,
+            fontSize: Dimensions.font16,
+          ),
+
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                Dimensions.borderRadius12,
+              ),
+            ),
+            borderSide: borderSide,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                Dimensions.borderRadius12,
+              ),
+            ),
+            borderSide: BorderSide.none,
+            // borderSide: BorderSide(
+            //   width: 1.0,
+            //   // color: AppColors.purple,
+            // ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                Dimensions.borderRadius12,
+              ),
+            ),
+            // borderSide: BorderSide.none,
+            borderSide: BorderSide(
+              width: 0.5,
+              color: Colors.red,
+            ),
+          ),
+
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                  Dimensions.borderRadius12,
+              ),
+            ),
+            borderSide: BorderSide(
+              width: 1.0,
+              color: Colors.red,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
