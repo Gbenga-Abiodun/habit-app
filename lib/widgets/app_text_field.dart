@@ -40,13 +40,16 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // height: 56,
+
       decoration: decoration,
       margin: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2,),
       child: TextFormField(
         style: TextStyle(
           color: inputColor,
           fontWeight: FontWeight.bold,
-          height: Dimensions.font16,
+          fontSize: Dimensions.font16,
+          // height: 56,
 
         ),
         controller: controller,
@@ -63,9 +66,13 @@ class AppTextField extends StatelessWidget {
           hintText: hintText,
           suffixIcon: suffix,
           hintStyle: TextStyle(
-            color: AppColors.eclipse,
+            color: AppColors.eclipse.withOpacity(0.5),
             fontSize: Dimensions.font16,
           ),
+          // contentPadding: EdgeInsets.symmetric(
+          //   vertical: MobileDimensions.mobile48 / 4,
+          //   horizontal: MobileDimensions.mobile48 / 4,
+          // ),
 
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(
