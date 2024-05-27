@@ -15,7 +15,7 @@ class AppCheckBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.symmetric(
-          horizontal: Dimensions.height12 * Dimensions.height10 * 2,
+          horizontal: Dimensions.height12 * 2,
         ),
         child: Row(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -26,7 +26,7 @@ class AppCheckBox extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 color: AppColors.morning,
-                borderRadius: BorderRadius.circular(Dimensions.height12/2,),
+                borderRadius: BorderRadius.circular(Dimensions.height12/2),
                 // border: Border.all(color: AppColors.purple),
               ),
               child: child,

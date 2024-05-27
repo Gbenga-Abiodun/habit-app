@@ -7,6 +7,20 @@ import 'package:habit_app/utils/dimensions.dart';
 import '../model/onboarding_model.dart';
 
 class OnboardingController extends GetxController {
+
+  FocusNode _focusNode = FocusNode();
+  bool _isFocused = false;
+
+  void _onFocusedChanged(){
+
+  }
+  
+  
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    _focusNode.addListener(_onFocusedChanged);
+  }
   var selectedPageIndex = 0.obs;
 
   bool get isLastPage => selectedPageIndex.value == onBoardingList.length -1;

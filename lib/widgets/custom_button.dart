@@ -8,6 +8,7 @@ class CustomButton extends StatelessWidget {
   final void Function()? onTap;
   final Color? buttonColor;
 
+
   final Color? textColor;
 
   final String? fontFamily;
@@ -25,7 +26,7 @@ class CustomButton extends StatelessWidget {
         height: Dimensions.height10 * 6,
         decoration: BoxDecoration(
           color: AppColors.morning,
-          borderRadius: BorderRadius.all(Radius.circular(8),),
+          borderRadius: BorderRadius.all(Radius.circular(Dimensions.height8),),
 
         ),
         child: Center(

@@ -17,6 +17,7 @@ class Assets {
   static const String svgsAuth1 = 'assets/svgs/auth1.svg';
   static const String svgsBackground = 'assets/svgs/Background.svg';
   static const String svgsFacebook = 'assets/svgs/facebook.svg';
+  static const String svgsGoogle = 'assets/svgs/google.svg';
   static const String svgsGoogleIcon = 'assets/svgs/Google Icon.svg';
   static const String svgsMail = 'assets/svgs/mail.svg';
   static const String svgsMark = 'assets/svgs/mark.svg';
