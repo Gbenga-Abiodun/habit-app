@@ -23,8 +23,10 @@ class Assets {
   static const String svgsMark = 'assets/svgs/mark.svg';
   static const String svgsOnBoardingTwo = 'assets/svgs/onBoarding_two.svg';
   static const String svgsOnboardingOne = 'assets/svgs/onboarding_one.svg';
+  static const String svgsOnboardingOneSvg = 'assets/svgs/onboarding_one_svg.svg';
   static const String svgsOnboardingThree = 'assets/svgs/onboarding_three.svg';
   static const String svgsPassword = 'assets/svgs/password.svg';
+  static const String svgsSignin = 'assets/svgs/sign in.svg';
   static const String svgsSplashScreen = 'assets/svgs/Splash Screen.svg';
   static const String svgsSupportive = 'assets/svgs/supportive.svg';
   static const String svgsUser = 'assets/svgs/user.svg';

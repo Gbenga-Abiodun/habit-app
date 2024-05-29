@@ -7,43 +7,47 @@ import '../utils/dimensions.dart';
 class AppCheckBox extends StatelessWidget {
 
   final String text;
+  void Function()? onTap;
 
   final Widget? child;
-  const AppCheckBox({Key? key, required this.text, this.child}) : super(key: key);
+   AppCheckBox({Key? key, required this.text, this.child, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: Dimensions.height12 * 2,
-        ),
-        child: Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: Dimensions.height10 * 2,
-              height: Dimensions.height10 * 2,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                color: AppColors.morning,
-                borderRadius: BorderRadius.circular(Dimensions.height12/2),
-                // border: Border.all(color: AppColors.purple),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: Dimensions.height12 * 2,
+          ),
+          child: Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: Dimensions.height10 * 2,
+                height: Dimensions.height10 * 2,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: AppColors.morning,
+                  borderRadius: BorderRadius.circular(Dimensions.height12/2),
+                  // border: Border.all(color: AppColors.purple),
+                ),
+                child: child,
               ),
-              child: child,
-            ),
-            SizedBox(
-              width: Dimensions.height12,
-            ),
-            Container(
-              child: SmallText(
-                text:
-                    text,
-                fontWeight: FontWeight.w500,
-                color: AppColors.eclipse,
-                size: Dimensions.font16,
+              SizedBox(
+                width: Dimensions.height12,
               ),
-            ),
-          ],
-        ));
+              Container(
+                child: SmallText(
+                  text:
+                      text,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.eclipse,
+                  size: Dimensions.font16,
+                ),
+              ),
+            ],
+          )),
+    );
   }
 }

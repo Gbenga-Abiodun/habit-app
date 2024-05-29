@@ -26,6 +26,7 @@ class AppTextField extends StatelessWidget {
   final void Function(String)? onFieldSubmitted;
 
   final BorderSide borderSide;
+  final FocusNode? focusNode;
 
   final TextInputType? keyboardType;
 
@@ -35,7 +36,7 @@ class AppTextField extends StatelessWidget {
   const AppTextField({Key? key, required this.hintText, this.controller, required this.autoFocus, this.prefix, required this.obscureText, this.suffix, this.decoration, this.onSaved, this.fillColor = Colors.white, this.onFieldSubmitted, this.borderSide = const BorderSide(
     width: 1.0,
     color: AppColors.textInputColor,
-  ), this.keyboardType, this.inputFormatters, this.validator, this.cursorColor = const Color(0xFFFDA758), this.inputColor= const Color(0xFFFDA758)}) : super(key: key);
+  ), this.keyboardType, this.inputFormatters, this.validator, this.cursorColor = const Color(0xFFFDA758), this.inputColor= const Color(0xFFFDA758), this.focusNode}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,7 @@ class AppTextField extends StatelessWidget {
       decoration: decoration,
       margin: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2,),
       child: TextFormField(
+        focusNode: focusNode,
         style: TextStyle(
           color: inputColor,
           fontWeight: FontWeight.bold,

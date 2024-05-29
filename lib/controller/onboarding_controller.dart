@@ -8,32 +8,24 @@ import '../model/onboarding_model.dart';
 
 class OnboardingController extends GetxController {
 
-  FocusNode _focusNode = FocusNode();
-  bool _isFocused = false;
 
-  void _onFocusedChanged(){
-
-  }
-  
-  
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    _focusNode.addListener(_onFocusedChanged);
-  }
   var selectedPageIndex = 0.obs;
 
-  bool get isLastPage => selectedPageIndex.value == onBoardingList.length -1;
+  bool get isLastPage => selectedPageIndex.value == onBoardingList.length - 1;
 
   var pageController = PageController();
 
+
+
   void forwardAction() {
-   if(isLastPage){
-     Get.toNamed(RouteHelpers.getSupportive(),);
-   }else{
-     pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
-     update();
-   }
+    if (isLastPage) {
+      Get.toNamed(
+        RouteHelpers.getSupportive(),
+      );
+    } else {
+      pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
+      update();
+    }
   }
 
   void goToSupportive() {
@@ -44,7 +36,7 @@ class OnboardingController extends GetxController {
 
   List<OnBoardingModel> onBoardingList = [
     OnBoardingModel(
-      Assets.imagesOnboardingOneImg,
+      Assets.svgsOnboardingOneSvg,
       "Monumental habits",
       "We can help you to be a better version of yourself.",
       Dimensions.height15 * 23.33333333333333,
