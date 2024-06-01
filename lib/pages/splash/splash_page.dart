@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:get/get.dart';
+
 import 'package:habit_app/routes/route_helper.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/utils/dimensions.dart';

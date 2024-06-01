@@ -56,74 +56,91 @@ class SignUpPage extends StatelessWidget {
               SizedBox(
                 height: Dimensions.height10 * 2,
               ),
-              AppTextField(
-                  hintText: "Name",
-                  autoFocus: false,
-                  focusNode: utilsController.focusNode1,
-                  obscureText: false,
-                  prefix: Obx(() {
-                    return Icon(
-                      Icons.person_2_outlined,
-                      size: Dimensions.height12 * 2,
-                      color: utilsController.isFocused1.value
-                          ? AppColors.textInputColor
-                          : AppColors.eclipse.withOpacity(0.5),
-                    );
-                  })),
+              Stack(
+                children: [
+                  Center(
+                    // /
 
-              // VerticalDivider(
-              //   color: AppColors.eclipse,
-              //   width: 300,
-              // ),
-              SizedBox(
-                height: Dimensions.height8,
-              ),
-              AppTextField(
-                  hintText: "Email",
-                  autoFocus: false,
-                  focusNode: utilsController.focusNode2,
-                  obscureText: false,
-                  prefix: Obx(() {
-                    return Icon(
-                      Icons.mail_outline_rounded,
-                      size: Dimensions.height12 * 2,
-                      color: utilsController.isFocused2.value
-                          ? AppColors.textInputColor
-                          : AppColors.eclipse.withOpacity(0.5),
-                    );
-                  })),
-              SizedBox(
-                height: Dimensions.height8,
-              ),
-              AppTextField(
-                  hintText: "Password",
-                  autoFocus: false,
-                  focusNode: utilsController.focusNode3,
-                  obscureText: false,
-                  suffix: Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: Dimensions.height12,
-                      horizontal: Dimensions.height12,
-                    ),
-                    child: SmallText(
-                      text: "Show",
-                      decoration: TextDecoration.underline,
-                      size: Dimensions.font16,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.eclipse,
-                    ),
+                      child: VerticalDivider(
+                        color: Colors.red,
+                        thickness: 2,
+                      )
                   ),
-                  prefix: Obx(() {
-                    return Icon(
-                      Icons.lock_outlined,
-                      size: Dimensions.height12 * 2,
-                      color: utilsController.isFocused3.value
-                          ? AppColors.textInputColor
-                          : AppColors.eclipse.withOpacity(0.5),
-                    );
-                  })),
-              SizedBox(
-                height: Dimensions.height12 * 2,
+                  Column(
+                    children: [
+                      AppTextField(
+                          hintText: "Name",
+                          autoFocus: false,
+                          focusNode: utilsController.focusNode1,
+                          obscureText: false,
+                          prefix: Obx(() {
+                            return Icon(
+                              Icons.person_2_outlined,
+                              size: Dimensions.height12 * 2,
+                              color: utilsController.isFocused1.value
+                                  ? AppColors.textInputColor
+                                  : AppColors.eclipse.withOpacity(0.5),
+                            );
+                          })),
+
+                      // VerticalDivider(
+                      //   color: AppColors.eclipse,
+                      //   width: 300,
+                      // ),
+                      SizedBox(
+                        height: Dimensions.height8,
+                      ),
+                      AppTextField(
+                          hintText: "Email",
+                          autoFocus: false,
+                          focusNode: utilsController.focusNode2,
+                          obscureText: false,
+                          prefix: Obx(() {
+                            return Icon(
+                              Icons.mail_outline_rounded,
+                              size: Dimensions.height12 * 2,
+                              color: utilsController.isFocused2.value
+                                  ? AppColors.textInputColor
+                                  : AppColors.eclipse.withOpacity(0.5),
+                            );
+                          })),
+                      SizedBox(
+                        height: Dimensions.height8,
+                      ),
+                      AppTextField(
+                          hintText: "Password",
+                          autoFocus: false,
+                          focusNode: utilsController.focusNode3,
+                          obscureText: false,
+                          suffix: Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: Dimensions.height12,
+                              horizontal: Dimensions.height12,
+                            ),
+                            child: SmallText(
+                              text: "Show",
+                              decoration: TextDecoration.underline,
+                              size: Dimensions.font16,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.eclipse,
+                            ),
+                          ),
+                          prefix: Obx(() {
+                            return Icon(
+                              Icons.lock_outlined,
+                              size: Dimensions.height12 * 2,
+                              color: utilsController.isFocused3.value
+                                  ? AppColors.textInputColor
+                                  : AppColors.eclipse.withOpacity(0.5),
+                            );
+                          })),
+                      SizedBox(
+                        height: Dimensions.height12 * 2,
+                      ),
+                    ],
+                  ),
+
+                ],
               ),
               Obx(() {
                 return AppCheckBox(
