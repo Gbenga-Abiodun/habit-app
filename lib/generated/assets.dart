@@ -19,6 +19,7 @@ class Assets {
   static const String svgsFacebook = 'assets/svgs/facebook.svg';
   static const String svgsGoogle = 'assets/svgs/google.svg';
   static const String svgsGoogleIcon = 'assets/svgs/Google Icon.svg';
+  static const String svgsLoupe1 = 'assets/svgs/loupe 1.svg';
   static const String svgsMail = 'assets/svgs/mail.svg';
   static const String svgsMark = 'assets/svgs/mark.svg';
   static const String svgsOnBoardingTwo = 'assets/svgs/onBoarding_two.svg';
