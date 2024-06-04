@@ -82,7 +82,7 @@ class AppTextField extends StatelessWidget {
                 Dimensions.borderRadius12,
               ),
             ),
-            borderSide: borderSide,
+            borderSide: BorderSide.none,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(

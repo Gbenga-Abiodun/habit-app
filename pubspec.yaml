@@ -106,10 +106,10 @@ flutter:
            weight: 400
          - asset: assets/fonts/Klasik Shadow.otf
            weight: 500
-     - family: Alice
-       fonts:
-         - asset: assets/fonts/Alice-Regular.ttf
-           weight: 200
+#     - family: Alice
+#       fonts:
+#         - asset: assets/fonts/Alice-Regular.ttf
+#           weight: 200
 #         - asset: assets/fonts/Klasik Rough.otf
 #           weight: 400
 #         - asset: assets/fonts/Klasik Shadow.otf
