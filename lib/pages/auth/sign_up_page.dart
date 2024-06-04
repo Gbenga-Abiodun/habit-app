@@ -49,7 +49,7 @@ class SignUpPage extends StatelessWidget {
               SmallText(
                 text: "Create your account".toUpperCase(),
                 size: Dimensions.height12 * 2,
-                fontFamily: "Alice",
+                fontFamily: "Klasik",
                 color: AppColors.eclipse,
                 textAlign: TextAlign.center,
               ),
@@ -218,12 +218,16 @@ class SignUpPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   OauthButton(
+                    width: Dimensions.height10 * 18,
+                    height: Dimensions.height10 * 5,
                     text: "Google",
-                    svgPath: Assets.svgsGoogle,
+                    svgPath: Assets.svgsGoogle, spaceWidth: 20,
                   ),
                   OauthButton(
+                    width: Dimensions.height10 * 18,
+                    height: Dimensions.height10 * 5,
                     text: "Facebook",
-                    svgPath: Assets.svgsFacebook,
+                    svgPath: Assets.svgsFacebook, spaceWidth: 20,
                   ),
                 ],
               ),
