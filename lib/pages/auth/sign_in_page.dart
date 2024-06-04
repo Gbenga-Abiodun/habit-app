@@ -41,7 +41,7 @@ class SignInPage extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: Dimensions.height10 * 4,
+                    height: Dimensions.height10 * 5,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,

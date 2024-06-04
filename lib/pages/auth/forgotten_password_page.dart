@@ -23,7 +23,7 @@ class ForgottenPasswordPage extends StatelessWidget {
           ),
           child: Column(
             children: [
-              SizedBox(height: Dimensions.height10 * 4,),
+              SizedBox(height: Dimensions.height10 * 5,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
