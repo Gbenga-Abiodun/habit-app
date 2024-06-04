@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:habit_app/pages/auth/forgotten_password_page.dart';
 import 'package:habit_app/pages/onBoarding/onboarding_page.dart';
 import 'package:habit_app/pages/splash/splash_page.dart';
 import 'package:habit_app/pages/supportive/supportive_page.dart';
@@ -22,6 +23,9 @@ class RouteHelpers{
   static const String supportive = "/supportive-page";
 
   static String getSupportive() => '$supportive';
+  static const String resetPassword = "/reset-page";
+
+  static String getReset() => '$resetPassword';
 
 
   static List<GetPage> routes = [
@@ -45,6 +49,12 @@ class RouteHelpers{
     GetPage(
       name: signIn,
       page: () => SignInPage(),
+      transition: Transition.cupertinoDialog,
+    ),
+
+    GetPage(
+      name: resetPassword,
+      page: () => ForgottenPasswordPage(),
       transition: Transition.cupertinoDialog,
     ),
 

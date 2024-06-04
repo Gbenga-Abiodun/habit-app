@@ -15,6 +15,7 @@ class Assets {
   static const String imagesSplashScreen = 'assets/images/Splash Screen.jpg';
   static const String imagesSplashScreencropped = 'assets/images/Splash Screen cropped.jpg';
   static const String svgsAuth1 = 'assets/svgs/auth1.svg';
+  static const String svgsBackIcon = 'assets/svgs/Back Icon.svg';
   static const String svgsBackground = 'assets/svgs/Background.svg';
   static const String svgsFacebook = 'assets/svgs/facebook.svg';
   static const String svgsGoogle = 'assets/svgs/google.svg';
@@ -27,6 +28,7 @@ class Assets {
   static const String svgsOnboardingOneSvg = 'assets/svgs/onboarding_one_svg.svg';
   static const String svgsOnboardingThree = 'assets/svgs/onboarding_three.svg';
   static const String svgsPassword = 'assets/svgs/password.svg';
+  static const String svgsReset = 'assets/svgs/reset.svg';
   static const String svgsSignin = 'assets/svgs/sign in.svg';
   static const String svgsSplashScreen = 'assets/svgs/Splash Screen.svg';
   static const String svgsSupportive = 'assets/svgs/supportive.svg';

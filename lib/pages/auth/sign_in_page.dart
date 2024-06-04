@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/config/themes/gradient.dart';
 import 'package:habit_app/controller/utils_controller.dart';
+import 'package:habit_app/widgets/circle_icon.dart';
 import 'package:habit_app/widgets/custom_button.dart';
 import 'package:habit_app/widgets/oauth_button.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
@@ -45,25 +46,12 @@ class SignInPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                          horizontal: Dimensions.height10 * 2,
-                        ),
-                        width: Dimensions.height11 * 4,
-                        height: Dimensions.height11 * 4,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.eclipse.withOpacity(
-                            0.2,
-                          ),
-                        ),
-                        child: Center(
-                          child: SvgPicture.asset(
-                            Assets.svgsLoupe1,
-                            width: Dimensions.height11 * 2,
-                            height: Dimensions.height11 * 2,
-                            fit: BoxFit.scaleDown,
-                          ),
+                      CircleIcon(
+                        child: SvgPicture.asset(
+                          Assets.svgsLoupe1,
+                          width: Dimensions.height11 * 2,
+                          height: Dimensions.height11 * 2,
+                          fit: BoxFit.scaleDown,
                         ),
                       ),
                     ],
@@ -239,12 +227,15 @@ class SignInPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SmallText(
-                  text: "Forgot Password?",
-                  size: Dimensions.height14,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.eclipse,
-                  decoration: TextDecoration.underline,
+                GestureDetector(
+                  onTap: () => Get.toNamed(RouteHelpers.getReset(),),
+                  child: SmallText(
+                    text: "Forgot Password?",
+                    size: Dimensions.height14,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.eclipse,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               ],
             ),
