@@ -14,7 +14,7 @@ class CustomButton extends StatelessWidget {
   final String? fontFamily;
 
   final String text;
-  const CustomButton({Key? key, this.onTap,  this.buttonColor = const Color(0xFFFDA758), required this.text, this.textColor =const  Color(0xFF573353),this.fontFamily = "Manrope",}) : super(key: key);
+  const CustomButton({Key? key, this.onTap,  this.buttonColor = const Color(0xFFFFBA7C), required this.text, this.textColor =const  Color(0xFF573353),this.fontFamily = "Manrope",}) : super(key: key);
 
 
 
@@ -25,7 +25,7 @@ class CustomButton extends StatelessWidget {
       child: Container(
         height: Dimensions.height10 * 6,
         decoration: BoxDecoration(
-          color: AppColors.morning,
+          color: buttonColor,
           borderRadius: BorderRadius.all(Radius.circular(Dimensions.height8),),
 
         ),

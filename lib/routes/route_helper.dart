@@ -28,30 +28,30 @@ class RouteHelpers{
     GetPage(
       name: initial,
       page: () => SplashPage(),
-      transition: Transition.fade,
+      transition: Transition.cupertinoDialog,
     ),
     GetPage(
       name: onBoarding,
       page: () => OnboardingPage(),
-      transition: Transition.fade,
+      transition: Transition.cupertinoDialog,
     ),
 
     GetPage(
       name: supportive,
       page: () => SupportivePage(),
-      transition: Transition.fade,
+      transition: Transition.cupertinoDialog,
     ),
 
     GetPage(
       name: signIn,
       page: () => SignInPage(),
-      transition: Transition.fade,
+      transition: Transition.cupertinoDialog,
     ),
 
     GetPage(
       name: signUp,
       page: () => SignUpPage(),
-      transition: Transition.fade,
+      transition: Transition.cupertinoDialog,
     ),
 
   ];

@@ -124,7 +124,7 @@ class SupportivePage extends StatelessWidget {
             Padding(
               
               padding: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2),
-              child: CustomButton(text: "Get Started", textColor: AppColors.eclipse, onTap: () => Get.toNamed(RouteHelpers.getSignUp(),),),
+              child: CustomButton(text: "Get Started", textColor: AppColors.eclipse, onTap: () => Get.toNamed(RouteHelpers.getSignIn(),),),
             )
           ],
         ),

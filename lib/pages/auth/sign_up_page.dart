@@ -221,13 +221,13 @@ class SignUpPage extends StatelessWidget {
                     width: Dimensions.height10 * 18,
                     height: Dimensions.height10 * 5,
                     text: "Google",
-                    svgPath: Assets.svgsGoogle, spaceWidth: 20,
+                    svgPath: Assets.svgsGoogle, spaceWidth: Dimensions.height10 * 2,
                   ),
                   OauthButton(
                     width: Dimensions.height10 * 18,
                     height: Dimensions.height10 * 5,
                     text: "Facebook",
-                    svgPath: Assets.svgsFacebook, spaceWidth: 20,
+                    svgPath: Assets.svgsFacebook, spaceWidth: Dimensions.height10 * 2,
                   ),
                 ],
               ),
@@ -247,7 +247,7 @@ class SignUpPage extends StatelessWidget {
                     TextSpan(
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Get.toNamed(RouteHelpers.getSignIn(),);
+                          Get.back();
                         },
                       text: 'Sign In',
                       style: TextStyle(
