@@ -138,167 +138,173 @@ class SignInPage extends StatelessWidget {
         child: Form(
           autovalidateMode: AutovalidateMode.onUserInteraction,
           key: validationController.signInFormStateKey,
-          child: Column(
-            children: [
-              SizedBox(
-                height: Dimensions.height12,
-              ),
-              SmallText(
-                text: "Log in with email",
-                size: Dimensions.font16,
-                color: AppColors.eclipse,
-                fontWeight: FontWeight.w500,
-              ),
-              SizedBox(
-                height: Dimensions.height12,
-              ),
-              Divider(
-                color: AppColors.scaffoldBg2,
-              ),
-              SizedBox(
-                height: Dimensions.font16,
-              ),
-              AppTextField(
-                  hintText: "Email",
-                  autoFocus: false,
-                  focusNode: utilsController.focusNode4,
-                  obscureText: false,
-                  fillColor: AppColors.scaffoldBg2,
-                  controller: validationController.loginEmailController,
-                  onSaved: (value) =>
-                  validationController.loginEmail = value!,
-                  validator: (value) =>
-                      validationController.validateEmail(value!),
+          child: AppScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: Dimensions.height12,
+                ),
+                SmallText(
+                  text: "Log in with email",
+                  size: Dimensions.font16,
+                  color: AppColors.eclipse,
+                  fontWeight: FontWeight.w500,
+                ),
+                SizedBox(
+                  height: Dimensions.height12,
+                ),
+                Divider(
+                  color: AppColors.scaffoldBg2,
+                ),
+                SizedBox(
+                  height: Dimensions.font16,
+                ),
+                AppTextField(
+                    hintText: "Email",
+                    autoFocus: false,
+                    focusNode: utilsController.focusNode4,
+                    obscureText: false,
+                    fillColor: AppColors.scaffoldBg2,
+                    controller: validationController.loginEmailController,
+                    onSaved: (value) =>
+                    validationController.loginEmail = value!,
+                    validator: (value) =>
+                        validationController.validateEmail(value!),
 
-                  // suffix: Container(
-                  //   padding: EdgeInsets.symmetric(
-                  //     vertical: Dimensions.height12,
-                  //     horizontal: Dimensions.height12,
-                  //   ),
-                  //   child: SmallText(
-                  //     text: "Show",
-                  //     decoration: TextDecoration.underline,
-                  //     size: Dimensions.font16,
-                  //     fontWeight: FontWeight.w500,
-                  //     color: AppColors.eclipse,
-                  //   ),
-                  // ),
-                  prefix: Obx(() {
-                    return Icon(
-                      Icons.mail_outline_rounded,
+                    // suffix: Container(
+                    //   padding: EdgeInsets.symmetric(
+                    //     vertical: Dimensions.height12,
+                    //     horizontal: Dimensions.height12,
+                    //   ),
+                    //   child: SmallText(
+                    //     text: "Show",
+                    //     decoration: TextDecoration.underline,
+                    //     size: Dimensions.font16,
+                    //     fontWeight: FontWeight.w500,
+                    //     color: AppColors.eclipse,
+                    //   ),
+                    // ),
+                    prefix: Obx(() {
+                      return Icon(
+                        Icons.mail_outline_rounded,
+                        size: Dimensions.height12 * 2,
+                        color: utilsController.isFocused4.value
+                            ? AppColors.textInputColor
+                            : AppColors.eclipse.withOpacity(0.5),
+                      );
+                    })),
+                SizedBox(
+                  height: Dimensions.height8,
+                ),
+                Obx(() {
+                  return AppTextField(
+                    hintText: "Password",
+                    autoFocus: false,
+                    focusNode: utilsController.focusNode5,
+                    obscureText: validationController.isPasswordHidden.value,
+                    fillColor: AppColors.scaffoldBg2,
+                    controller: validationController.loginPasswordController,
+                    onSaved: (value) =>
+                    validationController.loginPassword = value!,
+                    validator: (value) =>
+                        validationController.validatePassword(value!),
+                    suffix: GestureDetector(
+                      onTap: () {
+                        validationController.isPasswordHidden.value =
+                            !validationController.isPasswordHidden.value;
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(
+                          Dimensions.height12,
+                        ),
+                        child: SmallText(
+                          text: validationController.isPasswordHidden.value
+                              ? "Show"
+                              : "Hide",
+                          decoration: TextDecoration.underline,
+                          size: Dimensions.font16,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.eclipse,
+                        ),
+                      ),
+                    ),
+                    prefix: Icon(
+                      Icons.lock_outlined,
                       size: Dimensions.height12 * 2,
-                      color: utilsController.isFocused4.value
+                      color: utilsController.isFocused3.value
                           ? AppColors.textInputColor
                           : AppColors.eclipse.withOpacity(0.5),
-                    );
-                  })),
-              SizedBox(
-                height: Dimensions.height8,
-              ),
-              Obx(() {
-                return AppTextField(
-                  hintText: "Password",
-                  autoFocus: false,
-                  focusNode: utilsController.focusNode5,
-                  obscureText: validationController.isPasswordHidden.value,
-                  fillColor: AppColors.scaffoldBg2,
-                  controller: validationController.loginPasswordController,
-                  onSaved: (value) =>
-                  validationController.loginPassword = value!,
-                  validator: (value) =>
-                      validationController.validatePassword(value!),
-                  suffix: GestureDetector(
-                    onTap: () {
-                      validationController.isPasswordHidden.value =
-                          !validationController.isPasswordHidden.value;
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(
-                        Dimensions.height12,
+                    ),
+                  );
+                }),
+                SizedBox(
+                  height: Dimensions.height10 * 2,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height10 * 2,
+                  ),
+                  child:  CustomButton(text: "Login", onTap: () => validationController.checkSignIn()),
+                ),
+                SizedBox(
+                  height: Dimensions.height14,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Get.toNamed(
+                        RouteHelpers.getReset(),
                       ),
                       child: SmallText(
-                        text: !validationController.isPasswordHidden.value
-                            ? "Show"
-                            : "Hide",
-                        decoration: TextDecoration.underline,
-                        size: Dimensions.font16,
+                        text: "Forgot Password?",
+                        size: Dimensions.height14,
                         fontWeight: FontWeight.w500,
                         color: AppColors.eclipse,
-                      ),
-                    ),
-                  ),
-                  prefix: Icon(
-                    Icons.lock_outlined,
-                    size: Dimensions.height12 * 2,
-                    color: utilsController.isFocused3.value
-                        ? AppColors.textInputColor
-                        : AppColors.eclipse.withOpacity(0.5),
-                  ),
-                );
-              }),
-              SizedBox(
-                height: Dimensions.height10 * 2,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.height10 * 2,
-                ),
-                child: const CustomButton(text: "Login"),
-              ),
-              SizedBox(
-                height: Dimensions.height14,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () => Get.toNamed(
-                      RouteHelpers.getReset(),
-                    ),
-                    child: SmallText(
-                      text: "Forgot Password?",
-                      size: Dimensions.height14,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.eclipse,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: Dimensions.height12 / 2,
-              ),
-              RichText(
-                text: TextSpan(
-                  // recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
-                  text: "Don’t have an account? ",
-                  style: TextStyle(
-                    fontSize: Dimensions.height14,
-                    color: AppColors.eclipse,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Manrope",
-                    // fontFamily: "DMSans",
-                  ),
-                  children: [
-                    TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Get.toNamed(
-                            RouteHelpers.getSignUp(),
-                          );
-                        },
-                      text: 'Sign up',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: Dimensions.height14,
-                        color: AppColors.eclipse,
-                        // fontFamily: "DMSans",
+                        decoration: TextDecoration.underline,
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: Dimensions.height12 / 2,
+                ),
+                RichText(
+                  text: TextSpan(
+                    // recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
+                    text: "Don’t have an account? ",
+                    style: TextStyle(
+                      fontSize: Dimensions.height14,
+                      color: AppColors.eclipse,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Manrope",
+                      // fontFamily: "DMSans",
+                    ),
+                    children: [
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Get.toNamed(
+                              RouteHelpers.getSignUp(),
+                            );
+                          },
+                        text: 'Sign up',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: Dimensions.height14,
+                          color: AppColors.eclipse,
+                          // fontFamily: "DMSans",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: Dimensions.height10 ,
+                ),
+              ],
+            ),
           ),
         ),
       ),

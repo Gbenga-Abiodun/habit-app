@@ -64,6 +64,13 @@ class AppTextField extends StatelessWidget {
         cursorColor: cursorColor,
         onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
+          errorStyle: TextStyle(
+            color: Colors.red,
+            fontWeight: FontWeight.w500,
+            fontSize: Dimensions.font12,
+            // height: 56,
+
+          ),
           fillColor: fillColor,
           filled: true,
           prefixIcon: prefix,
@@ -109,6 +116,7 @@ class AppTextField extends StatelessWidget {
           ),
 
           errorBorder: OutlineInputBorder(
+
             borderRadius: BorderRadius.all(
               Radius.circular(
                   Dimensions.borderRadius12,

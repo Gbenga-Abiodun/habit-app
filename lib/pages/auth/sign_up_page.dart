@@ -129,7 +129,7 @@ class SignUpPage extends StatelessWidget {
                           Dimensions.height12,
                         ),
                         child: SmallText(
-                          text: !validationController.isPasswordHidden.value
+                          text: validationController.isPasswordHidden.value
                               ? "Show"
                               : "Hide",
                           decoration: TextDecoration.underline,
@@ -197,6 +197,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   child: CustomButton(
                     text: "Create Account",
+                      onTap: () => validationController.checkSignUp(),
                   ),
                 ),
                 SizedBox(
@@ -296,6 +297,9 @@ class SignUpPage extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: Dimensions.height10 ,
                 ),
               ],
             ),

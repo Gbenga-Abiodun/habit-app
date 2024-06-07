@@ -83,7 +83,7 @@ class ForgottenPasswordPage extends StatelessWidget {
           children: [
             Container(
               width: Dimensions.height12 * 31,
-              height: Dimensions.height10 * 24,
+              height: Dimensions.height10 * 26,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -119,7 +119,7 @@ class ForgottenPasswordPage extends StatelessWidget {
                       onSaved: (value) =>
                       validationController.forgottenPassword = value!,
                       validator: (value) =>
-                          validationController.validatePassword(value!),
+                          validationController.validateEmail(value!),
                       // suffix: Container(
                       //   padding: EdgeInsets.symmetric(
                       //     vertical: Dimensions.height12,
@@ -150,7 +150,7 @@ class ForgottenPasswordPage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                         horizontal: Dimensions.height10 * 2,
                       ),
-                      child: CustomButton(text: "Send Reset Link", ),
+                      child: CustomButton(text: "Send Reset Link", onTap: () => validationController.checkReset(),),
                     ),
                   ],
                 ),
@@ -186,6 +186,9 @@ class ForgottenPasswordPage extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: Dimensions.height10 ,
             ),
           ],
         ),

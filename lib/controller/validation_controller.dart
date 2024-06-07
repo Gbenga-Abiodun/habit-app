@@ -73,6 +73,36 @@ class ValidationController extends GetxController {
   //   return null;
   // }
 
+
+  void checkSignIn() async {
+    final isValid = signInFormStateKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+    signInFormStateKey.currentState!.save();
+    // authController.signIn(password: signInPassword, email: signInEmail,);
+    /* await Get.find<AuthController>().signIn(email: loginEmail, password: loginPassword,);*/
+  }
+  void checkSignUp() async {
+    final isValid = signUpFormStateKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+    signUpFormStateKey.currentState!.save();
+    // authController.signIn(password: signInPassword, email: signInEmail,);
+    /* await Get.find<AuthController>().signIn(email: loginEmail, password: loginPassword,);*/
+  }
+  void checkReset() async {
+    final isValid = resetFormStateKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+    resetFormStateKey.currentState!.save();
+    // authController.signIn(password: signInPassword, email: signInEmail,);
+    /* await Get.find<AuthController>().signIn(email: loginEmail, password: loginPassword,);*/
+  }
+
+
   void _initFormControllers() {
     emailController = TextEditingController();
     passwordController = TextEditingController();
