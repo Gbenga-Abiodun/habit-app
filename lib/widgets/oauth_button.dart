@@ -23,8 +23,10 @@ class OauthButton extends StatelessWidget {
       child: Container(
         width: width,
         height: height,
+        // margin: ,
 
-        padding: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2,),
+        padding: EdgeInsets.symmetric(horizontal: Dimensions.height10 ,),
+        // padding: EdgeInsets.symmetric(horizontal: Dimensions.height10 ,),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(Dimensions.height12),),

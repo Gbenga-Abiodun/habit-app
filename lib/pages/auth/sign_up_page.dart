@@ -32,235 +32,273 @@ class SignUpPage extends StatelessWidget {
       body: AppScrollView(
         physics: BouncingScrollPhysics(),
         child: Center(
-          child: Column(
-            children: [
-              SizedBox(
-                height: Dimensions.height10 * 4,
-              ),
-              SvgPicture.asset(
-                Assets.svgsAuth1,
-                fit: BoxFit.scaleDown,
-                width: Dimensions.height12 * 15,
-                height: Dimensions.height10 * 20,
-              ),
-              SizedBox(
-                height: Dimensions.height10,
-              ),
-              SmallText(
-                text: "Create your account".toUpperCase(),
-                size: Dimensions.height12 * 2,
-                fontFamily: "Klasik",
-                color: AppColors.eclipse,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: Dimensions.height10 * 2,
-              ),
-              AppTextField(
-                  hintText: "Name",
-                  autoFocus: false,
-                  focusNode: utilsController.focusNode1,
-                  obscureText: false,
-                  prefix: Obx(() {
-                    return Icon(
-                      Icons.person_2_outlined,
-                      size: Dimensions.height12 * 2,
-                      color: utilsController.isFocused1.value
-                          ? AppColors.textInputColor
-                          : AppColors.eclipse.withOpacity(0.5),
-                    );
-                  })),
+          child: Form(
+            key: validationController.signUpFormStateKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: Dimensions.height10 * 4,
+                ),
+                SvgPicture.asset(
+                  Assets.svgsAuth1,
+                  fit: BoxFit.scaleDown,
+                  width: Dimensions.height12 * 15,
+                  height: Dimensions.height10 * 20,
+                ),
+                SizedBox(
+                  height: Dimensions.height10,
+                ),
+                SmallText(
+                  text: "Create your account".toUpperCase(),
+                  size: Dimensions.height12 * 2,
+                  fontFamily: "Klasik",
+                  color: AppColors.eclipse,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: Dimensions.height10 * 2,
+                ),
+                AppTextField(
+                    hintText: "Name",
+                    autoFocus: false,
+                    focusNode: utilsController.focusNode1,
+                    obscureText: false,
+                    controller: validationController.nameController,
+                    onSaved: (value) =>
+                    validationController.name = value!,
+                    validator: (value) =>
+                        validationController.validateName(value!),
+                    prefix: Obx(() {
+                      return Icon(
+                        Icons.person_2_outlined,
+                        size: Dimensions.height12 * 2,
+                        color: utilsController.isFocused1.value
+                            ? AppColors.textInputColor
+                            : AppColors.eclipse.withOpacity(0.5),
+                      );
+                    })),
 
-              // VerticalDivider(
-              //   color: AppColors.eclipse,
-              //   width: 300,
-              // ),
-              SizedBox(
-                height: Dimensions.height8,
-              ),
-              AppTextField(
-                  hintText: "Email",
-                  autoFocus: false,
-                  focusNode: utilsController.focusNode2,
-                  obscureText: false,
-                  prefix: Obx(() {
-                    return Icon(
-                      Icons.mail_outline_rounded,
-                      size: Dimensions.height12 * 2,
-                      color: utilsController.isFocused2.value
-                          ? AppColors.textInputColor
-                          : AppColors.eclipse.withOpacity(0.5),
-                    );
-                  })),
-              SizedBox(
-                height: Dimensions.height8,
-              ),
-              AppTextField(
-                  hintText: "Password",
-                  autoFocus: false,
-                  focusNode: utilsController.focusNode3,
-                  obscureText: false,
-                  suffix: Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: Dimensions.height12,
-                      horizontal: Dimensions.height12,
+                // VerticalDivider(
+                //   color: AppColors.eclipse,
+                //   width: 300,
+                // ),
+                SizedBox(
+                  height: Dimensions.height8,
+                ),
+                AppTextField(
+                    hintText: "Email",
+                    autoFocus: false,
+                    focusNode: utilsController.focusNode2,
+                    obscureText: false,
+                    controller: validationController.emailController,
+                    onSaved: (value) =>
+                    validationController.email = value!,
+                    validator: (value) =>
+                        validationController.validateEmail(value!),
+                    prefix: Obx(() {
+                      return Icon(
+                        Icons.mail_outline_rounded,
+                        size: Dimensions.height12 * 2,
+                        color: utilsController.isFocused2.value
+                            ? AppColors.textInputColor
+                            : AppColors.eclipse.withOpacity(0.5),
+                      );
+                    })),
+                SizedBox(
+                  height: Dimensions.height8,
+                ),
+                Obx(() {
+                  return AppTextField(
+                    hintText: "Password",
+                    autoFocus: false,
+                    focusNode: utilsController.focusNode3,
+                    obscureText: validationController.isPasswordHidden.value,
+                    controller: validationController.passwordController,
+                    onSaved: (value) =>
+                    validationController.password = value!,
+                    validator: (value) =>
+                        validationController.validatePassword(value!),
+                    suffix: GestureDetector(
+                      onTap: () {
+                        validationController.isPasswordHidden.value =
+                            !validationController.isPasswordHidden.value;
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(
+                          Dimensions.height12,
+                        ),
+                        child: SmallText(
+                          text: !validationController.isPasswordHidden.value
+                              ? "Show"
+                              : "Hide",
+                          decoration: TextDecoration.underline,
+                          size: Dimensions.font16,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.eclipse,
+                        ),
+                      ),
                     ),
-                    child: SmallText(
-                      text: "Show",
-                      decoration: TextDecoration.underline,
-                      size: Dimensions.font16,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.eclipse,
-                    ),
-                  ),
-                  prefix: Obx(() {
-                    return Icon(
+                    prefix: Icon(
                       Icons.lock_outlined,
                       size: Dimensions.height12 * 2,
                       color: utilsController.isFocused3.value
                           ? AppColors.textInputColor
                           : AppColors.eclipse.withOpacity(0.5),
-                    );
-                  })),
-              SizedBox(
-                height: Dimensions.height12 * 2,
-              ),
-              Obx(() {
-                return AppCheckBox(
-                  text: "Keep me signed in",
-                  onTap: () => validationController.checkAllowSignIn(),
-                  child: validationController.allowSignIn.value ? Center(
-                    child: SvgPicture.asset(
-                      Assets.svgsMark,
-                      width: Dimensions.height10,
-                      height: Dimensions.height8,
-                      fit: BoxFit.scaleDown,
-                      color: AppColors.eclipse
-                      ,
                     ),
-                  ) : null,
-                );
-              }),
-              SizedBox(
-                height: Dimensions.height10 * 2,
-              ),
-              Obx(() {
-                return AppCheckBox(
-                  text: "Email me about special pricing and more",
-                  onTap: () => validationController.checkAllowEmailAndPricing(),
-                  child: validationController.allowEmailAndPricing.value ? Center(
-                    child: SvgPicture.asset(
-                      Assets.svgsMark,
-                      width: Dimensions.height10,
-                      height: Dimensions.height8,
-                      fit: BoxFit.scaleDown,
-                      color: AppColors.eclipse
-                      ,
-                    ),
-                  ) : null,
-                );
-              }),
-              SizedBox(
-                height: Dimensions.height12 * 2,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.height10 * 2,
+                  );
+                }),
+                SizedBox(
+                  height: Dimensions.height12 * 2,
                 ),
-                child: CustomButton(
-                  text: "Create Account",
+                Obx(() {
+                  return AppCheckBox(
+                    text: "Keep me signed in",
+                    onTap: () => validationController.checkAllowSignIn(),
+                    child: validationController.allowSignIn.value
+                        ? Center(
+                            child: SvgPicture.asset(
+                              Assets.svgsMark,
+                              width: Dimensions.height10,
+                              height: Dimensions.height8,
+                              fit: BoxFit.scaleDown,
+                              color: AppColors.eclipse,
+                            ),
+                          )
+                        : null,
+                  );
+                }),
+                SizedBox(
+                  height: Dimensions.height10 * 2,
                 ),
-              ),
-              SizedBox(
-                height: Dimensions.height10 * 2,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.height10 * 2,
+                Obx(() {
+                  return AppCheckBox(
+                    text: "Email me about special pricing and more",
+                    onTap: () => validationController.checkAllowEmailAndPricing(),
+                    child: validationController.allowEmailAndPricing.value
+                        ? Center(
+                            child: SvgPicture.asset(
+                              Assets.svgsMark,
+                              width: Dimensions.height10,
+                              height: Dimensions.height8,
+                              fit: BoxFit.scaleDown,
+                              color: AppColors.eclipse,
+                            ),
+                          )
+                        : null,
+                  );
+                }),
+                SizedBox(
+                  height: Dimensions.height12 * 2,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        color: AppColors.eclipse.withOpacity(0.5),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height10 * 2,
+                  ),
+                  child: CustomButton(
+                    text: "Create Account",
+                  ),
+                ),
+                SizedBox(
+                  height: Dimensions.height10 * 2,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height10 * 2,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          color: AppColors.eclipse.withOpacity(0.5),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: Dimensions.height10,
-                    ),
-                    SmallText(
-                      text: "Or sign in with",
-                      size: Dimensions.height14,
+                      SizedBox(
+                        width: Dimensions.height10,
+                      ),
+                      SmallText(
+                        text: "Or sign in with",
+                        size: Dimensions.height14,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.eclipse.withOpacity(
+                          0.5,
+                        ),
+                      ),
+                      SizedBox(
+                        width: Dimensions.height10,
+                      ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 1,
+                          color: AppColors.eclipse.withOpacity(0.5),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(
+                  height: Dimensions.height10 * 2,
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height10 * 2,
+                  ),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      OauthButton(
+                        width: Dimensions.height10 * 17,
+                        height: Dimensions.height10 * 5,
+                        text: "Google",
+                        svgPath: Assets.svgsGoogle,
+                        spaceWidth: Dimensions.height10 * 2,
+                      ),
+                      Spacer(),
+                      OauthButton(
+                        width: Dimensions.height10 * 17,
+                        height: Dimensions.height10 * 5,
+                        text: "Facebook",
+                        svgPath: Assets.svgsFacebook,
+                        spaceWidth: Dimensions.height10 * 2,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: Dimensions.height10 * 2,
+                ),
+                RichText(
+                  text: TextSpan(
+                    // recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
+                    text: "Already have an account? ",
+                    style: TextStyle(
+                      fontSize: Dimensions.height14,
+                      color: AppColors.eclipse,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.eclipse.withOpacity(
-                        0.5,
+                      fontFamily: "Manrope",
+                    ),
+                    children: [
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Get.back();
+                          },
+                        text: 'Sign In',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: Dimensions.height14,
+                          color: AppColors.eclipse,
+                          // fontFamily: "DMSans",
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: Dimensions.height10,
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 1,
-                        color: AppColors.eclipse.withOpacity(0.5),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-
-              SizedBox(
-                height: Dimensions.height10 * 2,
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  OauthButton(
-                    width: Dimensions.height10 * 18,
-                    height: Dimensions.height10 * 5,
-                    text: "Google",
-                    svgPath: Assets.svgsGoogle, spaceWidth: Dimensions.height10 * 2,
-                  ),
-                  OauthButton(
-                    width: Dimensions.height10 * 18,
-                    height: Dimensions.height10 * 5,
-                    text: "Facebook",
-                    svgPath: Assets.svgsFacebook, spaceWidth: Dimensions.height10 * 2,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: Dimensions.height10 * 2,
-              ),
-              RichText(
-                text: TextSpan(
-                  // recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
-                  text: "Already have an account? ",
-                  style: TextStyle(
-                    fontSize: Dimensions.height14,
-                    color: AppColors.eclipse,
-                    // fontFamily: "DMSans",
-                  ),
-                  children: [
-                    TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Get.back();
-                        },
-                      text: 'Sign In',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: Dimensions.height14,
-                        color: AppColors.eclipse,
-                        // fontFamily: "DMSans",
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

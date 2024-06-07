@@ -23,7 +23,7 @@ class OnboardingController extends GetxController {
         RouteHelpers.getSupportive(),
       );
     } else {
-      pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
+      pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease,);
       update();
     }
   }
@@ -37,7 +37,7 @@ class OnboardingController extends GetxController {
   List<OnBoardingModel> onBoardingList = [
     OnBoardingModel(
       Assets.svgsOnboardingOneSvg,
-      "Monumental habits",
+      "Welcome to \nMonumental habits",
       "We can help you to be a better version of yourself.",
       Dimensions.height15 * 23.33333333333333,
       Dimensions.height15 * 32.46666666666667,

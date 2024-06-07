@@ -38,7 +38,7 @@ class OnboardingPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                         text: onBoardingController.onBoardingList[index].title,
                         color: AppColors.eclipse,
-                        size: Dimensions.height10 * 4,
+                        size: Dimensions.height12 * 2.666666666666667,
                         fontFamily: "Klasik",
                       ),
                     ),
@@ -63,101 +63,102 @@ class OnboardingPage extends StatelessWidget {
           ),
           Positioned(
             bottom: Dimensions.height12 * 4,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.height12 * 2.75,),
-              child: Container(
-                child: Column(
-                  children: [
-                    // SizedBox(height: 66,),
+            left: Dimensions.height12 * 2.75,
+            right: Dimensions.height12 * 2.75,
+            child: Container(
+              // margin:
+              child: Column(
+                children: [
+                  // SizedBox(height: 66,),
 
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.height12 * 2.666666666666667,),
-                      child: RichText(
-                        text: TextSpan(
-                          // recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
-                          text: "We can ".toUpperCase(),
+                  RichText(
+                    text: TextSpan(
+                      // recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
+                      text: "We can ".toUpperCase(),
+                      style: TextStyle(
+                        fontSize: Dimensions.font17,
+                        color: AppColors.eclipse,
+                        fontFamily: "Manrope",
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children: [
+                        TextSpan(
+                          // recognizer: TapGestureRecognizer()
+                          //   ..onTap = () {
+                          //     Get.back();
+                          //   },
+                          text: 'help you'.toUpperCase(),
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: Dimensions.font17,
+                            color: AppColors.morning,
+                            fontFamily: "Manrope",
+                          ),
+                        ),
+                        TextSpan(
+                          // recognizer: TapGestureRecognizer()
+                          //   ..onTap = () {
+                          //     Get.back();
+                          //   },
+                          text: ' to be a better '.toUpperCase(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             fontSize: Dimensions.font17,
                             color: AppColors.eclipse,
                             fontFamily: "Manrope",
-                            fontWeight: FontWeight.bold,
                           ),
-                          children: [
-                            TextSpan(
-                              // recognizer: TapGestureRecognizer()
-                              //   ..onTap = () {
-                              //     Get.back();
-                              //   },
-                              text: 'help you'.toUpperCase(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: Dimensions.font17,
-                                color: AppColors.morning,
-                                fontFamily: "Manrope",
-                              ),
-                            ),
-                            TextSpan(
-                              // recognizer: TapGestureRecognizer()
-                              //   ..onTap = () {
-                              //     Get.back();
-                              //   },
-                              text: ' to be a better '.toUpperCase(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: Dimensions.font17,
-                                color: AppColors.eclipse,
-                                fontFamily: "Manrope",
-                              ),
-                            ),
-                            TextSpan(
-                              // recognizer: TapGestureRecognizer()
-                              //   ..onTap = () {
-                              //     Get.back();
-                              //   },
-                              text: '\n             version of '.toUpperCase(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: Dimensions.font17,
-                                color: AppColors.eclipse,
-                                fontFamily: "Manrope",
-                              ),
-                            ),
-                            TextSpan(
-                              // recognizer: TapGestureRecognizer()
-                              //   ..onTap = () {
-                              //     Get.back();
-                              //   },
-                              text: 'yourself.'.toUpperCase(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: Dimensions.font17,
-                                color: AppColors.morning,
-                                fontFamily: "Manrope",
-                              ),
-                            ),
-                          ],
-
                         ),
-                      ),
+                        TextSpan(
+                          // recognizer: TapGestureRecognizer()
+                          //   ..onTap = () {
+                          //     Get.back();
+                          //   },
+                          text: '\n             version of '.toUpperCase(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: Dimensions.font17,
+                            color: AppColors.eclipse,
+                            fontFamily: "Manrope",
+                          ),
+                        ),
+                        TextSpan(
+                          // recognizer: TapGestureRecognizer()
+                          //   ..onTap = () {
+                          //     Get.back();
+                          //   },
+                          text: 'yourself.'.toUpperCase(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: Dimensions.font17,
+                            color: AppColors.morning,
+                            fontFamily: "Manrope",
+                          ),
+                        ),
+                      ],
+
                     ),
-                    SizedBox(height: Dimensions.height15 * 4,),
-                    Row(
+                  ),
+                  SizedBox(height: Dimensions.height15 * 4,),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // Spacer(),
+
                         GestureDetector(
                           onTap: () => onBoardingController.goToSupportive(),
                           child: SmallText(
                             text: "Skip", fontWeight: FontWeight.bold, size: Dimensions.font17,),
                         ),
-                        SizedBox(width: Dimensions.height10 * 10,),
+                        // Spacer(),
+                        // SizedBox(width: Dimensions.height10 * 10,),
                         // Spacer(),
                         Container(
                           width: Dimensions.height10 * 7,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                             children: List.generate(
                               onBoardingController.onBoardingList.length, (
                                 index) {
@@ -197,8 +198,9 @@ class OnboardingPage extends StatelessWidget {
                             },),
                           ),
                         ),
+                        // Spacer(),
 
-                        SizedBox(width: Dimensions.height10 * 10,),
+                        // SizedBox(width: Dimensions.height10 * 10,),
                         // Spacer(),
                         GestureDetector(
                           onTap: () => onBoardingController.forwardAction(),
@@ -208,10 +210,10 @@ class OnboardingPage extends StatelessWidget {
                         // Spacer(),
                       ],
                     ),
-                    // SizedBox(height: 108,),
+                  ),
+                  // SizedBox(height: 108,),
 
-                  ],
-                ),
+                ],
               ),
             ),
           ),

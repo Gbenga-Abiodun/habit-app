@@ -31,7 +31,7 @@ class SupportivePage extends StatelessWidget {
                 textAlign: TextAlign.center,
                 text: "JOIN A SUPPORTIVE \nCOMMUNITY",
                 color: AppColors.eclipse,
-                size: Dimensions.height10 * 4,
+                size: Dimensions.height12 * 2.666666666666667,
                 fontFamily: "Klasik",
               ),
             ),

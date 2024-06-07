@@ -46,6 +46,7 @@ class AppTextField extends StatelessWidget {
       decoration: decoration,
       margin: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2,),
       child: TextFormField(
+
         focusNode: focusNode,
         style: TextStyle(
           color: inputColor,
@@ -58,6 +59,7 @@ class AppTextField extends StatelessWidget {
         validator: validator,
         obscureText: obscureText,
         onSaved: onSaved,
+
         inputFormatters: inputFormatters,
         cursorColor: cursorColor,
         onFieldSubmitted: onFieldSubmitted,
@@ -103,10 +105,7 @@ class AppTextField extends StatelessWidget {
               ),
             ),
             // borderSide: BorderSide.none,
-            borderSide: BorderSide(
-              width: 0.5,
-              color: Colors.red,
-            ),
+            borderSide: BorderSide.none,
           ),
 
           errorBorder: OutlineInputBorder(
@@ -115,10 +114,8 @@ class AppTextField extends StatelessWidget {
                   Dimensions.borderRadius12,
               ),
             ),
-            borderSide: BorderSide(
-              width: 1.0,
-              color: Colors.red,
-            ),
+            borderSide: BorderSide.none
+            ,
           ),
         ),
       ),
