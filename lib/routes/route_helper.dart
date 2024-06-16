@@ -6,6 +6,7 @@ import 'package:habit_app/pages/supportive/supportive_page.dart';
 
 import '../pages/auth/sign_in_page.dart';
 import '../pages/auth/sign_up_page.dart';
+import '../pages/home/home_page.dart';
 
 class RouteHelpers{
 
@@ -23,6 +24,9 @@ class RouteHelpers{
   static const String supportive = "/supportive-page";
 
   static String getSupportive() => '$supportive';
+  static const String homePage = "/home-page";
+
+  static String getHomePage() => '$homePage';
   static const String resetPassword = "/reset-page";
 
   static String getReset() => '$resetPassword';
@@ -49,6 +53,12 @@ class RouteHelpers{
     GetPage(
       name: signIn,
       page: () => SignInPage(),
+      transition: Transition.cupertinoDialog,
+    ),
+
+    GetPage(
+      name: homePage,
+      page: () => HomePage(),
       transition: Transition.cupertinoDialog,
     ),
 

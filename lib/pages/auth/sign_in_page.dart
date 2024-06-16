@@ -232,7 +232,7 @@ class SignInPage extends StatelessWidget {
                     prefix: Icon(
                       Icons.lock_outlined,
                       size: Dimensions.height12 * 2,
-                      color: utilsController.isFocused3.value
+                      color: utilsController.isFocused5.value
                           ? AppColors.textInputColor
                           : AppColors.eclipse.withOpacity(0.5),
                     ),

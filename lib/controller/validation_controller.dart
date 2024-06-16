@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habit_app/routes/route_helper.dart';
 
 class ValidationController extends GetxController {
   var allowSignIn = false.obs;
@@ -80,6 +81,7 @@ class ValidationController extends GetxController {
       return;
     }
     signInFormStateKey.currentState!.save();
+    Get.offAllNamed(RouteHelpers.getHomePage(),);
     // authController.signIn(password: signInPassword, email: signInEmail,);
     /* await Get.find<AuthController>().signIn(email: loginEmail, password: loginPassword,);*/
   }
