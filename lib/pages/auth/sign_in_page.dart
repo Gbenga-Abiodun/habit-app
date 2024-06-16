@@ -48,12 +48,17 @@ class SignInPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      CircleIcon(
-                        child: SvgPicture.asset(
-                          Assets.svgsLoupe1,
-                          width: Dimensions.height11 * 2,
-                          height: Dimensions.height11 * 2,
-                          fit: BoxFit.scaleDown,
+                      Padding(
+                        padding:   EdgeInsets.symmetric(
+                    horizontal: Dimensions.height10 * 2,
+                  ),
+                        child: CircleIcon(
+                          child: SvgPicture.asset(
+                            Assets.svgsLoupe1,
+                            width: Dimensions.height11 * 2,
+                            height: Dimensions.height11 * 2,
+                            fit: BoxFit.scaleDown,
+                          ),
                         ),
                       ),
                     ],

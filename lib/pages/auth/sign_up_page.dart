@@ -248,18 +248,18 @@ class SignUpPage extends StatelessWidget {
                     horizontal: Dimensions.height10 * 2,
                   ),
                   child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       OauthButton(
-                        width: Dimensions.height10 * 17,
+                        width: Dimensions.height10 * 16.5,
                         height: Dimensions.height10 * 5,
                         text: "Google",
                         svgPath: Assets.svgsGoogle,
                         spaceWidth: Dimensions.height10 * 2,
                       ),
-                      Spacer(),
+                      // Spacer(),
                       OauthButton(
-                        width: Dimensions.height10 * 17,
+                        width: Dimensions.height10 * 16.5,
                         height: Dimensions.height10 * 5,
                         text: "Facebook",
                         svgPath: Assets.svgsFacebook,

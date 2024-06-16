@@ -81,7 +81,8 @@ class ValidationController extends GetxController {
       return;
     }
     signInFormStateKey.currentState!.save();
-    Get.offAllNamed(RouteHelpers.getHomePage(),);
+    Get.back();
+    Get.toNamed(RouteHelpers.getHomePage(),);
     // authController.signIn(password: signInPassword, email: signInEmail,);
     /* await Get.find<AuthController>().signIn(email: loginEmail, password: loginPassword,);*/
   }

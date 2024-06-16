@@ -13,9 +13,7 @@ class CircleIcon extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: Dimensions.height10 * 2,
-        ),
+
         width: Dimensions.height11 * 4,
         height: Dimensions.height11 * 4,
         decoration: BoxDecoration(
