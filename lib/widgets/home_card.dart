@@ -26,7 +26,7 @@ class HomeCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding:  EdgeInsets.only(
+            padding: EdgeInsets.only(
               left: Dimensions.height15,
             ),
             child: Column(
@@ -43,15 +43,13 @@ class HomeCard extends StatelessWidget {
                       size: Dimensions.font18,
                       color: AppColors.eclipse,
                     ),
-
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SmallText(
-                      text:
-                      "- anonymous".toUpperCase(),
+                      text: "- anonymous".toUpperCase(),
                       // fontFamily: "Klasik",
                       size: Dimensions.height12,
                       fontWeight: FontWeight.w700,
@@ -76,14 +74,11 @@ class HomeCard extends StatelessWidget {
           ),
           Container(
             height: Dimensions.height10 * 50,
-            width: Dimensions.height10 * 11.1,
-            // margin: Edge,
-
+            width: Dimensions.height10 * 10,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(
-
                   Assets.imagesGirl,
                 ),
               ),
