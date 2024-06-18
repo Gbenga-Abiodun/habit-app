@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:habit_app/pages/main/main_page.dart';
 import 'package:habit_app/pages/splash/splash_page.dart';
 import 'package:habit_app/routes/route_helper.dart';
 import 'package:habit_app/utils/colors.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Manrope",
         // primarySwatch: Colors.,
       ),
-      // home: SplashPage(),
+      // home: MainPage(),
     );
   }
 }

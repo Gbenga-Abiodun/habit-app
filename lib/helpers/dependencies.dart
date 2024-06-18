@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:habit_app/controller/nav_controller.dart';
 import 'package:habit_app/controller/onboarding_controller.dart';
 import 'package:habit_app/controller/utils_controller.dart';
 import 'package:habit_app/controller/validation_controller.dart';
@@ -10,11 +11,16 @@ Future<void> init() async {
   Get.lazyPut(
     () => OnboardingController(),
     fenix: true,
-  ); Get.lazyPut(
+  );
+  Get.lazyPut(
     () => ValidationController(),
     fenix: true,
-  ); Get.lazyPut(
+  );
+  Get.lazyPut(
     () => UtilsController(),
     fenix: true,
+  );
+  Get.lazyPut(
+    () => NavController(),
   );
 }

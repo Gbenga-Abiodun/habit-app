@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:get/get.dart';
 import 'package:habit_app/generated/assets.dart';
+import 'package:habit_app/routes/nav_routes.dart';
+import 'package:habit_app/routes/route_helper.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/widgets/circle_icon.dart';
 import 'package:habit_app/widgets/home_card.dart';
@@ -32,6 +35,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CircleIcon(
+                  onTap:() =>  Navigator.pushNamed(context, AppRoutes.newHabit),
                   child: Icon(
                     Icons.menu_outlined,
                     color: AppColors.eclipse,
@@ -65,19 +69,19 @@ class HomePage extends StatelessWidget {
             height: Dimensions.height12 * 2,
           ),
           HomeCard(),
-          Spacer(),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: Dimensions.height10 * 53,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.scaleDown,
-                image: Svg(
-                  Assets.svgsBg2,
-                ),
-              ),
-            ),
-          )
+          // Spacer(),
+          // Container(
+          //   width: MediaQuery.of(context).size.width,
+          //   height: Dimensions.height10 * 53,
+          //   decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //       fit: BoxFit.scaleDown,
+          //       image: Svg(
+          //         Assets.svgsBg2,
+          //       ),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );
