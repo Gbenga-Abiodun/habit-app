@@ -19,7 +19,7 @@ class CommunityPageNavigation extends GetView<NavController> {
             settings: settings,
             builder: (BuildContext context) {
               if (settings.name == AppRoutes.profilePage) {
-                return  ProfilePage();
+                return ProfilePage();
               }
               return const CommunityPage();
             });

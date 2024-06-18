@@ -9,6 +9,7 @@ import 'package:habit_app/widgets/circle_icon.dart';
 import 'package:habit_app/widgets/custom_button.dart';
 import 'package:habit_app/widgets/oauth_button.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
+import 'package:habit_app/widgets/top_space.dart';
 
 import '../../generated/assets.dart';
 import '../../routes/route_helper.dart';
@@ -42,9 +43,7 @@ class SignInPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: Dimensions.height10 * 5,
-                  ),
+                  TopSpace(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
