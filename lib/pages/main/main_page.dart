@@ -61,10 +61,13 @@ class MainPage extends StatelessWidget {
             ),
             extendBody: true,
             bottomNavigationBar: BottomNavigationBar(
+              navController: navController,
               currentIndex: Menus.values[navController.tabIndex.value],
               onTap: (index) {
                 if (index == 4) {
-                  navController.homePageNavigatorKey.currentState?.pushNamed(AppRoutes.newHabit);
+                  navController.changeToCheckMark.value = !navController.changeToCheckMark.value;
+                  navController.homePageNavigatorKey.currentState
+                      ?.pushNamed(AppRoutes.newHabit);
                   // Navigator.pushNamed(context, AppRoutes.newHabit);
                 } else {
                   navController.changeTabIndex(index);
@@ -83,15 +86,18 @@ enum Menus {
   coursePage,
   communityPage,
   settingsPage,
-
   newHabit
 }
 
 class BottomNavigationBar extends StatelessWidget {
+  final NavController navController;
   final Menus currentIndex;
   final ValueChanged<int> onTap;
-  const BottomNavigationBar(
-      {super.key, required this.currentIndex, required this.onTap});
+
+  const BottomNavigationBar({super.key,
+    required this.currentIndex,
+    required this.onTap,
+    required this.navController});
 
   @override
   Widget build(BuildContext context) {
@@ -107,9 +113,13 @@ class BottomNavigationBar extends StatelessWidget {
                 children: [
                   CustomPaint(
                     size: Size(
-                        MediaQuery.of(context).size.width,
+                        MediaQuery
+                            .of(context)
+                            .size
+                            .width,
                         (Dimensions.height10 * 8)
-                            .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                            .toDouble()),
+                    //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
                     painter: RPSCustomPainter(),
                   ),
                   Positioned(
@@ -145,7 +155,7 @@ class BottomNavigationBar extends StatelessWidget {
                           ),
                           Expanded(
                             child: BottomNavigationItem(
-                              icon: Assets.svgsCommunitactive,
+                              icon: Assets.svgsCommunityactive,
                               onPressed: () => onTap(Menus.communityPage.index),
                               current: currentIndex,
                               name: Menus.communityPage,
@@ -173,40 +183,74 @@ class BottomNavigationBar extends StatelessWidget {
               ),
             ],
           ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: Dimensions.height10 * 6,
-            child: GestureDetector(
-              onTap: () => onTap(Menus.newHabit.index),
-              child: Container(
-                width: Dimensions.height12 * 5.333333333333333,
-                height: Dimensions.height12 * 5.333333333333333,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.textInputColor.withOpacity(
-                    0.2,
-                  ),
-                ),
+          Obx(() {
+            return Positioned(
+              left: 0,
+              right: 0,
+              bottom: Dimensions.height10 * 6,
+              child: navController.changeToCheckMark.isFalse
+                  ? GestureDetector(
+                onTap: () => onTap(Menus.newHabit.index),
                 child: Container(
-                  width: 52,
-                  height: 52,
+                  width: Dimensions.height12 * 5.333333333333333,
+                  height: Dimensions.height12 * 5.333333333333333,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: AppColors.textInputColor,
+                    color: AppColors.textInputColor.withOpacity(
+                      0.2,
+                    ),
                   ),
-                  child: SvgPicture.asset(
-                    Assets.svgsVector,
-                    color: AppColors.eclipse,
-                    width: Dimensions.font18,
-                    height: Dimensions.font18,
+                  child: Container(
+                    width: Dimensions.height12 * 4.333333333333333,
+                    height: Dimensions.height12 * 4.333333333333333,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.textInputColor,
+                    ),
+                    child: SvgPicture.asset(
+                      Assets.svgsVector,
+                      color: AppColors.eclipse,
+                      width: Dimensions.font18,
+                      height: Dimensions.font18,
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
+                ),
+              )
+                  : GestureDetector(
+                // onTap: () => onTap(Menus.newHabit.index),
+                child: Container(
+                  width: Dimensions.height12 * 5.333333333333333,
+                  height: Dimensions.height12 * 5.333333333333333,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.textInputColor.withOpacity(
+                      0.2,
+                    ),
+                  ),
+                  child: Container(
+                    width: Dimensions.height12 * 4.333333333333333,
+                    height: Dimensions.height12 * 4.333333333333333,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.textInputColor,
+                    ),
+                    child: SvgPicture.asset(
+                      Assets.svgsCheck2,
+                      fit: BoxFit.scaleDown,
+                      color: AppColors.eclipse,
+                      width: Dimensions.height14,
+                      height: Dimensions.height14,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
+            );
+          }),
         ],
       ),
     );
@@ -244,7 +288,8 @@ class RPSCustomPainter extends CustomPainter {
     path_0.lineTo(0, 0);
     path_0.close();
 
-    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
+    Paint paint_0_fill = Paint()
+      ..style = PaintingStyle.fill;
     paint_0_fill.color = Colors.white;
     canvas.drawPath(path_0, paint_0_fill);
   }

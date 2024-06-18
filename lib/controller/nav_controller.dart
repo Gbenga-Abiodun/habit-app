@@ -5,6 +5,8 @@ class NavController extends GetxController implements GetxService{
 
   var tabIndex = 0.obs;
 
+  var  changeToCheckMark= false.obs;
+
   GlobalKey<NavigatorState> homePageNavigatorKey = GlobalKey<NavigatorState>();
   GlobalKey<NavigatorState> coursePageNavigatorKey = GlobalKey<NavigatorState>();
   GlobalKey<NavigatorState> communityPageNavigatorKey = GlobalKey<NavigatorState>();

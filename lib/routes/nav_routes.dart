@@ -7,7 +7,7 @@ import '../pages/habit/new_habit_page.dart';
 
 class AppRoutes {
   static final pages = {
-    newHabit: (context) => const NewHabitPage(),
+    newHabit: (context) =>  NewHabitPage(),
     courseDetails: (context) => const CourseDetailsPage(),
     profilePage: (context) => const ProfilePage(),
 

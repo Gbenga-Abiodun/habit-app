@@ -19,8 +19,9 @@ class Assets {
   static const String svgsBackIcon = 'assets/svgs/Back Icon.svg';
   static const String svgsBackground = 'assets/svgs/Background.svg';
   static const String svgsBg2 = 'assets/svgs/bg2.svg';
+  static const String svgsCheck2 = 'assets/svgs/check2.svg';
   static const String svgsCommunity = 'assets/svgs/Community.svg';
-  static const String svgsCommunitactive = 'assets/svgs/Community active.svg';
+  static const String svgsCommunityactive = 'assets/svgs/Community active.svg';
   static const String svgsCourses = 'assets/svgs/Courses.svg';
   static const String svgsCoursesactive = 'assets/svgs/Courses active.svg';
   static const String svgsFacebook = 'assets/svgs/facebook.svg';
