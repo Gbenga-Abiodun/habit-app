@@ -7,6 +7,9 @@ class BottomNavigationItem extends StatelessWidget {
   final VoidCallback onPressed;
   final String icon;
 
+  final double width;
+  final double height;
+
   final String inActive;
   final Menus? current;
   final Menus? name;
@@ -15,7 +18,7 @@ class BottomNavigationItem extends StatelessWidget {
       required this.onPressed,
       required this.icon,
       this.current,
-      this.name, required this.inActive})
+      this.name, required this.inActive, required this.width, required this.height})
       : super(key: key);
 
   @override
@@ -23,8 +26,12 @@ class BottomNavigationItem extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: SvgPicture.asset(
+
         current == name
             ?icon : inActive,
+        width: width,
+        height: height,
+        fit: BoxFit.scaleDown,
       ),
     );
   }

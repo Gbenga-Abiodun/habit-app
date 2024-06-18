@@ -10,6 +10,7 @@ import 'package:habit_app/pages/settings/settings_page.dart';
 
 import '../../controller/nav_controller.dart';
 import '../../generated/assets.dart';
+import '../../utils/dimensions.dart';
 import '../../widgets/bottom_navigation_item.dart';
 
 class MainPage extends StatelessWidget {
@@ -96,7 +97,7 @@ class BottomNavigationBar extends StatelessWidget {
       children: [
         Container(
           color: Colors.white,
-          height: 80,
+          height: Dimensions.height10 * 8,
           child: Row(
             children: [
               Expanded(
@@ -104,7 +105,7 @@ class BottomNavigationBar extends StatelessWidget {
                   icon: Assets.svgsXMLID1,
                   onPressed: () => onTap(Menus.home.index),
                   current: currentIndex,
-                  name: Menus.home, inActive: Assets.svgsXMLID1active,
+                  name: Menus.home, inActive: Assets.svgsXMLID1active, width: Dimensions.height10 * 5, height: Dimensions.height10 * 3,
                 ),
               ),
               Expanded(
@@ -112,7 +113,7 @@ class BottomNavigationBar extends StatelessWidget {
                   icon: Assets.svgsCoursesactive,
                   onPressed: () => onTap(Menus.coursePage.index),
                   current: currentIndex,
-                  name: Menus.coursePage, inActive: Assets.svgsCourses,
+                  name: Menus.coursePage, inActive: Assets.svgsCourses, width: Dimensions.height10 * 4, height: Dimensions.height12 * 2.916666666666667,
                 ),
               ),
               Expanded(
@@ -120,7 +121,7 @@ class BottomNavigationBar extends StatelessWidget {
                   icon: Assets.svgsCommunitactive,
                   onPressed: () => onTap(Menus.communityPage.index),
                   current: currentIndex,
-                  name: Menus.communityPage, inActive: Assets.svgsCommunity,
+                  name: Menus.communityPage, inActive: Assets.svgsCommunity, width: Dimensions.height10 * 4, height: Dimensions.height12 * 3,
                 ),
               ),
               Expanded(
@@ -128,7 +129,7 @@ class BottomNavigationBar extends StatelessWidget {
                   icon: Assets.svgsSettingsActive,
                   onPressed: () => onTap(Menus.settingsPage.index),
                   current: currentIndex,
-                  name: Menus.settingsPage, inActive: Assets.svgsSettings,
+                  name: Menus.settingsPage, inActive: Assets.svgsSettings, width: Dimensions.height10 * 4, height: Dimensions.height10 * 4,
                 ),
               ),
             ],
