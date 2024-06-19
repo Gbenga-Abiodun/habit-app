@@ -8,7 +8,7 @@ class CoursePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: AppColors.scaffoldBg2,
       body: Center(
         child: SmallText(text: "Course Page", fontWeight: FontWeight.w700,)
       ),

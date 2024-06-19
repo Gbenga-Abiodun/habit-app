@@ -30,22 +30,21 @@ class HomeCard extends StatelessWidget {
               left: Dimensions.height15,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      height: Dimensions.height12 * 2.166666666666667,
-                    ),
-                    SmallText(
-                      text:
-                          "We first make our habits, \nand then our habits \nmakes us.",
-                      fontFamily: "Klasik",
-                      size: Dimensions.font18,
-                      color: AppColors.eclipse,
-                    ),
-                  ],
+                SizedBox(
+                  height: Dimensions.height12 * 2.166666666666667,
                 ),
+                SmallText(
+                  text:
+                      "We first make our habits, \nand then our habits \nmakes us.",
+                  fontFamily: "Klasik",
+                  size: Dimensions.font18,
+                  color: AppColors.eclipse,
+                ),
+                // SizedBox(height: Dimensions.height8/2,),
                 Row(
+                  // mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SmallText(
