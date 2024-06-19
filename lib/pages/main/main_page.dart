@@ -52,7 +52,7 @@ class MainPage extends StatelessWidget {
           child: Scaffold(
             body: IndexedStack(
               index: navController.tabIndex.value,
-              children: [
+              children: const [
                 HomePageNavigation(),
                 CoursePageNavigation(),
                 CommunityPage(),
