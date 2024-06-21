@@ -20,6 +20,7 @@ class Assets {
   static const String svgsBackground = 'assets/svgs/Background.svg';
   static const String svgsBg2 = 'assets/svgs/bg2.svg';
   static const String svgsCheck2 = 'assets/svgs/check2.svg';
+  static const String svgsCircleplusfill = 'assets/svgs/circle plus fill.svg';
   static const String svgsCommunity = 'assets/svgs/Community.svg';
   static const String svgsCommunityactive = 'assets/svgs/Community active.svg';
   static const String svgsCourses = 'assets/svgs/Courses.svg';
@@ -39,6 +40,7 @@ class Assets {
   static const String svgsSettings = 'assets/svgs/Settings.svg';
   static const String svgsSettingsActive = 'assets/svgs/Settings Active.svg';
   static const String svgsSignin = 'assets/svgs/sign in.svg';
+  static const String svgsSolidbookreader = 'assets/svgs/solid book reader.svg';
   static const String svgsSplashScreen = 'assets/svgs/Splash Screen.svg';
   static const String svgsSupportive = 'assets/svgs/supportive.svg';
   static const String svgsUser = 'assets/svgs/user.svg';

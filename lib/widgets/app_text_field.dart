@@ -28,7 +28,13 @@ class AppTextField extends StatelessWidget {
   final BorderSide borderSide;
   final FocusNode? focusNode;
 
+  final EdgeInsetsGeometry? inputMargin;
+
   final TextInputType? keyboardType;
+
+  final FontWeight? inputFontWeight;
+
+  // final EdgeInsetsGeometry? textFieldMargin;
 
   final List<TextInputFormatter>? inputFormatters;
 
@@ -36,7 +42,7 @@ class AppTextField extends StatelessWidget {
   const AppTextField({Key? key, required this.hintText, this.controller, required this.autoFocus, this.prefix, required this.obscureText, this.suffix, this.decoration, this.onSaved, this.fillColor = Colors.white, this.onFieldSubmitted, this.borderSide = const BorderSide(
     width: 1.0,
     color: AppColors.textInputColor,
-  ), this.keyboardType, this.inputFormatters, this.validator, this.cursorColor = const Color(0xFF573353), this.inputColor= const Color(0xFFFDA758), this.focusNode}) : super(key: key);
+  ), this.keyboardType, this.inputFormatters, this.validator, this.cursorColor = const Color(0xFF573353), this.inputColor= const Color(0xFFFDA758), this.focusNode, this.inputFontWeight =  FontWeight.bold, this.inputMargin}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +56,7 @@ class AppTextField extends StatelessWidget {
         focusNode: focusNode,
         style: TextStyle(
           color: inputColor,
-          fontWeight: FontWeight.bold,
+          fontWeight: inputFontWeight,
           fontSize: Dimensions.font16,
           // height: 56,
 
@@ -79,6 +85,7 @@ class AppTextField extends StatelessWidget {
           hintStyle: TextStyle(
             color: AppColors.eclipse.withOpacity(0.5),
             fontSize: Dimensions.font16,
+            // fontWeight:
           ),
           // contentPadding: EdgeInsets.symmetric(
           //   vertical: MobileDimensions.mobile48 / 4,

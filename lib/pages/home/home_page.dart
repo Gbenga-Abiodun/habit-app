@@ -92,21 +92,100 @@ class HomePage extends StatelessWidget {
             ),
             HomeCard(),
             SizedBox(
-              height: Dimensions.height12,
+              height: Dimensions.height12 * 2,
             ),
-            // Spacer(),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: Dimensions.height10 * 58,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.fitWidth,
-                  image: Svg(
-                    Assets.svgsBg2,
+           Stack(
+            children : [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: Dimensions.height10 * 54,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: Svg(
+                      Assets.svgsBg2,
+                    ),
                   ),
                 ),
               ),
-            ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.symmetric(
+                      horizontal: Dimensions.height12 * 2.8333333333333333,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SmallText(
+                          text: "Habit".toUpperCase(),
+                          fontWeight: FontWeight.w700,
+                          size: Dimensions.height14,
+                          color: AppColors.eclipse,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: Dimensions.height12 * 4.833333333333333,
+                      // width: 58,
+                      alignment: Alignment.center,
+                      child: ListView.builder(
+                        physics: AlwaysScrollableScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 9,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: Dimensions.height10 * 5,
+                            height: Dimensions.height10 * 5,
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(
+                              right: Dimensions.height12/2,
+                              // left: 6,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.scaffoldBg,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(Dimensions.height12),
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: Dimensions.height12,),
+                                SmallText(
+                                  text: "Sun",
+                                  fontWeight: FontWeight.w700,
+                                  size: Dimensions.height10,
+                                  color: AppColors.eclipse.withOpacity(
+                                    0.5,
+                                  ),
+                                ),
+                                // SizedBox(height: 12,),
+                                SmallText(
+                                  text: "17",
+                                  fontWeight: FontWeight.w700,
+                                  size: Dimensions.font16,
+                                  color: AppColors.eclipse,
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  )
+                ],
+              ),
+
+              // SizedBox(
+              //   height: ,
+              // ),
+              // Spacer(),
+
+             ]
+           )
             // Spacer(),
           ],
         ),
