@@ -5,7 +5,7 @@ import 'package:habit_app/pages/course/course_page.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../pages/habit/new_habit_page.dart';
-import '../routes/nav_routes.dart';
+import '../routes/route_helper.dart';
 
 class CoursePageNavigation extends GetView<NavController> {
   const CoursePageNavigation({Key? key}) : super(key: key);
@@ -15,20 +15,15 @@ class CoursePageNavigation extends GetView<NavController> {
     return Navigator(
       key: controller.coursePageNavigatorKey,
       onGenerateRoute: (RouteSettings settings) {
-
-        Widget child;
-
-        if (settings.name == AppRoutes.courseDetails) {
-          child = Container();
-        } else if (settings.name == AppRoutes.newHabit) {
-          child = NewHabitPage();
-        } else {
-          child = const CoursePage();
-        }
-        return PageTransition(
-          settings: settings,
-          type: PageTransitionType.rightToLeft,
-          child: child,
+        return GetPageRoute(
+          transition: Transition.rightToLeft,
+          page: () {
+            if(settings.name == RouteHelpers.newHabit){
+              return NewHabitPage();
+            }else{
+              return CoursePage();
+            }
+          },
         );
       },
     );

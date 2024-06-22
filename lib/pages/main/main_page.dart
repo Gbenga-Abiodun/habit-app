@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:habit_app/navigation/community_page_navigation.dart';
 import 'package:habit_app/navigation/course_page_navigation.dart';
 import 'package:habit_app/navigation/home_page_navigation.dart';
 import 'package:habit_app/pages/community/community_page.dart';
 import 'package:habit_app/pages/course/course_page.dart';
+import 'package:habit_app/pages/habit/new_habit_page.dart';
 import 'package:habit_app/pages/home/home_page.dart';
 import 'package:habit_app/pages/settings/settings_page.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../controller/nav_controller.dart';
 import '../../generated/assets.dart';
-import '../../routes/nav_routes.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/bottom_navigation_item.dart';
@@ -36,9 +38,13 @@ class MainPage extends StatelessWidget {
         _navigatorKeys[navController.tabIndex.value]
             .currentState
             ?.pop(_navigatorKeys[navController.tabIndex.value].currentContext);
+        navController.changeToCheckMark.value =
+        !navController.changeToCheckMark.value;
         return false;
       } else {
         SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
+        navController.changeToCheckMark.value =
+        !navController.changeToCheckMark.value;
         return true; // Indicate that the back action is handled
       }
     }
@@ -55,7 +61,7 @@ class MainPage extends StatelessWidget {
               children: const [
                 HomePageNavigation(),
                 CoursePageNavigation(),
-                CommunityPage(),
+                CommunityPageNavigation(),
                 SettingsPage(),
               ],
             ),
@@ -65,10 +71,39 @@ class MainPage extends StatelessWidget {
               currentIndex: Menus.values[navController.tabIndex.value],
               onTap: (index) {
                 if (index == 4) {
-                  navController.changeToCheckMark.value = !navController.changeToCheckMark.value;
-                  navController.homePageNavigatorKey.currentState
-                      ?.pushNamed(AppRoutes.newHabit);
-                  // Navigator.pushNamed(context, AppRoutes.newHabit);
+                  if (navController.tabIndex.value == 0) {
+                    navController.homePageNavigatorKey.currentState
+                        ?.push(PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child:  NewHabitPage(),
+                    ));
+                    navController.changeToCheckMark.value =
+                    !navController.changeToCheckMark.value;
+                  } else if (navController.tabIndex.value == 1) {
+                    navController.coursePageNavigatorKey.currentState
+                        ?.push(PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child:  NewHabitPage(),
+                    ));
+                    navController.changeToCheckMark.value =
+                    !navController.changeToCheckMark.value;
+                  } else if (navController.tabIndex.value == 2) {
+                    navController.communityPageNavigatorKey.currentState
+                        ?.push(PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child:  NewHabitPage(),
+                    ));
+                    navController.changeToCheckMark.value =
+                        !navController.changeToCheckMark.value;
+                  } else if (navController.tabIndex.value == 3) {
+                    navController.settingsPageNavigatorKey.currentState
+                        ?.push(PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child:  NewHabitPage(),
+                    ));
+                    navController.changeToCheckMark.value =
+                        !navController.changeToCheckMark.value;
+                  } // Navigator.pushNamed(context, AppRoutes.newHabit);
                 } else {
                   navController.changeTabIndex(index);
                 }
@@ -81,23 +116,18 @@ class MainPage extends StatelessWidget {
   }
 }
 
-enum Menus {
-  home,
-  coursePage,
-  communityPage,
-  settingsPage,
-  newHabit
-}
+enum Menus { home, coursePage, communityPage, settingsPage, newHabit }
 
 class BottomNavigationBar extends StatelessWidget {
   final NavController navController;
   final Menus currentIndex;
   final ValueChanged<int> onTap;
 
-  const BottomNavigationBar({super.key,
-    required this.currentIndex,
-    required this.onTap,
-    required this.navController});
+  const BottomNavigationBar(
+      {super.key,
+      required this.currentIndex,
+      required this.onTap,
+      required this.navController});
 
   @override
   Widget build(BuildContext context) {
@@ -112,13 +142,8 @@ class BottomNavigationBar extends StatelessWidget {
               Stack(
                 children: [
                   CustomPaint(
-                    size: Size(
-                        MediaQuery
-                            .of(context)
-                            .size
-                            .width,
-                        (Dimensions.height10 * 8)
-                            .toDouble()),
+                    size: Size(MediaQuery.of(context).size.width,
+                        (Dimensions.height10 * 8).toDouble()),
                     //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
                     painter: RPSCustomPainter(),
                   ),
@@ -190,65 +215,65 @@ class BottomNavigationBar extends StatelessWidget {
               bottom: Dimensions.height10 * 6,
               child: navController.changeToCheckMark.isFalse
                   ? GestureDetector(
-                onTap: () => onTap(Menus.newHabit.index),
-                child: Container(
-                  width: Dimensions.height12 * 5.333333333333333,
-                  height: Dimensions.height12 * 5.333333333333333,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.textInputColor.withOpacity(
-                      0.2,
-                    ),
-                  ),
-                  child: Container(
-                    width: Dimensions.height12 * 4.333333333333333,
-                    height: Dimensions.height12 * 4.333333333333333,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.textInputColor,
-                    ),
-                    child: SvgPicture.asset(
-                      Assets.svgsVector,
-                      color: AppColors.eclipse,
-                      width: Dimensions.font18,
-                      height: Dimensions.font18,
-                      fit: BoxFit.scaleDown,
-                    ),
-                  ),
-                ),
-              )
+                      onTap: () => onTap(Menus.newHabit.index),
+                      child: Container(
+                        width: Dimensions.height12 * 5.333333333333333,
+                        height: Dimensions.height12 * 5.333333333333333,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.textInputColor.withOpacity(
+                            0.2,
+                          ),
+                        ),
+                        child: Container(
+                          width: Dimensions.height12 * 4.333333333333333,
+                          height: Dimensions.height12 * 4.333333333333333,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.textInputColor,
+                          ),
+                          child: SvgPicture.asset(
+                            Assets.svgsVector,
+                            color: AppColors.eclipse,
+                            width: Dimensions.font18,
+                            height: Dimensions.font18,
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                      ),
+                    )
                   : GestureDetector(
-                // onTap: () => onTap(Menus.newHabit.index),
-                child: Container(
-                  width: Dimensions.height12 * 5.333333333333333,
-                  height: Dimensions.height12 * 5.333333333333333,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.textInputColor.withOpacity(
-                      0.2,
+                      // onTap: () => onTap(Menus.newHabit.index),
+                      child: Container(
+                        width: Dimensions.height12 * 5.333333333333333,
+                        height: Dimensions.height12 * 5.333333333333333,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.textInputColor.withOpacity(
+                            0.2,
+                          ),
+                        ),
+                        child: Container(
+                          width: Dimensions.height12 * 4.333333333333333,
+                          height: Dimensions.height12 * 4.333333333333333,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.textInputColor,
+                          ),
+                          child: SvgPicture.asset(
+                            Assets.svgsCheck2,
+                            fit: BoxFit.scaleDown,
+                            color: AppColors.eclipse,
+                            width: Dimensions.height14,
+                            height: Dimensions.height14,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  child: Container(
-                    width: Dimensions.height12 * 4.333333333333333,
-                    height: Dimensions.height12 * 4.333333333333333,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.textInputColor,
-                    ),
-                    child: SvgPicture.asset(
-                      Assets.svgsCheck2,
-                      fit: BoxFit.scaleDown,
-                      color: AppColors.eclipse,
-                      width: Dimensions.height14,
-                      height: Dimensions.height14,
-                    ),
-                  ),
-                ),
-              ),
             );
           }),
         ],
@@ -288,8 +313,7 @@ class RPSCustomPainter extends CustomPainter {
     path_0.lineTo(0, 0);
     path_0.close();
 
-    Paint paint_0_fill = Paint()
-      ..style = PaintingStyle.fill;
+    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
     paint_0_fill.color = Colors.white;
     canvas.drawPath(path_0, paint_0_fill);
   }
