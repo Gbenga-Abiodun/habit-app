@@ -56,8 +56,8 @@ class _CustomSwitchState extends State<CustomSwitch> {
             AnimatedPositioned(
               duration: Duration(milliseconds: 300),
               // curve: Curves.linear,
-              left: value ? null : 3.5,
-              right: value ? 3.5 : null,
+              left: value ? null : 2.2,
+              right: value ? 2.2 : null,
               child: AnimatedContainer(
                 duration: Duration(milliseconds: 300),
                 width: Dimensions.height11 * 2,
