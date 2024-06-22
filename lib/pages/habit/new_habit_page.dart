@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/controller/nav_controller.dart';
+import 'package:habit_app/controller/validation_controller.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/widgets/app_text_field.dart';
 import 'package:habit_app/widgets/custom_app_bar.dart';
+import 'package:habit_app/widgets/custom_list_tile.dart';
+import 'package:habit_app/widgets/custom_switch.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/top_space.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as provider;
 
 import '../../generated/assets.dart';
 import '../../utils/dimensions.dart';
+import '../../widgets/small_text.dart';
 
 class NewHabitPage extends StatelessWidget {
-   NewHabitPage({Key? key}) : super(key: key);
+  NewHabitPage({Key? key}) : super(key: key);
 
   var navController = Get.find<NavController>();
+  var validationController = Get.find<ValidationController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.scaffoldBg2,
       body: AppScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             TopSpace(),
@@ -29,7 +36,8 @@ class NewHabitPage extends StatelessWidget {
               hasCircleImage: false,
               pageTitle: "New Habit",
               onTap: () {
-                navController.changeToCheckMark.value = !navController.changeToCheckMark.value;
+                navController.changeToCheckMark.value =
+                !navController.changeToCheckMark.value;
                 Navigator.of(context).pop();
               },
               leadingIcon: SvgPicture.asset(
@@ -39,11 +47,16 @@ class NewHabitPage extends StatelessWidget {
                 fit: BoxFit.scaleDown,
               ),
             ),
-            SizedBox(height: Dimensions.height10 * 3,),
+            SizedBox(
+              height: Dimensions.height10 * 3,
+            ),
             Stack(
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: Dimensions.height10 * 88,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -63,8 +76,8 @@ class NewHabitPage extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                 Flexible(
-                                   child: AppTextField(
+                                Flexible(
+                                  child: AppTextField(
                                     hintText: "Enter habit name",
                                     autoFocus: false,
                                     // focusNode: utilsController.focusNode6,
@@ -98,14 +111,16 @@ class NewHabitPage extends StatelessWidget {
                                     //         : AppColors.eclipse.withOpacity(0.5),
                                     //   );
                                     // }),
-                                                 ),
-                                 ),
+                                  ),
+                                ),
                                 Container(
                                   width: Dimensions.height12 * 4,
                                   height: Dimensions.height10 * 5,
                                   alignment: Alignment.center,
-                                  margin: EdgeInsets.only(right: Dimensions.height10 * 2,),
-                                  decoration : BoxDecoration(
+                                  margin: EdgeInsets.only(
+                                    right: Dimensions.height10 * 2,
+                                  ),
+                                  decoration: BoxDecoration(
                                     color: AppColors.scaffoldBg,
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(Dimensions.height12),
@@ -114,11 +129,12 @@ class NewHabitPage extends StatelessWidget {
                                   child: SvgPicture.asset(
                                     Assets.svgsSolidbookreader,
                                     color: AppColors.eclipse,
-                                    width: Dimensions.height12 * 2.916666666666667,
-                                    height: Dimensions.height12 * 2.916666666666667,
+                                    width:
+                                    Dimensions.height12 * 2.916666666666667,
+                                    height:
+                                    Dimensions.height12 * 2.916666666666667,
                                     fit: BoxFit.scaleDown,
                                   ),
-
                                 )
                               ],
                             ),
@@ -137,40 +153,62 @@ class NewHabitPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: Dimensions.height8,),
+                    SizedBox(
+                      height: Dimensions.height8,
+                    ),
                     Container(
                       height: Dimensions.height12 * 11.08333333333333,
                       margin: EdgeInsets.symmetric(
                         horizontal: Dimensions.height10 * 2,
                       ),
-                      width: MediaQuery.of(context).size.width,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
                       decoration: BoxDecoration(
                         color: AppColors.scaffoldBg,
-                        borderRadius: BorderRadius.circular(12,),
+                        borderRadius: BorderRadius.circular(
+                          Dimensions.font12,
+                        ),
                       ),
                     ),
-                    SizedBox(height: Dimensions.height8,),
-                    Container(
-                      height: Dimensions.height10 * 5,
-                      margin: EdgeInsets.symmetric(
-                        horizontal: Dimensions.height10 * 2,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.scaffoldBg,
-                        borderRadius: BorderRadius.circular(Dimensions.height12,),
+                    SizedBox(
+                      height: Dimensions.height8,
+                    ),
+                    NormalListTileWidget(
+                      NormalListTileTitle: "Reminder",
+                      NormalListTileTrailing: Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SmallText(
+                            text: "10:00AM",
+                            size: Dimensions.font16,
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.textInputColor,
+                          ),
+                          SizedBox(
+                            width: Dimensions.height10,
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: AppColors.textInputColor,
+                            size: Dimensions.font16,
+                          )
+                        ],
                       ),
                     ),
-                    SizedBox(height: Dimensions.height8,),
-                    Container(
-                      height: Dimensions.height10 * 5,
-                      margin: EdgeInsets.symmetric(
-                        horizontal: Dimensions.height10 * 2,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.scaffoldBg,
-                        borderRadius: BorderRadius.circular(Dimensions.height12,),
-                      ),
-                    )
+                    SizedBox(
+                      height: Dimensions.height8,
+                    ),
+                    Obx(() {
+                      return NormalListTileWidget(
+                        NormalListTileTitle: "Notification",
+                        NormalListTileTrailing: CustomSwitch(value: validationController.allowNotification.value, onChanged: (value) {
+
+                          validationController.allowNotification.value = value;
+                        },),
+                      );
+                    }),
                   ],
                 ),
               ],
