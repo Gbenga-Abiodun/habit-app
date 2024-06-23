@@ -155,7 +155,7 @@ class SignUpPage extends StatelessWidget {
                   return AppCheckBox(
                     text: "Keep me signed in",
                     onTap: () => validationController.checkAllowSignIn(),
-                    child: validationController.allowSignIn.value
+                    child: validationController.allowSignIn.isTrue
                         ? Center(
                             child: SvgPicture.asset(
                               Assets.svgsMark,
@@ -175,7 +175,7 @@ class SignUpPage extends StatelessWidget {
                   return AppCheckBox(
                     text: "Email me about special pricing and more",
                     onTap: () => validationController.checkAllowEmailAndPricing(),
-                    child: validationController.allowEmailAndPricing.value
+                    child: validationController.allowEmailAndPricing.isTrue
                         ? Center(
                             child: SvgPicture.asset(
                               Assets.svgsMark,

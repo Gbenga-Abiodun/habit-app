@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_switch/flutter_switch.dart';
+
 import 'package:get/get.dart';
 import 'package:habit_app/controller/nav_controller.dart';
 import 'package:habit_app/controller/validation_controller.dart';
@@ -207,7 +207,7 @@ class NewHabitPage extends StatelessWidget {
                       );
                     }),
                     SizedBox(
-                      height: Dimensions.height12 * 7,
+                      height: Dimensions.height12 * 6.7,
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
@@ -263,7 +263,7 @@ class NewHabitPage extends StatelessWidget {
                 ),
                 Positioned(
                   // : ,
-                  top: Dimensions.height10 * 38,
+                  top: Dimensions.height10 * 37,
                   left: Dimensions.height12 * 14.33333333333333,
                   right: Dimensions.height12 * 14.33333333333333,
                   child: Container(

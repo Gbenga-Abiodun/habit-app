@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habit_app/constants/app_constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../routes/route_helper.dart';
 
 class NavController extends GetxController implements GetxService{
+  final SharedPreferences sharedPreferences;
 
   var tabIndex = 0.obs;
 
@@ -11,9 +16,23 @@ class NavController extends GetxController implements GetxService{
   GlobalKey<NavigatorState> coursePageNavigatorKey = GlobalKey<NavigatorState>();
   GlobalKey<NavigatorState> communityPageNavigatorKey = GlobalKey<NavigatorState>();
   GlobalKey<NavigatorState> settingsPageNavigatorKey = GlobalKey<NavigatorState>();
+
+  NavController({required this.sharedPreferences});
   void changeTabIndex(int index){
     tabIndex.value = index;
     update();
+  }
+
+
+ void  checkLoggedIn(){
+    String? userId = sharedPreferences.getString(AppConstants.userId).toString();
+    if(userId.isEmpty){
+      Get.offAllNamed(RouteHelpers.getOnBoarding(),);
+
+    }else{
+      Get.offAllNamed(RouteHelpers.getMainPage(),);
+
+    }
   }
 
 }

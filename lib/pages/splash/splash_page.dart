@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:habit_app/controller/auth_controller.dart';
+import 'package:habit_app/controller/nav_controller.dart';
+import 'package:habit_app/controller/user_controller.dart';
 
 import 'package:habit_app/routes/route_helper.dart';
 import 'package:habit_app/utils/colors.dart';
@@ -20,13 +23,21 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  
+
+  Future<void> loadControllers() async{
+     Get.find<UserController>().loadLoggedInUser();
+  }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 3), () => Get.offAllNamed(RouteHelpers.getOnBoarding()));
+    loadControllers();
+    Timer(
+      const Duration(seconds: 3),
+      () => Get.find<NavController>().checkLoggedIn(),
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +56,9 @@ class _SplashPageState extends State<SplashPage> {
             )),
             child: Column(
               children: [
-                SizedBox(height: Dimensions.height12 * 8,),
+                SizedBox(
+                  height: Dimensions.height12 * 8,
+                ),
                 BigText(
                   text: "WELCOME TO\nMonumental \n     habits",
                   fontFamily: "Klasik",

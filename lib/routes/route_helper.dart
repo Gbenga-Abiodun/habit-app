@@ -99,7 +99,7 @@ class RouteHelpers {
     ),
     GetPage(
       name: homePage,
-      page: () => const HomePage(),
+      page: () =>  HomePage(),
       transition: Transition.cupertinoDialog,
     ),
     GetPage(

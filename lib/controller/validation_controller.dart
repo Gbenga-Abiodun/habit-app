@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habit_app/controller/auth_controller.dart';
 import 'package:habit_app/routes/route_helper.dart';
 
 class ValidationController extends GetxController {
-  var allowSignIn = false.obs;
-  var allowEmailAndPricing = false.obs;
+  var allowSignIn = true.obs;
+  var allowEmailAndPricing = true.obs;
 
   var allowNotification = false.obs;
-
 
   var isPasswordHidden = true.obs;
 
   final GlobalKey<FormState> signInFormStateKey = GlobalKey<FormState>();
   final GlobalKey<FormState> signUpFormStateKey = GlobalKey<FormState>();
   final GlobalKey<FormState> resetFormStateKey = GlobalKey<FormState>();
+
+  var authController = Get.find<AuthController>();
 
   late TextEditingController emailController,
       passwordController,
@@ -76,27 +78,28 @@ class ValidationController extends GetxController {
   //   return null;
   // }
 
-
   void checkSignIn() async {
     final isValid = signInFormStateKey.currentState!.validate();
     if (!isValid) {
       return;
     }
     signInFormStateKey.currentState!.save();
-    Get.back();
-    Get.toNamed(RouteHelpers.getMainPage(),);
-    // authController.signIn(password: signInPassword, email: signInEmail,);
-    /* await Get.find<AuthController>().signIn(email: loginEmail, password: loginPassword,);*/
+    authController.loginAccount(password: loginPassword, email: loginEmail);
   }
+
   void checkSignUp() async {
     final isValid = signUpFormStateKey.currentState!.validate();
     if (!isValid) {
       return;
     }
     signUpFormStateKey.currentState!.save();
+    authController.createAccount(
+        userName: name, password: password, email: email);
+
     // authController.signIn(password: signInPassword, email: signInEmail,);
     /* await Get.find<AuthController>().signIn(email: loginEmail, password: loginPassword,);*/
   }
+
   void checkReset() async {
     final isValid = resetFormStateKey.currentState!.validate();
     if (!isValid) {
@@ -106,7 +109,6 @@ class ValidationController extends GetxController {
     // authController.signIn(password: signInPassword, email: signInEmail,);
     /* await Get.find<AuthController>().signIn(email: loginEmail, password: loginPassword,);*/
   }
-
 
   void _initFormControllers() {
     emailController = TextEditingController();

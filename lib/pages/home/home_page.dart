@@ -12,10 +12,14 @@ import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/small_text.dart';
 import 'package:habit_app/widgets/top_space.dart';
 
+import '../../controller/user_controller.dart';
 import '../../utils/dimensions.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+   HomePage({Key? key}) : super(key: key);
+
+
+  var userController = Get.find<UserController>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +38,12 @@ class HomePage extends StatelessWidget {
             CustomAppBar(
               hasCircleImage: true,
               pageTitle: "HomePage",
-              decoration: const BoxDecoration(
+              decoration:  BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: CachedNetworkImageProvider(
-                    "https://images.unsplash.com/photo-1623184663110-89ba5b565eb6?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    userController.userModel!.profilePhoto.toString(),
                   ),
                 ),
               ),
