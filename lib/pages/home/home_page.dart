@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/generated/assets.dart';
-import 'package:habit_app/routes/nav_routes.dart';
 import 'package:habit_app/routes/route_helper.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/widgets/circle_icon.dart';
@@ -98,10 +97,10 @@ class HomePage extends StatelessWidget {
             children : [
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: Dimensions.height10 * 54,
+                height: Dimensions.height10 * 56,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    fit: BoxFit.fill,
+                    fit: BoxFit.scaleDown,
                     image: Svg(
                       Assets.svgsBg2,
                     ),

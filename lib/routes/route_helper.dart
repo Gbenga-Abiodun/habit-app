@@ -37,9 +37,16 @@ class RouteHelpers {
 
   static String getCommunityPage() => '$community';
 
+  static const String profile = "/settings-page";
+
+  static String getProfilePage() => '$profile';
+
   static const String settings = "/settings-page";
 
   static String getSettingsPage() => '$settings';
+  static const String newHabit = "/new-habit";
+
+  static String getNewHabitPage() => '$newHabit';
 
   static const String course = "/course-page";
 

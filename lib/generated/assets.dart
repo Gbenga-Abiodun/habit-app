@@ -12,6 +12,7 @@ class Assets {
   static const String fontsManropeSemiBold = 'assets/fonts/Manrope-SemiBold.ttf';
   static const String imagesBackground = 'assets/images/Background.jpg';
   static const String imagesGirl = 'assets/images/girl.png';
+  static const String imagesOnboardingOneAvatar = 'assets/images/onboarding_one_avatar.png';
   static const String imagesOnboardingOneImg = 'assets/images/onboarding_one_img.png';
   static const String imagesSplashScreen = 'assets/images/Splash Screen.jpg';
   static const String imagesSplashScreencropped = 'assets/images/Splash Screen cropped.jpg';
@@ -42,6 +43,7 @@ class Assets {
   static const String svgsSignin = 'assets/svgs/sign in.svg';
   static const String svgsSolidbookreader = 'assets/svgs/solid book reader.svg';
   static const String svgsSplashScreen = 'assets/svgs/Splash Screen.svg';
+  static const String svgsStart = 'assets/svgs/start.svg';
   static const String svgsSupportive = 'assets/svgs/supportive.svg';
   static const String svgsUser = 'assets/svgs/user.svg';
   static const String svgsVector = 'assets/svgs/Vector.svg';

@@ -6,6 +6,8 @@ class ValidationController extends GetxController {
   var allowSignIn = false.obs;
   var allowEmailAndPricing = false.obs;
 
+  var allowNotification = false.obs;
+
 
   var isPasswordHidden = true.obs;
 
