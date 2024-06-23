@@ -206,14 +206,16 @@ class NewHabitPage extends StatelessWidget {
                         ),
                       );
                     }),
-                    const SizedBox(
-                      height: 84,
+                    SizedBox(
+                      height: Dimensions.height12 * 7,
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
                       height: Dimensions.height12 * 18.08333333333333,
                       alignment: Alignment.center,
-                      padding: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2,),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Dimensions.height10 * 2,
+                      ),
                       color: Colors.transparent,
                       child: Container(
                         height: Dimensions.height12 * 15.16666666666667,
@@ -223,13 +225,36 @@ class NewHabitPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                             Dimensions.height12,
                           ),
-                          
                         ),
                         child: Column(
                           children: [
-                            SizedBox(height: 51,),
-                            SmallText(text: "Start this habit", size: Dimensions.height12 * 2, fontFamily: "Klasik", color: AppColors.eclipse,),
-                            SmallText(text: "ullamco laboris nisi ut aliquip ex ea commodo \n                              consequat dolore. ", size: Dimensions.height14, color: AppColors.eclipse, fontWeight: FontWeight.w500,),
+                            SizedBox(
+                              height: Dimensions.height10 * 5,
+                            ),
+                            SmallText(
+                              text: "Start this habit",
+                              size: Dimensions.height12 * 2,
+                              fontFamily: "Klasik",
+                              color: AppColors.eclipse,
+                            ),
+                            SmallText(
+                              text:
+                                  "ullamco laboris nisi ut aliquip ex ea commodo \n                              consequat dolore. ",
+                              size: Dimensions.height14,
+                              color: AppColors.eclipse.withOpacity(
+                                0.5,
+                              ),
+                              fontWeight: FontWeight.w500,
+                            ),
+                            SizedBox(
+                              height: Dimensions.font17,
+                            ),
+                            SvgPicture.asset(
+                              Assets.svgsStart,
+                              width: Dimensions.height8* 2.375,
+                              height: Dimensions.height8* 3.125,
+                              fit: BoxFit.scaleDown,
+                            )
                           ],
                         ),
                       ),
@@ -237,20 +262,22 @@ class NewHabitPage extends StatelessWidget {
                   ],
                 ),
                 Positioned(
-                    // : ,
+                  // : ,
                   top: Dimensions.height10 * 38,
-                    left: Dimensions.height12 * 14.33333333333333,
-                    right: Dimensions.height12 * 14.33333333333333,
-                    child: Container(
-                      width: Dimensions.height10 * 7,
-                      height: Dimensions.height10 * 7,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(Assets.imagesOnboardingOneAvatar),),
+                  left: Dimensions.height12 * 14.33333333333333,
+                  right: Dimensions.height12 * 14.33333333333333,
+                  child: Container(
+                    width: Dimensions.height10 * 7,
+                    height: Dimensions.height10 * 7,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(Assets.imagesOnboardingOneAvatar),
                       ),
-                    ),),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
