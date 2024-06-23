@@ -37,7 +37,7 @@ class NewHabitPage extends StatelessWidget {
               pageTitle: "New Habit",
               onTap: () {
                 navController.changeToCheckMark.value =
-                !navController.changeToCheckMark.value;
+                    !navController.changeToCheckMark.value;
                 Navigator.of(context).pop();
               },
               leadingIcon: SvgPicture.asset(
@@ -53,10 +53,7 @@ class NewHabitPage extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
+                  width: MediaQuery.of(context).size.width,
                   height: Dimensions.height10 * 88,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -130,9 +127,9 @@ class NewHabitPage extends StatelessWidget {
                                     Assets.svgsSolidbookreader,
                                     color: AppColors.eclipse,
                                     width:
-                                    Dimensions.height12 * 2.916666666666667,
+                                        Dimensions.height12 * 2.916666666666667,
                                     height:
-                                    Dimensions.height12 * 2.916666666666667,
+                                        Dimensions.height12 * 2.916666666666667,
                                     fit: BoxFit.scaleDown,
                                   ),
                                 )
@@ -161,10 +158,7 @@ class NewHabitPage extends StatelessWidget {
                       margin: EdgeInsets.symmetric(
                         horizontal: Dimensions.height10 * 2,
                       ),
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width,
+                      width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         color: AppColors.scaffoldBg,
                         borderRadius: BorderRadius.circular(
@@ -203,14 +197,60 @@ class NewHabitPage extends StatelessWidget {
                     Obx(() {
                       return NormalListTileWidget(
                         NormalListTileTitle: "Notification",
-                        NormalListTileTrailing: CustomSwitch(value: validationController.allowNotification.value, onChanged: (value) {
-
-                          validationController.allowNotification.value = value;
-                        },),
+                        NormalListTileTrailing: CustomSwitch(
+                          value: validationController.allowNotification.value,
+                          onChanged: (value) {
+                            validationController.allowNotification.value =
+                                value;
+                          },
+                        ),
                       );
                     }),
+                    const SizedBox(
+                      height: 84,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: Dimensions.height12 * 18.08333333333333,
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(horizontal: Dimensions.height10 * 2,),
+                      color: Colors.transparent,
+                      child: Container(
+                        height: Dimensions.height12 * 15.16666666666667,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: AppColors.scaffoldBg,
+                          borderRadius: BorderRadius.circular(
+                            Dimensions.height12,
+                          ),
+                          
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(height: 51,),
+                            SmallText(text: "Start this habit", size: Dimensions.height12 * 2, fontFamily: "Klasik", color: AppColors.eclipse,),
+                            SmallText(text: "ullamco laboris nisi ut aliquip ex ea commodo \n                              consequat dolore. ", size: Dimensions.height14, color: AppColors.eclipse, fontWeight: FontWeight.w500,),
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
+                Positioned(
+                    // : ,
+                  top: Dimensions.height10 * 38,
+                    left: Dimensions.height12 * 14.33333333333333,
+                    right: Dimensions.height12 * 14.33333333333333,
+                    child: Container(
+                      width: Dimensions.height10 * 7,
+                      height: Dimensions.height10 * 7,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(Assets.imagesOnboardingOneAvatar),),
+                      ),
+                    ),),
               ],
             ),
           ],
