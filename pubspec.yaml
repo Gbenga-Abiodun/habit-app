@@ -48,7 +48,8 @@ dependencies:
   google_sign_in: ^6.2.1
   sqflite:
   flutter_svg_provider: ^1.0.7
-  loading_animation_widget: ^1.2.1
+#  loading_animation_widget: ^1.2.1
+  lottie: ^3.1.2
   shared_preferences: ^2.2.3
 
 dev_dependencies:
@@ -77,6 +78,7 @@ flutter:
   assets:
      - assets/images/
      - assets/svgs/
+     - assets/lotties/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

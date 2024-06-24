@@ -16,6 +16,7 @@ class Assets {
   static const String imagesOnboardingOneImg = 'assets/images/onboarding_one_img.png';
   static const String imagesSplashScreen = 'assets/images/Splash Screen.jpg';
   static const String imagesSplashScreencropped = 'assets/images/Splash Screen cropped.jpg';
+  static const String lottiesLoadingIndicator = 'assets/lotties/loading_indicator.json';
   static const String svgsAuth1 = 'assets/svgs/auth1.svg';
   static const String svgsBackIcon = 'assets/svgs/Back Icon.svg';
   static const String svgsBackground = 'assets/svgs/Background.svg';

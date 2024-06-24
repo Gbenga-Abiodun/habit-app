@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
+import 'package:habit_app/base/custom_dialog.dart';
 import 'package:habit_app/generated/assets.dart';
 import 'package:habit_app/routes/route_helper.dart';
 import 'package:habit_app/utils/colors.dart';
@@ -38,6 +39,7 @@ class HomePage extends StatelessWidget {
             CustomAppBar(
               hasCircleImage: true,
               pageTitle: "HomePage",
+              onTap: () => CustomDialog.showDialog(),
               decoration:  BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(

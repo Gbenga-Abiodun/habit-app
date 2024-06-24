@@ -7,6 +7,8 @@ import '../generated/assets.dart';
 import '../utils/dimensions.dart';
 
 class UtilsController extends GetxController {
+
+  var authIsLoading = false.obs;
   FocusNode focusNode1 = FocusNode();
   FocusNode focusNode2 = FocusNode();
   FocusNode focusNode3 = FocusNode();

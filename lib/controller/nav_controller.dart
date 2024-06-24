@@ -5,34 +5,40 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../routes/route_helper.dart';
 
-class NavController extends GetxController implements GetxService{
+class NavController extends GetxController implements GetxService {
   final SharedPreferences sharedPreferences;
 
   var tabIndex = 0.obs;
 
-  var  changeToCheckMark= false.obs;
+  var changeToCheckMark = false.obs;
 
   GlobalKey<NavigatorState> homePageNavigatorKey = GlobalKey<NavigatorState>();
-  GlobalKey<NavigatorState> coursePageNavigatorKey = GlobalKey<NavigatorState>();
-  GlobalKey<NavigatorState> communityPageNavigatorKey = GlobalKey<NavigatorState>();
-  GlobalKey<NavigatorState> settingsPageNavigatorKey = GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> coursePageNavigatorKey =
+      GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> communityPageNavigatorKey =
+      GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> settingsPageNavigatorKey =
+      GlobalKey<NavigatorState>();
 
   NavController({required this.sharedPreferences});
-  void changeTabIndex(int index){
+  void changeTabIndex(int index) {
     tabIndex.value = index;
     update();
   }
 
+  void checkLoggedIn() {
+    var loggedIn = sharedPreferences.getString(AppConstants.userId);
+    // String? userId = .toString();
+    if (loggedIn== null) {
+      Get.offAllNamed(
+        RouteHelpers.getOnBoarding(),
+      );
 
- void  checkLoggedIn(){
-    String? userId = sharedPreferences.getString(AppConstants.userId).toString();
-    if(userId.isEmpty){
-      Get.offAllNamed(RouteHelpers.getOnBoarding(),);
 
-    }else{
-      Get.offAllNamed(RouteHelpers.getMainPage(),);
-
+    } else {
+      Get.offAllNamed(
+        RouteHelpers.getMainPage(),
+      );
     }
   }
-
 }

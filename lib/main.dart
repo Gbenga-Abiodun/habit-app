@@ -32,6 +32,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      builder: (context, child) {
+        return Overlay(
+          initialEntries: [
+            OverlayEntry(
+              builder: (context) => child!,
+            ),
+          ],
+        );
+      },
       debugShowCheckedModeBanner: false,
       title: 'Monumental Habits',
       getPages: RouteHelpers.routes,

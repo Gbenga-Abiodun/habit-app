@@ -263,7 +263,7 @@ class NewHabitPage extends StatelessWidget {
                 ),
                 Positioned(
                   // : ,
-                  top: Dimensions.height10 * 37,
+                  top: Dimensions.height10 * 38,
                   left: Dimensions.height12 * 14.33333333333333,
                   right: Dimensions.height12 * 14.33333333333333,
                   child: Container(
