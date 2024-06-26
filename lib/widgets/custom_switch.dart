@@ -7,8 +7,12 @@ import '../utils/dimensions.dart';
 class CustomSwitch extends StatefulWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
+  //
+  // final bool isBigger;
 
-  CustomSwitch({required this.value, required this.onChanged});
+  final bool isOrange;
+
+  CustomSwitch({required this.value, required this.onChanged, this.isOrange = false,});
 
   @override
   _CustomSwitchState createState() => _CustomSwitchState();
@@ -47,8 +51,8 @@ class _CustomSwitchState extends State<CustomSwitch> {
         width: Dimensions.height12 * 4.5,
         height: Dimensions.height10 * 3,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Dimensions.height15),
-          color: value ? AppColors.eclipse.withOpacity(0.2) : AppColors.eclipse.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(Dimensions.height15,),
+          color: widget.isOrange? AppColors.textInputColor.withOpacity(0.2): AppColors.eclipse.withOpacity(0.2),
         ),
         child: Stack(
           alignment: Alignment.center,
@@ -64,7 +68,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
                 height: Dimensions.height11 * 2,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.eclipse,
+                  color: widget.isOrange? AppColors.textInputColor: AppColors.eclipse,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.2),
@@ -81,7 +85,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
               right: value ? null : Dimensions.height8,
               child: SmallText(
                 text: value ? "On" : "Off",
-                color: AppColors.eclipse,
+                color: widget.isOrange? AppColors.textInputColor: AppColors.eclipse,
                 fontWeight: FontWeight.w700,
                 size: Dimensions.height10,
 

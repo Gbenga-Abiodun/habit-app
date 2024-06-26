@@ -8,11 +8,14 @@ class NormalListTileWidget extends StatelessWidget {
 
   final String NormalListTileTitle;
   final Widget? NormalListTileTrailing;
-  const NormalListTileWidget({super.key, required this.NormalListTileTitle, this.NormalListTileTrailing});
+
+  final void Function()? onTap;
+  const NormalListTileWidget({super.key, required this.NormalListTileTitle, this.NormalListTileTrailing, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return CustomListTile(
+      onTap: onTap,
       leadingChildTextNotLeading: SmallText(
         text: NormalListTileTitle,
         size: Dimensions.font16,
@@ -28,6 +31,10 @@ class CustomListTile extends StatelessWidget {
   final bool hasLeading;
   final Widget? leadingChild;
   final Widget? leadingChildText;
+
+
+
+  final void Function()? onTap;
   final Widget? leadingChildTextNotLeading;
   final Widget? trailingWidgetNotLeading;
   final Widget? trailingWidget;
@@ -41,7 +48,7 @@ class CustomListTile extends StatelessWidget {
       this.leadingChildText,
       this.leadingChildTextNotLeading,
       this.trailingWidgetNotLeading,
-      this.trailingWidget})
+      this.trailingWidget, this.onTap})
       : super(key: key);
 
   @override
@@ -80,21 +87,25 @@ class CustomListTile extends StatelessWidget {
                 ),
               ],
             )
-          : Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      child: leadingChildTextNotLeading,
-                    ),
-                  ],
-                ),
-                Container(
-                  child: trailingWidgetNotLeading,
-                )
-              ],
-            ),
+          : GestureDetector(
+        onTap: onTap,
+            child: Row(
+
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        child: leadingChildTextNotLeading,
+                      ),
+                    ],
+                  ),
+                  Container(
+                    child: trailingWidgetNotLeading,
+                  )
+                ],
+              ),
+          ),
     );
   }
 }

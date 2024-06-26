@@ -16,7 +16,9 @@ class CustomAppBar extends StatelessWidget {
 
   final String pageTitle;
 
-  final void Function()? onTap;
+  final void Function()? onTapLeading;
+
+  final void Function()? onTapTrailing;
   // final bool? hasFirst;
   // final bool?
   const CustomAppBar(
@@ -24,7 +26,7 @@ class CustomAppBar extends StatelessWidget {
       required this.hasCircleImage,
       this.decoration,
       this.lastChild,
-      required this.pageTitle, this.leadingIcon, this.onTap})
+      required this.pageTitle, this.leadingIcon, this.onTapLeading, this.onTapTrailing})
       : super(key: key);
 
   @override
@@ -37,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CircleIcon(
-            onTap: onTap,
+            onTap: onTapLeading,
             child: leadingIcon,
           ),
           SmallText(
@@ -47,12 +49,15 @@ class CustomAppBar extends StatelessWidget {
             size: Dimensions.font18,
           ),
           if (hasCircleImage)
-            Container(
-              width: Dimensions.height11 * 4,
-              height: Dimensions.height11 * 4,
-              decoration: decoration,
-              child: Center(
-                child: lastChild,
+            GestureDetector(
+              onTap: onTapTrailing,
+              child: Container(
+                width: Dimensions.height11 * 4,
+                height: Dimensions.height11 * 4,
+                decoration: decoration,
+                child: Center(
+                  child: lastChild,
+                ),
               ),
             ),
           if(hasCircleImage == false)

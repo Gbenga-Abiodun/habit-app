@@ -29,12 +29,13 @@ class AuthController extends GetxController implements GetxService {
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((user) async {
         final UserModel userData = UserModel(
+          id: user.user!.uid.toString(),
           userName: userName,
           email: user.user!.email.toString(),
-          profilePhoto: "profilePhoto",
+          profilePhoto: "https://media.licdn.com/dms/image/D4D03AQEx3pLmsCspyQ/profile-displayphoto-shrink_800_800/0/1703868499308?e=1724889600&v=beta&t=tiGQoohUS-lWw2394C1ZMBGyJ0kIRs6Jk4zKFJYUdio",
           totalWorkHours: 0,
           taskCompleted: 0,
-          id: user.user!.uid,
+          user_id: user.user!.uid,
         );
         sharedPreferences.setString(AppConstants.userId, user.user!.uid);
 
@@ -44,19 +45,17 @@ class AuthController extends GetxController implements GetxService {
             .set(
               userData.toMap(),
             )
-            .then((onValue) async{
-              await userController.getUser(userId: user.user!.uid).then((onValue){
-                print("Success");
-                utilsController.authIsLoading.value = false;
-                Get.offAllNamed(
-                  RouteHelpers.getMainPage(),
-                );
-              });
-
+            .then((onValue) async {
+          await userController.getUser(userId: user.user!.uid).then((onValue) {
+            print("Success");
+            utilsController.authIsLoading.value = false;
+            Get.offAllNamed(
+              RouteHelpers.getMainPage(),
+            );
+          });
         }).catchError((onError) {
           utilsController.authIsLoading.value = false;
           if (onError is FirebaseException) {
-
             utilsController.showToast(onError.toString());
           } else {
             print("Something went wrong");
@@ -65,18 +64,17 @@ class AuthController extends GetxController implements GetxService {
       }).catchError((onError) {
         utilsController.authIsLoading.value = false;
         if (onError is FirebaseAuthException) {
-          if (onError.code == 'user-not-found' ) {
+          if (onError.code == 'user-not-found') {
             utilsController.showToast('User not found');
-          }else if(onError.code == 'wrong-password'){
+          } else if (onError.code == 'wrong-password') {
             utilsController.showToast('Incorrect Password');
-          }else if(onError.code == 'invalid-credentials'){
+          } else if (onError.code == 'invalid-credentials') {
             utilsController.showToast('Invalid credentials');
           } else {
-            utilsController.showToast( 'An error occurred ${onError.code}');
+            utilsController.showToast('${onError.code}');
           }
         } else {
           utilsController.showToast('Something went wrong');
-
         }
       });
     } catch (e) {
@@ -102,14 +100,14 @@ class AuthController extends GetxController implements GetxService {
       }).catchError((onError) {
         utilsController.authIsLoading.value = false;
         if (onError is FirebaseAuthException) {
-          if (onError.code == 'user-not-found' ) {
+          if (onError.code == 'user-not-found') {
             utilsController.showToast('User not found');
-          }else if(onError.code == 'wrong-password'){
+          } else if (onError.code == 'wrong-password') {
             utilsController.showToast('Incorrect Password');
-          }else if(onError.code == 'invalid-credentials'){
+          } else if (onError.code == 'invalid-credentials') {
             utilsController.showToast('Invalid credentials');
           } else {
-            utilsController.showToast( 'An error occurred ${onError.code}');
+            utilsController.showToast('${onError.code}');
           }
         } else {
           utilsController.showToast("Something went wrong");
@@ -121,8 +119,4 @@ class AuthController extends GetxController implements GetxService {
       utilsController.showToast(e.toString());
     }
   }
-
-
-
-
 }

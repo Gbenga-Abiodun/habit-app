@@ -15,5 +15,6 @@ class AppColors{
   static const Color textInputColor = const Color(0xFFFDA758);
 
   static const Color eclipse = const Color(0xFF573353);
+  static const Color fadedEclipse = const Color(0xFFC8C1C8);
 
 }

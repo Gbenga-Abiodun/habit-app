@@ -20,13 +20,16 @@ class Assets {
   static const String svgsAuth1 = 'assets/svgs/auth1.svg';
   static const String svgsBackIcon = 'assets/svgs/Back Icon.svg';
   static const String svgsBackground = 'assets/svgs/Background.svg';
+  static const String svgsBellMute = 'assets/svgs/bell_mute.svg';
   static const String svgsBg2 = 'assets/svgs/bg2.svg';
+  static const String svgsBookmark = 'assets/svgs/bookmark.svg';
   static const String svgsCheck2 = 'assets/svgs/check2.svg';
   static const String svgsCircleplusfill = 'assets/svgs/circle plus fill.svg';
   static const String svgsCommunity = 'assets/svgs/Community.svg';
   static const String svgsCommunityactive = 'assets/svgs/Community active.svg';
   static const String svgsCourses = 'assets/svgs/Courses.svg';
   static const String svgsCoursesactive = 'assets/svgs/Courses active.svg';
+  static const String svgsDown = 'assets/svgs/down.svg';
   static const String svgsFacebook = 'assets/svgs/facebook.svg';
   static const String svgsGoogle = 'assets/svgs/google.svg';
   static const String svgsGoogleIcon = 'assets/svgs/Google Icon.svg';
@@ -39,6 +42,7 @@ class Assets {
   static const String svgsOnboardingThree = 'assets/svgs/onboarding_three.svg';
   static const String svgsPassword = 'assets/svgs/password.svg';
   static const String svgsReset = 'assets/svgs/reset.svg';
+  static const String svgsSearch = 'assets/svgs/search.svg';
   static const String svgsSettings = 'assets/svgs/Settings.svg';
   static const String svgsSettingsActive = 'assets/svgs/Settings Active.svg';
   static const String svgsSignin = 'assets/svgs/sign in.svg';

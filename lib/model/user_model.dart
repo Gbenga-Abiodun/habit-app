@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
 class UserModel {
   final String userName;
+
   final String id;
+  final String user_id;
   final String email;
   final String profilePhoto;
   final int totalWorkHours;
@@ -10,7 +13,8 @@ class UserModel {
 
   UserModel(
       {required this.userName,
-      required this.id,
+      required this.user_id,
+     required this.id,
       required this.email,
       required this.profilePhoto,
       required this.totalWorkHours,
@@ -21,9 +25,9 @@ class UserModel {
       id: map["id"],
       email: map["email"],
       // phoneNumber: map["phoneNumber"],
-      profilePhoto: map["profilePicture"],
+      profilePhoto: map["profilePhoto"],
       totalWorkHours: map["totalWorkHours"],
-      taskCompleted: map["taskCompleted"],
+      taskCompleted: map["taskCompleted"], user_id: map["user_id"],
     );
   }
 
@@ -32,6 +36,7 @@ class UserModel {
       "userName": userName,
       "email": email,
       "id": id,
+      "user_id": user_id,
       "totalWorkHours": totalWorkHours,
       "profilePhoto": profilePhoto,
       "taskCompleted": taskCompleted,
@@ -48,6 +53,7 @@ class UserModel {
       profilePhoto: snapshot["profilePhoto"],
       totalWorkHours: snapshot["totalWorkHours"],
       taskCompleted: snapshot["taskCompleted"],
+      user_id: snapshot["user_id"],
     );
   }
 }

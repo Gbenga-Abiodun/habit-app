@@ -5,14 +5,21 @@ import 'package:habit_app/controller/onboarding_controller.dart';
 import 'package:habit_app/controller/user_controller.dart';
 import 'package:habit_app/controller/utils_controller.dart';
 import 'package:habit_app/controller/validation_controller.dart';
+import 'package:habit_app/databases/user_database.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> init() async {
   final sharedPreferences = await SharedPreferences.getInstance();
-
+  // storage
   Get.lazyPut(
     () => sharedPreferences,
     fenix: true,
+  );
+
+  // databases
+
+  Get.lazyPut(
+    () => UserDatabase(),
   );
 
   // controllers
@@ -22,12 +29,15 @@ Future<void> init() async {
     fenix: true,
   );
   Get.lazyPut(
-    () => UserController(sharedPreferences: Get.find(),),
+    () => UserController(
+      sharedPreferences: Get.find(),
+    ),
     fenix: true,
   );
   Get.lazyPut(
-    () => AuthController(sharedPreferences: Get.find(),),
-
+    () => AuthController(
+      sharedPreferences: Get.find(),
+    ),
   );
   Get.lazyPut(
     () => ValidationController(),
@@ -38,6 +48,8 @@ Future<void> init() async {
     fenix: true,
   );
   Get.lazyPut(
-    () => NavController(sharedPreferences: Get.find(),),
+    () => NavController(
+      sharedPreferences: Get.find(),
+    ),
   );
 }

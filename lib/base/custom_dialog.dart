@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/generated/assets.dart';
 import 'package:habit_app/utils/dimensions.dart';
-import 'package:lottie/lottie.dart';
-
 class CustomDialog {
   static void showDialog() {
     Get.dialog(
@@ -13,14 +11,14 @@ class CustomDialog {
         child: Center(  // Center the entire content
           child: Container(
             alignment: Alignment.center,
-            child: Lottie.asset(
-              Assets.lottiesLoadingIndicator,
-              repeat: true,
-              animate: true,
-              alignment: Alignment.center,
-              // Adjust speed here
-              frameRate: FrameRate(100),  // Increase the frame rate to speed up the animation
-            ),
+            // child: Lottie.asset(
+            //   Assets.lottiesLoadingIndicator,
+            //   repeat: true,
+            //   animate: true,
+            //   alignment: Alignment.center,
+            //   // Adjust speed here
+            //   frameRate: FrameRate(100),  // Increase the frame rate to speed up the animation
+            // ),
           ),
         ),
       ),
