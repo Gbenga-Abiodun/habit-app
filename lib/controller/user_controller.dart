@@ -12,9 +12,11 @@ import '../reference/references.dart';
 class UserController extends GetxController {
   final SharedPreferences sharedPreferences;
 
-  UserController({required this.sharedPreferences});
+  final UserDatabase userDatabase;
 
-  var userDatabase = Get.find<UserDatabase>();
+  UserController({required this.sharedPreferences, required this.userDatabase});
+
+
 
   UserModel? _userModel;
   UserModel? get userModel => _userModel;

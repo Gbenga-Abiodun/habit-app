@@ -46,6 +46,7 @@ dependencies:
   firebase_storage: ^11.1.2
   cloud_firestore: ^4.6.0
   google_sign_in: ^6.2.1
+  wolt_modal_sheet: ^0.6.1
 #  api_cache_manager: ^1.0.2
 #  path_provider:
   sqflite:

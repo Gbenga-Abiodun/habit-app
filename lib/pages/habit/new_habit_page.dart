@@ -3,7 +3,9 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:habit_app/controller/nav_controller.dart';
+import 'package:habit_app/controller/utils_controller.dart';
 import 'package:habit_app/controller/validation_controller.dart';
+import 'package:habit_app/navigation/reminder_page_navigation.dart';
 import 'package:habit_app/pages/reminder/reminder_page.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/widgets/app_text_field.dart';
@@ -13,6 +15,7 @@ import 'package:habit_app/widgets/custom_switch.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/top_space.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as provider;
+import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 import '../../generated/assets.dart';
 import '../../utils/dimensions.dart';
@@ -22,11 +25,11 @@ class NewHabitPage extends StatelessWidget {
   NewHabitPage({Key? key}) : super(key: key);
 
   var navController = Get.find<NavController>();
+  var utilsController = Get.find<UtilsController>();
   var validationController = Get.find<ValidationController>();
 
-
-  void showReminderBottomSheet(){
-    Get.bottomSheet(  ReminderPage(),backgroundColor: Colors.white,);
+  void showReminderBottomSheet() {
+    Get.bottomSheet(ReminderPageNavigation(),backgroundColor: Colors.white,);
   }
 
   @override
@@ -79,7 +82,8 @@ class NewHabitPage extends StatelessWidget {
                             Stack(
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Flexible(
                                       child: AppTextField(
@@ -88,7 +92,6 @@ class NewHabitPage extends StatelessWidget {
                                         obscureText: false,
                                         fillColor: AppColors.scaffoldBg,
                                         inputFontWeight: FontWeight.w500,
-
                                       ),
                                     ),
                                     Container(
@@ -107,16 +110,15 @@ class NewHabitPage extends StatelessWidget {
                                       child: SvgPicture.asset(
                                         Assets.svgsSolidbookreader,
                                         color: AppColors.eclipse,
-                                        width:
-                                        Dimensions.height12 * 2.916666666666667,
-                                        height:
-                                        Dimensions.height12 * 2.916666666666667,
+                                        width: Dimensions.height12 *
+                                            2.916666666666667,
+                                        height: Dimensions.height12 *
+                                            2.916666666666667,
                                         fit: BoxFit.scaleDown,
                                       ),
                                     )
                                   ],
                                 ),
-
                               ],
                             ),
                           ],
@@ -142,7 +144,6 @@ class NewHabitPage extends StatelessWidget {
                         ),
                         NormalListTileWidget(
                           onTap: () => showReminderBottomSheet(),
-
                           NormalListTileTitle: "Reminder",
                           NormalListTileTrailing: Row(
                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -171,7 +172,8 @@ class NewHabitPage extends StatelessWidget {
                           return NormalListTileWidget(
                             NormalListTileTitle: "Notification",
                             NormalListTileTrailing: CustomSwitch(
-                              value: validationController.allowNotification.value,
+                              value:
+                                  validationController.allowNotification.value,
                               onChanged: (value) {
                                 validationController.allowNotification.value =
                                     value;
@@ -212,7 +214,7 @@ class NewHabitPage extends StatelessWidget {
                                 ),
                                 SmallText(
                                   text:
-                                  "ullamco laboris nisi ut aliquip ex ea commodo \n                              consequat dolore. ",
+                                      "ullamco laboris nisi ut aliquip ex ea commodo \n                              consequat dolore. ",
                                   size: Dimensions.height14,
                                   color: AppColors.eclipse.withOpacity(
                                     0.5,
@@ -224,8 +226,8 @@ class NewHabitPage extends StatelessWidget {
                                 ),
                                 SvgPicture.asset(
                                   Assets.svgsStart,
-                                  width: Dimensions.height8* 2.375,
-                                  height: Dimensions.height8* 3.125,
+                                  width: Dimensions.height8 * 2.375,
+                                  height: Dimensions.height8 * 3.125,
                                   fit: BoxFit.scaleDown,
                                 )
                               ],
@@ -246,7 +248,9 @@ class NewHabitPage extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage(Assets.imagesOnboardingOneAvatar,),
+                            image: AssetImage(
+                              Assets.imagesOnboardingOneAvatar,
+                            ),
                           ),
                         ),
                       ),
@@ -267,7 +271,6 @@ class NewHabitPage extends StatelessWidget {
                 fit: BoxFit.scaleDown,
               ),
             ),
-
           ],
         ),
       ),

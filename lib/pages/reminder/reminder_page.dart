@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:habit_app/controller/nav_controller.dart';
+import 'package:habit_app/pages/reminder/add_reminder.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/utils/dimensions.dart';
 import 'package:habit_app/widgets/custom_button.dart';
+import 'package:habit_app/widgets/custom_switch.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/small_text.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../generated/assets.dart';
 
-class ReminderPage extends StatelessWidget {
+class ReminderPage extends GetView<NavController> {
   const ReminderPage({Key? key}) : super(key: key);
 
   @override
@@ -62,14 +67,21 @@ class ReminderPage extends StatelessWidget {
                       ),
                     ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        SizedBox(height: Dimensions.height15,),
+                        // SizedBox(height: Dimensions.height10,),
                         SmallText(
                           text: "06:00 AM",
                           fontWeight: FontWeight.w800,
                           color: AppColors.eclipse,
                           size: Dimensions.height10 * 2,
                           textAlign: TextAlign.center,
+                        ),
+                        CustomSwitch(value: true, onChanged: (value) {
+
+                        },
+                          isOrange: index.isEven
+                              ?false:true,
                         )
                       ],
                     ),
@@ -90,6 +102,13 @@ class ReminderPage extends StatelessWidget {
                         right: Dimensions.font16,
                       ),
                       child: CustomButton(
+                        onTap: () => controller.reminderPageNavigatorKey.currentState!.push(
+                            PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              child:  const AddReminder(),
+                            )
+                        ),
+
                         // buttonColor: AppColors.textInputColor,
                         text: "Add Reminder",
                         textColor: AppColors.eclipse,

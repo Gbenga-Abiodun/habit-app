@@ -87,25 +87,25 @@ class CustomListTile extends StatelessWidget {
                 ),
               ],
             )
-          : GestureDetector(
-        onTap: onTap,
-            child: Row(
+          : Row(
 
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        child: leadingChildTextNotLeading,
-                      ),
-                    ],
-                  ),
-                  Container(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      child: leadingChildTextNotLeading,
+                    ),
+                  ],
+                ),
+                GestureDetector(
+                  onTap: onTap,
+                  child: Container(
                     child: trailingWidgetNotLeading,
-                  )
-                ],
-              ),
-          ),
+                  ),
+                )
+              ],
+            ),
     );
   }
 }

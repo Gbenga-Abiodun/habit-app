@@ -31,16 +31,19 @@ Future<void> init() async {
   Get.lazyPut(
     () => UserController(
       sharedPreferences: Get.find(),
+      userDatabase: Get.find(),
     ),
     fenix: true,
   );
   Get.lazyPut(
     () => AuthController(
       sharedPreferences: Get.find(),
+      utilsController: Get.find(),
+      userController: Get.find(),
     ),
   );
   Get.lazyPut(
-    () => ValidationController(),
+    () => ValidationController(authController: Get.find()),
     fenix: true,
   );
   Get.lazyPut(

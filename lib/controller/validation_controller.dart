@@ -7,6 +7,8 @@ class ValidationController extends GetxController {
   var allowSignIn = true.obs;
   var allowEmailAndPricing = true.obs;
 
+  final AuthController authController;
+
   var allowNotification = false.obs;
 
   var isPasswordHidden = true.obs;
@@ -15,7 +17,7 @@ class ValidationController extends GetxController {
   final GlobalKey<FormState> signUpFormStateKey = GlobalKey<FormState>();
   final GlobalKey<FormState> resetFormStateKey = GlobalKey<FormState>();
 
-  var authController = Get.find<AuthController>();
+
 
   late TextEditingController emailController,
       passwordController,
@@ -30,6 +32,8 @@ class ValidationController extends GetxController {
   var loginEmail = "".trim();
   var loginPassword = "".trim();
   var forgottenPassword = "".trim();
+
+  ValidationController({required this.authController});
 
   @override
   void onInit() {

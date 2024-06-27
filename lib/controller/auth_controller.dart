@@ -12,12 +12,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController implements GetxService {
   final SharedPreferences sharedPreferences;
+
+
+  final UserController userController;
+  final UtilsController utilsController;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  var userController = Get.find<UserController>();
-  var utilsController = Get.find<UtilsController>();
 
-  AuthController({required this.sharedPreferences});
+  AuthController({required this.sharedPreferences, required this.utilsController, required this.userController});
 
   Future<void> createAccount(
       {required String userName,

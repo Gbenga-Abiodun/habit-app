@@ -8,6 +8,14 @@ import '../utils/dimensions.dart';
 
 class UtilsController extends GetxController {
 
+  // final pageIndexNotifier = ValueNotifier(0);
+
+  final pageIndexNotifier = ValueNotifier(0); // Initializes the page index
+  final pageListBuilderNotifier = ValueNotifier((context) => [
+
+
+  ]);
+
   var authIsLoading = false.obs;
   FocusNode focusNode1 = FocusNode();
   FocusNode focusNode2 = FocusNode();

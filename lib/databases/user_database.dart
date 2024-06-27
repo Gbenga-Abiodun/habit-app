@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:habit_app/model/user_model.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 
-class UserDatabase extends GetxController implements GetxService{
+class UserDatabase extends GetxService{
   static Future<void> createTables(sql.Database database) async {
     await database.execute("""CREATE TABLE user(
         id TEXT PRIMARY KEY NOT NULL,

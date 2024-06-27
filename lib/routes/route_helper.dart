@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/pages/auth/forgotten_password_page.dart';
 import 'package:habit_app/pages/community/community_page.dart';
@@ -7,6 +8,7 @@ import 'package:habit_app/pages/onBoarding/onboarding_page.dart';
 import 'package:habit_app/pages/settings/settings_page.dart';
 import 'package:habit_app/pages/splash/splash_page.dart';
 import 'package:habit_app/pages/supportive/supportive_page.dart';
+import 'package:habit_app/utils/colors.dart';
 
 import '../pages/auth/sign_in_page.dart';
 import '../pages/auth/sign_up_page.dart';
@@ -51,6 +53,10 @@ class RouteHelpers {
   static const String course = "/course-page";
 
   static String getCoursePage() => '$course';
+
+  static const String addReminder = "/add-reminder-page";
+
+  static String getAddReminderPage() => '$addReminder';
 
   static const String resetPassword = "/reset-page";
 
@@ -100,6 +106,15 @@ class RouteHelpers {
     GetPage(
       name: homePage,
       page: () =>  HomePage(),
+      transition: Transition.cupertinoDialog,
+    ),
+    GetPage(
+      name: addReminder,
+      page: () =>  Container(
+        color: AppColors.eclipse,
+        width: 100,
+        height: 100,
+      ),
       transition: Transition.cupertinoDialog,
     ),
     GetPage(
