@@ -7,14 +7,10 @@ import '../generated/assets.dart';
 import '../utils/dimensions.dart';
 
 class UtilsController extends GetxController {
+  FixedExtentScrollController scrollController = FixedExtentScrollController();
+  var wheelSelectedIndex = 0.obs;
 
-  // final pageIndexNotifier = ValueNotifier(0);
-
-  final pageIndexNotifier = ValueNotifier(0); // Initializes the page index
-  final pageListBuilderNotifier = ValueNotifier((context) => [
-
-
-  ]);
+  // final pageIndexNotifier = ValueNotifier(0
 
   var authIsLoading = false.obs;
   FocusNode focusNode1 = FocusNode();
@@ -39,6 +35,10 @@ class UtilsController extends GetxController {
     super.onInit();
     // TODO: implement onInit
     toast.init(Get.context!);
+
+    scrollController.addListener(() {
+      wheelSelectedIndex.value = scrollController.selectedItem;
+    });
     focusNode1.addListener(_onFocusedChanged1);
     focusNode2.addListener(_onFocusedChanged2);
     focusNode3.addListener(_onFocusedChanged3);
