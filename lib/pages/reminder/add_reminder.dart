@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:habit_app/routes/route_keys.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/small_text.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
@@ -42,7 +44,9 @@ class AddReminder extends StatelessWidget {
                 children: [
                   GestureDetector(
 
-                   onTap: () => Navigator.of(context).pop(),
+                   onTap: () => Get.back(
+                     id: RouteKeys.reminderKey,
+                   ),
                     child: SmallText(
                       text: "Cancel",
                       fontWeight: FontWeight.w800,
@@ -71,6 +75,21 @@ class AddReminder extends StatelessWidget {
             Divider(
               color: AppColors.scaffoldBg2,
             ),
+            Column(
+              children: [
+                Row(
+                  children: [
+                    // NumberPicker(
+                    //
+                    //   value: ,
+                    //   minValue: 0,
+                    //   maxValue: 100,
+                    //   onChanged: (value) => setState(() => _currentValue = value),
+                    // ),
+                  ],
+                )
+              ],
+            )
           ],
         ),
       ),

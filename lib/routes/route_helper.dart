@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:habit_app/pages/auth/forgotten_password_page.dart';
 import 'package:habit_app/pages/community/community_page.dart';
 import 'package:habit_app/pages/course/course_page.dart';
+import 'package:habit_app/pages/habit/new_habit_page.dart';
 import 'package:habit_app/pages/main/main_page.dart';
 import 'package:habit_app/pages/onBoarding/onboarding_page.dart';
+import 'package:habit_app/pages/reminder/add_reminder.dart';
 import 'package:habit_app/pages/settings/settings_page.dart';
 import 'package:habit_app/pages/splash/splash_page.dart';
 import 'package:habit_app/pages/supportive/supportive_page.dart';
@@ -48,6 +50,10 @@ class RouteHelpers {
   static String getSettingsPage() => '$settings';
   static const String newHabit = "/new-habit";
 
+
+
+
+
   static String getNewHabitPage() => '$newHabit';
 
   static const String course = "/course-page";
@@ -74,6 +80,12 @@ class RouteHelpers {
       transition: Transition.cupertinoDialog,
     ),
     GetPage(
+      name: newHabit,
+      page: () =>  NewHabitPage(),
+      transition: Transition.rightToLeft,
+
+    ),
+    GetPage(
       name: settings,
       page: () => const SettingsPage(),
       transition: Transition.cupertinoDialog,
@@ -81,7 +93,7 @@ class RouteHelpers {
     GetPage(
       name: mainPage,
       page: () =>  MainPage(),
-      transition: Transition.cupertinoDialog,
+      // transition: Transition.rightToLeft,
     ),
     GetPage(
       name: community,
@@ -106,16 +118,12 @@ class RouteHelpers {
     GetPage(
       name: homePage,
       page: () =>  HomePage(),
-      transition: Transition.cupertinoDialog,
+      transition: Transition.rightToLeft,
     ),
     GetPage(
       name: addReminder,
-      page: () =>  Container(
-        color: AppColors.eclipse,
-        width: 100,
-        height: 100,
-      ),
-      transition: Transition.cupertinoDialog,
+      page: () => AddReminder(),
+
     ),
     GetPage(
       name: resetPassword,

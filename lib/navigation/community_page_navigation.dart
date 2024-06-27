@@ -6,6 +6,7 @@ import 'package:habit_app/pages/habit/new_habit_page.dart';
 import 'package:habit_app/pages/profile/profile_page.dart';
 import 'package:habit_app/pages/settings/settings_page.dart';
 import 'package:habit_app/routes/route_helper.dart';
+import 'package:habit_app/routes/route_keys.dart';
 import 'package:page_transition/page_transition.dart';
 
 
@@ -15,7 +16,7 @@ class CommunityPageNavigation extends GetView<NavController> {
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      key: controller.communityPageNavigatorKey,
+      key: Get.nestedKey(RouteKeys.communityKey),
       onGenerateRoute: (RouteSettings settings) {
         return GetPageRoute(
           transition: Transition.rightToLeft,

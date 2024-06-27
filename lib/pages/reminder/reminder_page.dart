@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/controller/nav_controller.dart';
 import 'package:habit_app/pages/reminder/add_reminder.dart';
+import 'package:habit_app/routes/route_helper.dart';
+import 'package:habit_app/routes/route_keys.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/utils/dimensions.dart';
 import 'package:habit_app/widgets/custom_button.dart';
@@ -20,14 +22,12 @@ class ReminderPage extends GetView<NavController> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      constraints: BoxConstraints.tight(Size(MediaQuery
-          .of(context)
-          .size
-          .width,
-          MediaQuery
-              .of(context)
-              .size
-              .height * .7,),),
+      constraints: BoxConstraints.tight(
+        Size(
+          MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height * .7,
+        ),
+      ),
       // height: Dimensions.height10 * 70,
       padding: EdgeInsets.symmetric(
         horizontal: Dimensions.height10 * 2,
@@ -77,11 +77,10 @@ class ReminderPage extends GetView<NavController> {
                           size: Dimensions.height10 * 2,
                           textAlign: TextAlign.center,
                         ),
-                        CustomSwitch(value: true, onChanged: (value) {
-
-                        },
-                          isOrange: index.isEven
-                              ?false:true,
+                        CustomSwitch(
+                          value: true,
+                          onChanged: (value) {},
+                          isOrange: index.isEven ? false : true,
                         )
                       ],
                     ),
@@ -102,11 +101,9 @@ class ReminderPage extends GetView<NavController> {
                         right: Dimensions.font16,
                       ),
                       child: CustomButton(
-                        onTap: () => controller.reminderPageNavigatorKey.currentState!.push(
-                            PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              child:  const AddReminder(),
-                            )
+                        onTap: () => Get.toNamed(
+                          RouteHelpers.getAddReminderPage(),
+                          id: RouteKeys.reminderKey,
                         ),
 
                         // buttonColor: AppColors.textInputColor,

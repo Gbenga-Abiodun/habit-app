@@ -10,6 +10,8 @@ import 'package:habit_app/pages/course/course_page.dart';
 import 'package:habit_app/pages/habit/new_habit_page.dart';
 import 'package:habit_app/pages/home/home_page.dart';
 import 'package:habit_app/pages/settings/settings_page.dart';
+import 'package:habit_app/routes/route_helper.dart';
+import 'package:habit_app/routes/route_keys.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../controller/nav_controller.dart';
@@ -25,30 +27,21 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<GlobalKey<NavigatorState>> _navigatorKeys = [
-      navController.homePageNavigatorKey,
-      navController.coursePageNavigatorKey,
-      navController.communityPageNavigatorKey,
-      navController.settingsPageNavigatorKey,
-    ];
 
     Future<bool> _systemBackButtonPressed() async {
-      if (_navigatorKeys[navController.tabIndex.value].currentState?.canPop() ==
-          true) {
-        _navigatorKeys[navController.tabIndex.value]
-            .currentState
-            ?.pop(_navigatorKeys[navController.tabIndex.value].currentContext);
-        navController.changeToCheckMark.value =
-        !navController.changeToCheckMark.value;
+      int currentTabIndex = navController.tabIndex.value;
+      final nestedKey = Get.nestedKey(currentTabIndex);
+
+      if (nestedKey?.currentState?.canPop() == true) {
+        nestedKey!.currentState?.pop();
+        navController.changeToCheckMark.value = !navController.changeToCheckMark.value;
         return false;
       } else {
-        SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
-        navController.changeToCheckMark.value =
-        !navController.changeToCheckMark.value;
-        return true; // Indicate that the back action is handled
+        await SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
+        navController.changeToCheckMark.value = !navController.changeToCheckMark.value;
+        return true; // Indicate that the back action is handled globally
       }
     }
-
     // Menus currentIndex = Menus.home;
     return GetBuilder<NavController>(
       assignId: true,
@@ -72,35 +65,39 @@ class MainPage extends StatelessWidget {
               onTap: (index) {
                 if (index == 4) {
                   if (navController.tabIndex.value == 0) {
-                    navController.homePageNavigatorKey.currentState
-                        ?.push(PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      child:  NewHabitPage(),
-                    ));
+
+                    // Get.keys[RouteHelpers.homeKey]!.currentState!.pushNamed(RouteHelpers.getNewHabitPage(),);
+                    Get.toNamed(
+                      RouteHelpers.getNewHabitPage(),
+                      id: RouteKeys.homeKey,
+                    );
+                    // navController.homePageNavigatorKey.currentState
+                    //     ?.push(PageTransition(
+                    //   type: PageTransitionType.rightToLeft,
+                    //   child:  NewHabitPage(),
+                    // ));
                     navController.changeToCheckMark.value =
-                    !navController.changeToCheckMark.value;
+                        !navController.changeToCheckMark.value;
                   } else if (navController.tabIndex.value == 1) {
-                    navController.coursePageNavigatorKey.currentState
-                        ?.push(PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      child:  NewHabitPage(),
-                    ));
+                    Get.toNamed(
+                      RouteHelpers.getNewHabitPage(),
+                      id: RouteKeys.courseKey,
+                    );
                     navController.changeToCheckMark.value =
-                    !navController.changeToCheckMark.value;
+                        !navController.changeToCheckMark.value;
                   } else if (navController.tabIndex.value == 2) {
-                    navController.communityPageNavigatorKey.currentState
-                        ?.push(PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      child:  NewHabitPage(),
-                    ));
+
+                    Get.toNamed(
+                      RouteHelpers.getNewHabitPage(),
+                      id: RouteKeys.communityKey,
+                    );
                     navController.changeToCheckMark.value =
                         !navController.changeToCheckMark.value;
                   } else if (navController.tabIndex.value == 3) {
-                    navController.settingsPageNavigatorKey.currentState
-                        ?.push(PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      child:  NewHabitPage(),
-                    ));
+                    Get.toNamed(
+                      RouteHelpers.getNewHabitPage(),
+                      id: RouteKeys.settingsKey,
+                    );
                     navController.changeToCheckMark.value =
                         !navController.changeToCheckMark.value;
                   } // Navigator.pushNamed(context, AppRoutes.newHabit);

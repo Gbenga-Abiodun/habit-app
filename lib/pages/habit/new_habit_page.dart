@@ -7,6 +7,8 @@ import 'package:habit_app/controller/utils_controller.dart';
 import 'package:habit_app/controller/validation_controller.dart';
 import 'package:habit_app/navigation/reminder_page_navigation.dart';
 import 'package:habit_app/pages/reminder/reminder_page.dart';
+import 'package:habit_app/routes/route_helper.dart';
+import 'package:habit_app/routes/route_keys.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/widgets/app_text_field.dart';
 import 'package:habit_app/widgets/custom_app_bar.dart';
@@ -15,7 +17,6 @@ import 'package:habit_app/widgets/custom_switch.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/top_space.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as provider;
-import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 import '../../generated/assets.dart';
 import '../../utils/dimensions.dart';
@@ -49,7 +50,9 @@ class NewHabitPage extends StatelessWidget {
                   onTapLeading: () {
                     navController.changeToCheckMark.value =
                         !navController.changeToCheckMark.value;
-                    Navigator.of(context).pop();
+                    Get.back(
+                     id:  navController.tabIndex.value,
+                    );
                   },
                   leadingIcon: SvgPicture.asset(
                     Assets.svgsBackIcon,

@@ -12,15 +12,7 @@ class NavController extends GetxController implements GetxService {
 
   var changeToCheckMark = false.obs;
 
-  GlobalKey<NavigatorState> homePageNavigatorKey = GlobalKey<NavigatorState>();
-  GlobalKey<NavigatorState> coursePageNavigatorKey =
-      GlobalKey<NavigatorState>();
-  GlobalKey<NavigatorState> reminderPageNavigatorKey =
-      GlobalKey<NavigatorState>();
-  GlobalKey<NavigatorState> communityPageNavigatorKey =
-      GlobalKey<NavigatorState>();
-  GlobalKey<NavigatorState> settingsPageNavigatorKey =
-      GlobalKey<NavigatorState>();
+
 
   NavController({required this.sharedPreferences});
   void changeTabIndex(int index) {

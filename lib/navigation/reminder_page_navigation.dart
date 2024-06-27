@@ -4,6 +4,7 @@ import 'package:habit_app/controller/nav_controller.dart';
 import 'package:habit_app/pages/reminder/add_reminder.dart';
 import 'package:habit_app/pages/reminder/reminder_page.dart';
 import 'package:habit_app/routes/route_helper.dart';
+import 'package:habit_app/routes/route_keys.dart';
 
 import '../utils/colors.dart';
 
@@ -13,7 +14,7 @@ class ReminderPageNavigation extends GetView<NavController> {
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      key: controller.reminderPageNavigatorKey,
+      key: Get.nestedKey(RouteKeys.reminderKey,),
       onGenerateRoute: (RouteSettings settings) {
         return GetPageRoute(
           transition: Transition.rightToLeft,

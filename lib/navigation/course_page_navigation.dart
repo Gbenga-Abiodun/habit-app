@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/controller/nav_controller.dart';
 import 'package:habit_app/pages/course/course_page.dart';
+import 'package:habit_app/routes/route_keys.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../pages/habit/new_habit_page.dart';
@@ -13,7 +14,7 @@ class CoursePageNavigation extends GetView<NavController> {
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      key: controller.coursePageNavigatorKey,
+      key: Get.nestedKey(RouteKeys.courseKey),
       onGenerateRoute: (RouteSettings settings) {
         return GetPageRoute(
           transition: Transition.rightToLeft,
