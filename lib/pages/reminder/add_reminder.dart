@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/controller/utils_controller.dart';
 import 'package:habit_app/routes/route_keys.dart';
+import 'package:habit_app/widgets/custom_button.dart';
 import 'package:habit_app/widgets/my_time.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/small_text.dart';
 import 'package:habit_app/widgets/wheels.dart';
-import 'package:numberpicker/numberpicker.dart';
-
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 
@@ -16,11 +15,20 @@ class AddReminder extends GetView<UtilsController> {
 
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
       constraints: BoxConstraints.tight(
         Size(
-          MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height * .7,
+          MediaQuery
+              .of(context)
+              .size
+              .width,
+          MediaQuery
+              .of(context)
+              .size
+              .height * .7,
         ),
       ),
       // height: Dimensions.height10 * 70,
@@ -45,9 +53,10 @@ class AddReminder extends GetView<UtilsController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () => Get.back(
-                      id: RouteKeys.reminderKey,
-                    ),
+                    onTap: () =>
+                        Get.back(
+                          id: RouteKeys.reminderKey,
+                        ),
                     child: SmallText(
                       text: "Cancel",
                       fontWeight: FontWeight.w800,
@@ -80,7 +89,9 @@ class AddReminder extends GetView<UtilsController> {
               height: Dimensions.height10 * 4,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 90,),
+              padding: EdgeInsets.symmetric(
+                horizontal: 90,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -102,6 +113,47 @@ class AddReminder extends GetView<UtilsController> {
                   )
                 ],
               ),
+            ),
+            // Spacer(),
+            SizedBox(
+              height: Dimensions.height10 * 8,
+            ),
+            Row(
+              children: [
+                Flexible(
+                  child: Obx(() {
+                    return WheelsButton(
+                      title: "am",
+                      textColor: controller.isAntiMeridiem.isFalse
+                          ? AppColors.eclipse
+                          : AppColors.textInputColor,
+                      containerColor: controller.isAntiMeridiem.isFalse
+                          ? AppColors.textInputColor
+                          : AppColors.scaffoldBg2,
+                      onTap: () {
+                        controller.isAntiMeridiem.value =
+                        !controller.isAntiMeridiem.value;
+                      },
+                    );
+                  }),
+                ),
+                Flexible(
+                    child: Obx(() {
+                      return WheelsButton(
+                        title: "pm",
+                        textColor: controller.isAntiMeridiem.isTrue
+                            ? AppColors.eclipse
+                            : AppColors.textInputColor,
+                        containerColor: controller.isAntiMeridiem.isTrue
+                            ? AppColors.textInputColor
+                            : AppColors.scaffoldBg2,
+                        onTap: () {
+                          controller.isAntiMeridiem.value =
+                          true;
+                        },
+                      );
+                    })),
+              ],
             )
           ],
         ),

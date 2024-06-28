@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/widgets/circle_icon.dart';
+import 'package:habit_app/widgets/course_card.dart';
 import 'package:habit_app/widgets/custom_app_bar.dart';
 import 'package:habit_app/widgets/small_text.dart';
 import 'package:habit_app/widgets/top_space.dart';
@@ -36,7 +37,9 @@ class CoursePage extends StatelessWidget {
               color: AppColors.eclipse,
               size: Dimensions.height11 * 2,
             ),
-          )
+          ),
+          SizedBox(height: 32,),
+          CourseCard(),
         ],
       ),
     );

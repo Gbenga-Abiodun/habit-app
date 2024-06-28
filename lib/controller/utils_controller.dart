@@ -7,8 +7,13 @@ import '../generated/assets.dart';
 import '../utils/dimensions.dart';
 
 class UtilsController extends GetxController {
-  FixedExtentScrollController scrollController = FixedExtentScrollController();
-  var wheelSelectedIndex = 0.obs;
+  FixedExtentScrollController scrollControllerHour = FixedExtentScrollController();
+  FixedExtentScrollController scrollControllerMinutes = FixedExtentScrollController();
+  var wheelSelectedIndexHour = 0.obs;
+  var wheelSelectedIndexMinute= 0.obs;
+
+
+  var isAntiMeridiem = false.obs;
 
   // final pageIndexNotifier = ValueNotifier(0
 
@@ -36,8 +41,12 @@ class UtilsController extends GetxController {
     // TODO: implement onInit
     toast.init(Get.context!);
 
-    scrollController.addListener(() {
-      wheelSelectedIndex.value = scrollController.selectedItem;
+    scrollControllerHour.addListener(() {
+      wheelSelectedIndexHour.value = scrollControllerHour.selectedItem;
+    });
+
+    scrollControllerMinutes.addListener(() {
+      wheelSelectedIndexMinute.value = scrollControllerMinutes.selectedItem;
     });
     focusNode1.addListener(_onFocusedChanged1);
     focusNode2.addListener(_onFocusedChanged2);

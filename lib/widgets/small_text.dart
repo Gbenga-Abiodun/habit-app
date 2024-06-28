@@ -6,12 +6,14 @@ import '../utils/dimensions.dart';
 class SmallText extends StatelessWidget {
   final String text;
   final Color? color;
-
+ final double? height;
   final TextDecoration? decoration;
 
   final FontWeight? fontWeight;
 
   final String? fontFamily;
+
+  final double? letterSpacing;
 
   final TextAlign? textAlign;
 
@@ -27,7 +29,7 @@ class SmallText extends StatelessWidget {
     this.size = 0,
     this.decoration,
     this.decorationColor,
-    this.fontFamily = "Manrope", this.textAlign,
+    this.fontFamily = "Manrope", this.textAlign, this.letterSpacing, this.height,
   }) : super(key: key);
 
   @override
@@ -37,7 +39,9 @@ class SmallText extends StatelessWidget {
       textAlign: textAlign,
       style: TextStyle(
         decoration: decoration,
+        letterSpacing: letterSpacing,
         decorationColor: decorationColor,
+        height: height,
         color: color,
         fontWeight: fontWeight,
         fontFamily: fontFamily,

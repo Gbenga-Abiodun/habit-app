@@ -11,6 +11,7 @@ class Assets {
   static const String fontsManropeRegular = 'assets/fonts/Manrope-Regular.ttf';
   static const String fontsManropeSemiBold = 'assets/fonts/Manrope-SemiBold.ttf';
   static const String imagesBackground = 'assets/images/Background.jpg';
+  static const String imagesCoursesCard = 'assets/images/courses_card.jpg';
   static const String imagesGirl = 'assets/images/girl.png';
   static const String imagesOnboardingOneAvatar = 'assets/images/onboarding_one_avatar.png';
   static const String imagesOnboardingOneImg = 'assets/images/onboarding_one_img.png';

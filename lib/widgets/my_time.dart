@@ -10,21 +10,21 @@ class MyTime extends GetView<UtilsController> {
 
   final int minutes;
 
+  final int wheelSelectedIndex;
 
-  const MyTime({Key? key, required this.minutes}) : super(key: key);
+
+  const MyTime({Key? key, required this.minutes, required this.wheelSelectedIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return Container(
-        alignment: Alignment.center,
-        child: SmallText(
-          text: minutes < 10 ? "0" + minutes.toString() : minutes.toString(),
-          fontWeight: FontWeight.w800,
-          size: controller.wheelSelectedIndex.value == minutes ? Dimensions.height12 * 2.666666666666667 : Dimensions.height11 * 2,
-          color: controller.wheelSelectedIndex.value == minutes ? AppColors.eclipse : AppColors.eclipse.withOpacity(0.45),
-        ),
-      );
-    });
+    return Container(
+      alignment: Alignment.center,
+      child: SmallText(
+        text: minutes < 10 ? "0" + minutes.toString() : minutes.toString(),
+        fontWeight: FontWeight.w800,
+        size: wheelSelectedIndex == minutes ? Dimensions.height12 * 2.666666666666667 : Dimensions.height11 * 2,
+        color: wheelSelectedIndex == minutes ? AppColors.eclipse : AppColors.eclipse.withOpacity(0.45),
+      ),
+    );
   }
 }
