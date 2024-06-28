@@ -12,7 +12,6 @@ import 'package:habit_app/pages/home/home_page.dart';
 import 'package:habit_app/pages/settings/settings_page.dart';
 import 'package:habit_app/routes/route_helper.dart';
 import 'package:habit_app/routes/route_keys.dart';
-import 'package:page_transition/page_transition.dart';
 
 import '../../controller/nav_controller.dart';
 import '../../generated/assets.dart';

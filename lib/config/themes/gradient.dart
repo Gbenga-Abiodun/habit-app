@@ -14,4 +14,14 @@ final  Gradient = LinearGradient(
     1.0,
   ],);
 
+final  courseCardGradient = LinearGradient(
+  begin: Alignment.centerLeft,
+  end: Alignment.centerRight,
+  colors: [
+    AppColors.textInputColor.withOpacity(0.5,),
+    Colors.transparent
+  ],
+);
+
 LinearGradient signUpGradient()=> Gradient;
+LinearGradient courseCard()=> courseCardGradient;

@@ -121,12 +121,10 @@ class HomePage extends StatelessWidget {
                               children: [
                                 SizedBox(height: Dimensions.height12,),
                                 SmallText(
-                                  text: "Sun",
+                                  text: "Sun".toUpperCase(),
                                   fontWeight: FontWeight.w700,
                                   size: Dimensions.height10,
-                                  color: AppColors.eclipse.withOpacity(
-                                    0.5,
-                                  ),
+                                  color: AppColors.eclipse,
                                 ),
                                 // SizedBox(height: 12,),
                                 SmallText(

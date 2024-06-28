@@ -11,7 +11,6 @@ import 'package:habit_app/widgets/custom_button.dart';
 import 'package:habit_app/widgets/custom_switch.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/small_text.dart';
-import 'package:page_transition/page_transition.dart';
 
 import '../../generated/assets.dart';
 
