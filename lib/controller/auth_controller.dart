@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:habit_app/base/custom_dialog.dart';
 import 'package:habit_app/constants/app_constants.dart';
 import 'package:habit_app/controller/user_controller.dart';
 import 'package:habit_app/controller/utils_controller.dart';
@@ -13,13 +15,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthController extends GetxController implements GetxService {
   final SharedPreferences sharedPreferences;
 
-
   final UserController userController;
   final UtilsController utilsController;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  AuthController(
+      {required this.sharedPreferences,
+      required this.utilsController,
+      required this.userController});
 
-  AuthController({required this.sharedPreferences, required this.utilsController, required this.userController});
+  var _googleSignIn = GoogleSignIn();
+
+  var googleAccount = Rx<GoogleSignInAccount?>(null);
 
   Future<void> createAccount(
       {required String userName,
@@ -34,7 +41,8 @@ class AuthController extends GetxController implements GetxService {
           id: user.user!.uid.toString(),
           userName: userName,
           email: user.user!.email.toString(),
-          profilePhoto: "https://media.licdn.com/dms/image/D4D03AQEx3pLmsCspyQ/profile-displayphoto-shrink_800_800/0/1703868499308?e=1724889600&v=beta&t=tiGQoohUS-lWw2394C1ZMBGyJ0kIRs6Jk4zKFJYUdio",
+          profilePhoto:
+              "https://media.licdn.com/dms/image/D4D03AQEx3pLmsCspyQ/profile-displayphoto-shrink_800_800/0/1703868499308?e=1724889600&v=beta&t=tiGQoohUS-lWw2394C1ZMBGyJ0kIRs6Jk4zKFJYUdio",
           totalWorkHours: 0,
           taskCompleted: 0,
           user_id: user.user!.uid,
@@ -42,7 +50,7 @@ class AuthController extends GetxController implements GetxService {
         sharedPreferences.setString(AppConstants.userId, user.user!.uid);
 
         await fireStore
-            .collection("users")
+            .collection(AppConstants.userCollectionName)
             .doc(user.user!.uid)
             .set(
               userData.toMap(),
@@ -119,6 +127,90 @@ class AuthController extends GetxController implements GetxService {
       utilsController.authIsLoading.value = false;
       print(e);
       utilsController.showToast(e.toString());
+    }
+  }
+
+  Future<void> loginWithGoogle() async {
+    CustomDialog.showDialog();
+    try {
+      googleAccount.value = await _googleSignIn.signIn();
+      if (googleAccount.value == null) {
+        CustomDialog.showDialog();
+      } else {
+        GoogleSignInAuthentication googleSignInAccount =
+            await googleAccount.value!.authentication;
+        OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAccount.accessToken,
+          idToken: googleSignInAccount.idToken,
+        );
+
+        await _auth.signInWithCredential(oAuthCredential).then((onValue) async {
+          final UserModel userData = UserModel(
+            id: googleAccount.value!.id,
+            userName: googleAccount.value!.displayName.toString(),
+            email: googleAccount.value!.email,
+            profilePhoto: googleAccount.value!.photoUrl.toString(),
+            totalWorkHours: 0,
+            taskCompleted: 0,
+            user_id: googleAccount.value!.id,
+          );
+
+          final DocumentSnapshot userDoc = await fireStore
+              .collection(AppConstants.userCollectionName)
+              .doc(googleAccount.value!.id)
+              .get();
+
+          if (userDoc.exists) {
+            await fireStore
+                .collection(AppConstants.userCollectionName)
+                .doc(googleAccount.value!.id)
+                .set(
+                  userData.toMap(),
+                )
+                .then((onValue) async {
+              sharedPreferences.setString(
+                AppConstants.userId,
+                googleAccount.value!.id,
+              );
+              await userController
+                  .getUser(userId: googleAccount.value!.id)
+                  .then((onValue) {
+                CustomDialog.cancelDialog();
+                Get.offAllNamed(
+                  RouteHelpers.getMainPage(),
+                );
+              });
+            }).catchError((onError) {
+              CustomDialog.cancelDialog();
+              if (onError is FirebaseException) {
+                utilsController.showToast(onError.toString());
+              } else {
+                print("Something went wrong");
+              }
+            });
+          } else {
+            CustomDialog.cancelDialog();
+            await userController.getUser(
+              userId: googleAccount.value!.id,
+            );
+          }
+        }).catchError((onError) {
+          CustomDialog.cancelDialog();
+          if (onError is FirebaseAuthException) {
+            utilsController.showToast(
+              onError.toString(),
+            );
+          } else {
+            print("Something went wrong");
+          }
+        });
+      }
+    } catch (e) {
+      CustomDialog.cancelDialog();
+      utilsController.authIsLoading.value = false;
+      utilsController.showToast(
+        e.toString(),
+      );
     }
   }
 }

@@ -11,6 +11,7 @@ import 'package:habit_app/widgets/oauth_button.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/top_space.dart';
 
+import '../../controller/auth_controller.dart';
 import '../../generated/assets.dart';
 import '../../routes/route_helper.dart';
 import '../../utils/colors.dart';
@@ -23,6 +24,8 @@ class SignInPage extends StatelessWidget {
 
   var utilsController = Get.find<UtilsController>();
   var validationController = Get.find<ValidationController>();
+
+  var authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +51,9 @@ class SignInPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding:   EdgeInsets.symmetric(
-                    horizontal: Dimensions.height10 * 2,
-                  ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: Dimensions.height10 * 2,
+                        ),
                         child: CircleIcon(
                           child: SvgPicture.asset(
                             Assets.svgsLoupe1,
@@ -105,6 +108,7 @@ class SignInPage extends StatelessWidget {
                     height: Dimensions.height12 * 2.666666666666667,
                   ),
                   OauthButton(
+                    onTap: () => authController.loginWithGoogle(),
                     height: Dimensions.height10 * 5,
                     text: "Continue with  Google",
                     svgPath: Assets.svgsGoogle,
@@ -172,7 +176,7 @@ class SignInPage extends StatelessWidget {
                     fillColor: AppColors.scaffoldBg2,
                     controller: validationController.loginEmailController,
                     onSaved: (value) =>
-                    validationController.loginEmail = value!,
+                        validationController.loginEmail = value!,
                     validator: (value) =>
                         validationController.validateEmail(value!),
 
@@ -210,7 +214,7 @@ class SignInPage extends StatelessWidget {
                     fillColor: AppColors.scaffoldBg2,
                     controller: validationController.loginPasswordController,
                     onSaved: (value) =>
-                    validationController.loginPassword = value!,
+                        validationController.loginPassword = value!,
                     validator: (value) =>
                         validationController.validatePassword(value!),
                     suffix: GestureDetector(
@@ -249,7 +253,9 @@ class SignInPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     horizontal: Dimensions.height10 * 2,
                   ),
-                  child:  CustomButton(text: "Login", onTap: () => validationController.checkSignIn()),
+                  child: CustomButton(
+                      text: "Login",
+                      onTap: () => validationController.checkSignIn()),
                 ),
                 SizedBox(
                   height: Dimensions.height14,
@@ -305,7 +311,7 @@ class SignInPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: Dimensions.height10 ,
+                  height: Dimensions.height10,
                 ),
               ],
             ),

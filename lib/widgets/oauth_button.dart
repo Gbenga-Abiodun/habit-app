@@ -15,11 +15,14 @@ class OauthButton extends StatelessWidget {
   final double spaceWidth;
   final double? height;
   final String svgPath;
-  const OauthButton({Key? key, required this.text, required this.svgPath, this.width, this.height, required this.spaceWidth}) : super(key: key);
+
+  final void Function()? onTap;
+  const OauthButton({Key? key, required this.text, required this.svgPath, this.width, this.height, required this.spaceWidth, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         width: width,
         height: height,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:habit_app/controller/auth_controller.dart';
 import 'package:habit_app/controller/onboarding_controller.dart';
 import 'package:habit_app/controller/utils_controller.dart';
 import 'package:habit_app/controller/validation_controller.dart';

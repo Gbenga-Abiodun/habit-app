@@ -15,20 +15,11 @@ class AddReminder extends GetView<UtilsController> {
 
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
+      width: MediaQuery.of(context).size.width,
       constraints: BoxConstraints.tight(
         Size(
-          MediaQuery
-              .of(context)
-              .size
-              .width,
-          MediaQuery
-              .of(context)
-              .size
-              .height * .7,
+          MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height * .7,
         ),
       ),
       // height: Dimensions.height10 * 70,
@@ -53,10 +44,9 @@ class AddReminder extends GetView<UtilsController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () =>
-                        Get.back(
-                          id: RouteKeys.reminderKey,
-                        ),
+                    onTap: () => Get.back(
+                      id: RouteKeys.reminderKey,
+                    ),
                     child: SmallText(
                       text: "Cancel",
                       fontWeight: FontWeight.w800,
@@ -90,7 +80,7 @@ class AddReminder extends GetView<UtilsController> {
             ),
             Container(
               padding: EdgeInsets.symmetric(
-                horizontal: 90,
+                horizontal: Dimensions.height10 * 9,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -115,9 +105,9 @@ class AddReminder extends GetView<UtilsController> {
               ),
             ),
             // Spacer(),
-            SizedBox(
-              height: Dimensions.height10 * 8,
-            ),
+            // SizedBox(
+            //   height: Dimensions.height10 * 8,
+            // ),
             Row(
               children: [
                 Flexible(
@@ -132,27 +122,25 @@ class AddReminder extends GetView<UtilsController> {
                           : AppColors.scaffoldBg2,
                       onTap: () {
                         controller.isAntiMeridiem.value =
-                        !controller.isAntiMeridiem.value;
+                            !controller.isAntiMeridiem.value;
                       },
                     );
                   }),
                 ),
-                Flexible(
-                    child: Obx(() {
-                      return WheelsButton(
-                        title: "pm",
-                        textColor: controller.isAntiMeridiem.isTrue
-                            ? AppColors.eclipse
-                            : AppColors.textInputColor,
-                        containerColor: controller.isAntiMeridiem.isTrue
-                            ? AppColors.textInputColor
-                            : AppColors.scaffoldBg2,
-                        onTap: () {
-                          controller.isAntiMeridiem.value =
-                          true;
-                        },
-                      );
-                    })),
+                Flexible(child: Obx(() {
+                  return WheelsButton(
+                    title: "pm",
+                    textColor: controller.isAntiMeridiem.isTrue
+                        ? AppColors.eclipse
+                        : AppColors.textInputColor,
+                    containerColor: controller.isAntiMeridiem.isTrue
+                        ? AppColors.textInputColor
+                        : AppColors.scaffoldBg2,
+                    onTap: () {
+                      controller.isAntiMeridiem.value = true;
+                    },
+                  );
+                })),
               ],
             )
           ],
