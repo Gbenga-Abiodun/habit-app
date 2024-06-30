@@ -260,6 +260,7 @@ class SignUpPage extends StatelessWidget {
                       ),
                       // Spacer(),
                       OauthButton(
+                        onTap: () => authController.loginWithFacebook(),
                         width: Dimensions.height10 * 16.5,
                         height: Dimensions.height10 * 5,
                         text: "Facebook",

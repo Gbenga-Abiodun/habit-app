@@ -118,6 +118,7 @@ class SignInPage extends StatelessWidget {
                     height: Dimensions.height8,
                   ),
                   OauthButton(
+                    onTap: () => authController.loginWithFacebook(),
                     height: Dimensions.height10 * 5,
                     text: "Continue with  Facebook",
                     svgPath: Assets.svgsFacebook,
