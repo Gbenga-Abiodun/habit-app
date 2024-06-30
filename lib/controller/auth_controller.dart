@@ -135,8 +135,10 @@ class AuthController extends GetxController implements GetxService {
     try {
       googleAccount.value = await _googleSignIn.signIn();
       if (googleAccount.value == null) {
-        CustomDialog.showDialog();
+        print("user doc is empty");
+        CustomDialog.cancelDialog();
       } else {
+        print("user doc is not empty");
         GoogleSignInAuthentication googleSignInAccount =
             await googleAccount.value!.authentication;
         OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
@@ -145,15 +147,7 @@ class AuthController extends GetxController implements GetxService {
         );
 
         await _auth.signInWithCredential(oAuthCredential).then((onValue) async {
-          final UserModel userData = UserModel(
-            id: googleAccount.value!.id,
-            userName: googleAccount.value!.displayName.toString(),
-            email: googleAccount.value!.email,
-            profilePhoto: googleAccount.value!.photoUrl.toString(),
-            totalWorkHours: 0,
-            taskCompleted: 0,
-            user_id: googleAccount.value!.id,
-          );
+
 
           final DocumentSnapshot userDoc = await fireStore
               .collection(AppConstants.userCollectionName)
@@ -161,12 +155,35 @@ class AuthController extends GetxController implements GetxService {
               .get();
 
           if (userDoc.exists) {
+            print("user doc exists");
+            CustomDialog.cancelDialog();
+            await userController.getUser(
+              userId: googleAccount.value!.id,
+            );
+            sharedPreferences.setString(
+              AppConstants.userId,
+              googleAccount.value!.id,
+            );
+            Get.offAllNamed(
+              RouteHelpers.getMainPage(),
+            );
+          } else {
+            print("user doc does not exists");
+            final UserModel userData = UserModel(
+              id: googleAccount.value!.id,
+              userName: googleAccount.value!.displayName.toString(),
+              email: googleAccount.value!.email,
+              profilePhoto: googleAccount.value!.photoUrl.toString() ,
+              totalWorkHours: 0,
+              taskCompleted: 0,
+              user_id: googleAccount.value!.id,
+            );
             await fireStore
                 .collection(AppConstants.userCollectionName)
                 .doc(googleAccount.value!.id)
                 .set(
-                  userData.toMap(),
-                )
+              userData.toMap(),
+            )
                 .then((onValue) async {
               sharedPreferences.setString(
                 AppConstants.userId,
@@ -188,11 +205,6 @@ class AuthController extends GetxController implements GetxService {
                 print("Something went wrong");
               }
             });
-          } else {
-            CustomDialog.cancelDialog();
-            await userController.getUser(
-              userId: googleAccount.value!.id,
-            );
           }
         }).catchError((onError) {
           CustomDialog.cancelDialog();
@@ -207,10 +219,9 @@ class AuthController extends GetxController implements GetxService {
       }
     } catch (e) {
       CustomDialog.cancelDialog();
-      utilsController.authIsLoading.value = false;
-      utilsController.showToast(
-        e.toString(),
-      );
+      print(e.toString(),);
+
+
     }
   }
 }

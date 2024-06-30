@@ -11,45 +11,48 @@ class CustomDialog {
     Get.dialog(
       WillPopScope(
         onWillPop: () => Future.value(false),
-        child: Center(
-          // Center the entire content
-          child: Container(
-            width: MediaQuery.of(Get.context!).size.width,
-            height: Dimensions.height10 * 8,
-            margin: EdgeInsets.symmetric(
-              horizontal: Dimensions.height10 * 2,
-            ),
-            padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.height10 * 3,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(
-                Dimensions.height12,
+        child: Material(
+          color: Colors.transparent,
+          child: Center(
+            // Center the entire content
+            child: Container(
+              width: MediaQuery.of(Get.context!).size.width,
+              height: Dimensions.height10 * 8,
+              margin: EdgeInsets.symmetric(
+                horizontal: Dimensions.height10 * 2,
               ),
-            ),
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: Dimensions.height10 * 4,
-                  height: Dimensions.height10 * 4,
-                  child: CircularProgressIndicator(
-                    color: AppColors.textInputColor,
+              padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.height10 * 3,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(
+                  Dimensions.height12,
+                ),
+              ),
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: Dimensions.height10 * 4,
+                    height: Dimensions.height10 * 4,
+                    child: CircularProgressIndicator(
+                      color: AppColors.textInputColor,
+                    ),
                   ),
-                ),
-                SmallText(
-                  text: "Signing In",
-                  size: Dimensions.font18,
-                  color: AppColors.eclipse,
-                  fontWeight: FontWeight.w800,
-                ),
-                SizedBox(
-                  width: Dimensions.height10 * 4,
-                  height: Dimensions.height10 * 4,
-                )
-              ],
+                  SmallText(
+                    text: "Signing In",
+                    size: Dimensions.font18,
+                    color: AppColors.eclipse,
+                    fontWeight: FontWeight.w800,
+                  ),
+                  SizedBox(
+                    width: Dimensions.height10 * 4,
+                    height: Dimensions.height10 * 4,
+                  )
+                ],
+              ),
             ),
           ),
         ),
