@@ -30,7 +30,10 @@ class NewHabitPage extends StatelessWidget {
   var validationController = Get.find<ValidationController>();
 
   void showReminderBottomSheet() {
-    Get.bottomSheet(ReminderPageNavigation(),backgroundColor: Colors.white,);
+    Get.bottomSheet(
+      const ReminderPageNavigation(),
+      backgroundColor: Colors.white,
+    );
   }
 
   @override
@@ -47,11 +50,12 @@ class NewHabitPage extends StatelessWidget {
                 CustomAppBar(
                   hasCircleImage: false,
                   pageTitle: "New Habit",
+                  hasNoTrailing: true,
                   onTapLeading: () {
                     navController.changeToCheckMark.value =
                         !navController.changeToCheckMark.value;
                     Get.back(
-                     id:  navController.tabIndex.value,
+                      id: navController.tabIndex.value,
                     );
                   },
                   leadingIcon: SvgPicture.asset(

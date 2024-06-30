@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_initicon/flutter_initicon.dart';
+import 'package:flutter_randomcolor/flutter_randomcolor.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/base/custom_dialog.dart';
@@ -18,13 +20,20 @@ import '../../controller/user_controller.dart';
 import '../../utils/dimensions.dart';
 
 class HomePage extends StatelessWidget {
-   HomePage({Key? key}) : super(key: key);
-
+  HomePage({Key? key}) : super(key: key);
 
   var userController = Get.find<UserController>();
 
   @override
   Widget build(BuildContext context) {
+    var options = Options(
+      format: Format.hex,
+      colorType: ColorType.orange,
+    );
+    var colorHex = RandomColor.getColor(options);
+    Color color = Color(int.parse(colorHex.replaceFirst('#', '0xFF')));
+    print("color random + $color",);
+
     return Scaffold(
       backgroundColor: AppColors.scaffoldBg2,
       body: AppScrollView(
@@ -37,16 +46,28 @@ class HomePage extends StatelessWidget {
             CustomAppBar(
               hasCircleImage: true,
               pageTitle: "HomePage",
-              onTapLeading: () => CustomDialog.showDialog(),
-              decoration:  BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: CachedNetworkImageProvider(
-                      userController.userModel!.profilePhoto,
-                  ),
-                ),
-              ),
+
+              imageChild: userController.userModel!.profilePhoto.isNotEmpty
+                  ? Container(
+                      width: Dimensions.height11 * 4,
+                      height: Dimensions.height11 * 4,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: CachedNetworkImageProvider(
+                            userController.userModel!.profilePhoto,
+                          ),
+                        ),
+                      ),
+                    )
+                  : Initicon(
+                      color: Colors.white,
+                      size: Dimensions.height11 * 4,
+                      text: userController.userModel!.userName,
+                      backgroundColor: color,
+                      elevation: 0,
+                    ),
               leadingIcon: Icon(
                 Icons.menu_outlined,
                 color: AppColors.eclipse,
@@ -60,8 +81,7 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: Dimensions.height12 * 2,
             ),
-           Stack(
-            children : [
+            Stack(children: [
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: Dimensions.height10 * 56,
@@ -78,7 +98,7 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding:  EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       horizontal: Dimensions.height12 * 2.8333333333333333,
                     ),
                     child: Column(
@@ -108,7 +128,7 @@ class HomePage extends StatelessWidget {
                             height: Dimensions.height10 * 5,
                             alignment: Alignment.center,
                             margin: EdgeInsets.only(
-                              right: Dimensions.height12/2,
+                              right: Dimensions.height12 / 2,
                               // left: 6,
                             ),
                             decoration: BoxDecoration(
@@ -119,7 +139,9 @@ class HomePage extends StatelessWidget {
                             ),
                             child: Column(
                               children: [
-                                SizedBox(height: Dimensions.height12,),
+                                SizedBox(
+                                  height: Dimensions.height12,
+                                ),
                                 SmallText(
                                   text: "Sun".toUpperCase(),
                                   fontWeight: FontWeight.w700,
@@ -148,24 +170,20 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: [
                     Column(
-                      children: List.generate(4, (index) => HomeRow(),),
+                      children: List.generate(
+                        4,
+                        (index) => HomeRow(),
+                      ),
                     )
                   ],
                 ),
               )
 
-
-
               // SizedBox(
               //   height: ,
               // ),
               // Spacer(),
-
-             ]
-           ),
-
-
-
+            ]),
 
             // Spacer(),
           ],

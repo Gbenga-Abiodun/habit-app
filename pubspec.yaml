@@ -46,11 +46,15 @@ dependencies:
   cloud_firestore: ^4.6.0
   google_sign_in: ^6.2.1
 
+
   sqflite:
   flutter_svg_provider: ^1.0.7
+  flutter_initicon: ^2.0.0
   dropdown_button2: ^2.3.9
   shared_preferences: ^2.2.3
   flutter_facebook_auth: ^7.0.1
+  flutter_randomcolor: ^1.0.15
+
 
 dev_dependencies:
   flutter_test:

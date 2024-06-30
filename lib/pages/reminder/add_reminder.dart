@@ -16,12 +16,7 @@ class AddReminder extends GetView<UtilsController> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      constraints: BoxConstraints.tight(
-        Size(
-          MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height * .7,
-        ),
-      ),
+
       // height: Dimensions.height10 * 70,
 
       decoration: BoxDecoration(
@@ -30,121 +25,121 @@ class AddReminder extends GetView<UtilsController> {
           Dimensions.height12,
         ),
       ),
-      child: AppScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: Dimensions.font16,
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.height10 * 2,
+      child: Column(
+        children: [
+          // Spacer(),
+          Column(
+            children: [
+              SizedBox(
+                height: Dimensions.font16,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () => Get.back(
-                      id: RouteKeys.reminderKey,
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.height10 * 2,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Get.back(
+                        id: RouteKeys.reminderKey,
+                      ),
+                      child: SmallText(
+                        text: "Cancel",
+                        fontWeight: FontWeight.w800,
+                        size: Dimensions.font17,
+                        color: AppColors.textInputColor,
+                      ),
                     ),
-                    child: SmallText(
-                      text: "Cancel",
+                    SmallText(
+                      text: "Add Reminders",
+                      fontWeight: FontWeight.w800,
+                      size: Dimensions.font18,
+                      color: AppColors.eclipse,
+                    ),
+                    SmallText(
+                      text: "Save",
                       fontWeight: FontWeight.w800,
                       size: Dimensions.font17,
                       color: AppColors.textInputColor,
                     ),
-                  ),
-                  SmallText(
-                    text: "Add Reminders",
-                    fontWeight: FontWeight.w800,
-                    size: Dimensions.font18,
-                    color: AppColors.eclipse,
-                  ),
-                  SmallText(
-                    text: "Save",
-                    fontWeight: FontWeight.w800,
-                    size: Dimensions.font17,
-                    color: AppColors.textInputColor,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: Dimensions.font16,
-            ),
-            Divider(
-              color: AppColors.scaffoldBg2,
-            ),
-            SizedBox(
-              height: Dimensions.height10 * 4,
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.height10 * 9,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomHourWheel(),
-                      ),
-                      SmallText(
-                        text: ":",
-                        fontWeight: FontWeight.w800,
-                        size: Dimensions.height12 * 2.666666666666667,
-                        color: AppColors.eclipse,
-                      ),
-                      Expanded(
-                        child: CustomMinutesWheel(),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            // Spacer(),
-            // SizedBox(
-            //   height: Dimensions.height10 * 8,
-            // ),
-            Row(
-              children: [
-                Flexible(
-                  child: Obx(() {
-                    return WheelsButton(
-                      title: "am",
-                      textColor: controller.isAntiMeridiem.isFalse
-                          ? AppColors.eclipse
-                          : AppColors.textInputColor,
-                      containerColor: controller.isAntiMeridiem.isFalse
-                          ? AppColors.textInputColor
-                          : AppColors.scaffoldBg2,
-                      onTap: () {
-                        controller.isAntiMeridiem.value =
-                            !controller.isAntiMeridiem.value;
-                      },
-                    );
-                  }),
+                  ],
                 ),
-                Flexible(child: Obx(() {
+              ),
+              SizedBox(
+                height: Dimensions.font16,
+              ),
+              Divider(
+                color: AppColors.scaffoldBg2,
+              ),
+              SizedBox(
+                height: Dimensions.height10 * 4,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.height10 * 9,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomHourWheel(),
+                        ),
+                        SmallText(
+                          text: ":",
+                          fontWeight: FontWeight.w800,
+                          size: Dimensions.height12 * 2.666666666666667,
+                          color: AppColors.eclipse,
+                        ),
+                        Expanded(
+                          child: CustomMinutesWheel(),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Spacer(),
+          Row(
+            children: [
+              Flexible(
+                child: Obx(() {
                   return WheelsButton(
-                    title: "pm",
-                    textColor: controller.isAntiMeridiem.isTrue
+                    title: "am",
+                    textColor: controller.isAntiMeridiem.isFalse
                         ? AppColors.eclipse
                         : AppColors.textInputColor,
-                    containerColor: controller.isAntiMeridiem.isTrue
+                    containerColor: controller.isAntiMeridiem.isFalse
                         ? AppColors.textInputColor
                         : AppColors.scaffoldBg2,
                     onTap: () {
-                      controller.isAntiMeridiem.value = true;
+                      controller.isAntiMeridiem.value =
+                          !controller.isAntiMeridiem.value;
                     },
                   );
-                })),
-              ],
-            )
-          ],
-        ),
+                }),
+              ),
+              Flexible(child: Obx(() {
+                return WheelsButton(
+                  title: "pm",
+                  textColor: controller.isAntiMeridiem.isTrue
+                      ? AppColors.eclipse
+                      : AppColors.textInputColor,
+                  containerColor: controller.isAntiMeridiem.isTrue
+                      ? AppColors.textInputColor
+                      : AppColors.scaffoldBg2,
+                  onTap: () {
+                    controller.isAntiMeridiem.value = true;
+                  },
+                );
+              })),
+            ],
+          )
+        ],
       ),
     );
   }

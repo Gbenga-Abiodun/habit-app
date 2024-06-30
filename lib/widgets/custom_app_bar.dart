@@ -8,6 +8,7 @@ import 'circle_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
   final bool hasCircleImage;
+  final bool hasCircleTrailing;
 
   final Widget? leadingIcon;
   final Decoration? decoration;
@@ -16,17 +17,29 @@ class CustomAppBar extends StatelessWidget {
 
   final String pageTitle;
 
+  final bool hasNoTrailing;
+
   final void Function()? onTapLeading;
 
   final void Function()? onTapTrailing;
+
+  final void Function()? onTapImage;
+
+  final Widget? imageChild;
   // final bool? hasFirst;
   // final bool?
   const CustomAppBar(
       {Key? key,
-      required this.hasCircleImage,
+      this.hasCircleImage = false,
       this.decoration,
       this.lastChild,
-      required this.pageTitle, this.leadingIcon, this.onTapLeading, this.onTapTrailing})
+      required this.pageTitle,
+      this.leadingIcon,
+      this.onTapLeading,
+      this.onTapTrailing,
+      this.hasCircleTrailing = false,
+      this.onTapImage,
+      this.imageChild,  this.hasNoTrailing = false})
       : super(key: key);
 
   @override
@@ -50,6 +63,12 @@ class CustomAppBar extends StatelessWidget {
           ),
           if (hasCircleImage)
             GestureDetector(
+              onTap: onTapImage,
+              child: imageChild,
+            ),
+
+          if (hasCircleTrailing)
+            GestureDetector(
               onTap: onTapTrailing,
               child: Container(
                 width: Dimensions.height11 * 4,
@@ -60,12 +79,12 @@ class CustomAppBar extends StatelessWidget {
                 ),
               ),
             ),
-          if(hasCircleImage == false)
+          if(hasNoTrailing)
           SizedBox(
             width: Dimensions.height11 * 4,
             height: Dimensions.height11 * 4,
           ),
-          // SizedBox(),
+
         ],
       ),
     );

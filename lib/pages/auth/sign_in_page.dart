@@ -36,7 +36,7 @@ class SignInPage extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width,
               height: Dimensions.height10 * 66,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
                   image: AssetImage(

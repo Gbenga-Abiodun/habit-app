@@ -26,7 +26,7 @@ class CoursePage extends StatelessWidget {
           children: [
             TopSpace(),
             CustomAppBar(
-              hasCircleImage: true,
+              hasCircleTrailing: true,
               lastChild: CircleIcon(
                 child: SvgPicture.asset(
                   Assets.svgsSearch,

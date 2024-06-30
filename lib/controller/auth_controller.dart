@@ -44,8 +44,7 @@ class AuthController extends GetxController implements GetxService {
           id: user.user!.uid.toString(),
           userName: userName,
           email: user.user!.email.toString(),
-          profilePhoto:
-              "https://media.licdn.com/dms/image/D4D03AQEx3pLmsCspyQ/profile-displayphoto-shrink_800_800/0/1703868499308?e=1724889600&v=beta&t=tiGQoohUS-lWw2394C1ZMBGyJ0kIRs6Jk4zKFJYUdio",
+          profilePhoto: "",
           totalWorkHours: 0,
           taskCompleted: 0,
           user_id: user.user!.uid,
@@ -229,7 +228,12 @@ class AuthController extends GetxController implements GetxService {
   Future<void> loginWithFacebook() async {
     CustomDialog.showDialog();
     try {
-      final LoginResult loginResult = await _facebookAuth.login();
+      final LoginResult loginResult = await _facebookAuth.login(
+        permissions: [
+          "public_profile",
+          "email",
+        ],
+      );
       final faceBookData = _facebookAuth.getUserData();
       if (loginResult.isNull) {
         print("user doc is empty");
@@ -239,7 +243,7 @@ class AuthController extends GetxController implements GetxService {
         final AccessToken accessToken = loginResult.accessToken!;
 
         OAuthCredential oAuthCredential = FacebookAuthProvider.credential(
-          accessToken.toString(),
+          accessToken.tokenString,
         );
 
         await _auth.signInWithCredential(oAuthCredential).then((onValue) async {
