@@ -25,6 +25,7 @@ class SignUpPage extends StatelessWidget {
 
   var utilsController = Get.find<UtilsController>();
   var validationController = Get.find<ValidationController>();
+  var authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +67,7 @@ class SignUpPage extends StatelessWidget {
                     focusNode: utilsController.focusNode1,
                     obscureText: false,
                     controller: validationController.nameController,
-                    onSaved: (value) =>
-                    validationController.name = value!,
+                    onSaved: (value) => validationController.name = value!,
                     validator: (value) =>
                         validationController.validateName(value!),
                     prefix: Obx(() {
@@ -93,8 +93,7 @@ class SignUpPage extends StatelessWidget {
                     focusNode: utilsController.focusNode2,
                     obscureText: false,
                     controller: validationController.emailController,
-                    onSaved: (value) =>
-                    validationController.email = value!,
+                    onSaved: (value) => validationController.email = value!,
                     validator: (value) =>
                         validationController.validateEmail(value!),
                     prefix: Obx(() {
@@ -116,8 +115,7 @@ class SignUpPage extends StatelessWidget {
                     focusNode: utilsController.focusNode3,
                     obscureText: validationController.isPasswordHidden.value,
                     controller: validationController.passwordController,
-                    onSaved: (value) =>
-                    validationController.password = value!,
+                    onSaved: (value) => validationController.password = value!,
                     validator: (value) =>
                         validationController.validatePassword(value!),
                     suffix: GestureDetector(
@@ -175,7 +173,8 @@ class SignUpPage extends StatelessWidget {
                 Obx(() {
                   return AppCheckBox(
                     text: "Email me about special pricing and more",
-                    onTap: () => validationController.checkAllowEmailAndPricing(),
+                    onTap: () =>
+                        validationController.checkAllowEmailAndPricing(),
                     child: validationController.allowEmailAndPricing.isTrue
                         ? Center(
                             child: SvgPicture.asset(
@@ -198,7 +197,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   child: CustomButton(
                     text: "Create Account",
-                      onTap: () => validationController.checkSignUp(),
+                    onTap: () => validationController.checkSignUp(),
                   ),
                 ),
                 SizedBox(
@@ -252,6 +251,7 @@ class SignUpPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       OauthButton(
+                        onTap: () => authController.loginWithGoogle(),
                         width: Dimensions.height10 * 16.5,
                         height: Dimensions.height10 * 5,
                         text: "Google",
@@ -300,7 +300,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: Dimensions.height10 ,
+                  height: Dimensions.height10,
                 ),
               ],
             ),

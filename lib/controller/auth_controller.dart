@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -18,6 +19,8 @@ class AuthController extends GetxController implements GetxService {
   final UserController userController;
   final UtilsController utilsController;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  final _facebookAuth = FacebookAuth.instance;
 
   AuthController(
       {required this.sharedPreferences,
@@ -147,22 +150,20 @@ class AuthController extends GetxController implements GetxService {
         );
 
         await _auth.signInWithCredential(oAuthCredential).then((onValue) async {
-
-
           final DocumentSnapshot userDoc = await fireStore
               .collection(AppConstants.userCollectionName)
-              .doc(googleAccount.value!.id)
+              .doc(onValue.user!.uid)
               .get();
 
           if (userDoc.exists) {
             print("user doc exists");
             CustomDialog.cancelDialog();
             await userController.getUser(
-              userId: googleAccount.value!.id,
+              userId: onValue.user!.uid,
             );
             sharedPreferences.setString(
               AppConstants.userId,
-              googleAccount.value!.id,
+              onValue.user!.uid,
             );
             Get.offAllNamed(
               RouteHelpers.getMainPage(),
@@ -170,27 +171,27 @@ class AuthController extends GetxController implements GetxService {
           } else {
             print("user doc does not exists");
             final UserModel userData = UserModel(
-              id: googleAccount.value!.id,
-              userName: googleAccount.value!.displayName.toString(),
-              email: googleAccount.value!.email,
-              profilePhoto: googleAccount.value!.photoUrl.toString() ,
+              id: onValue.user!.uid.toString(),
+              userName: onValue.user!.displayName.toString(),
+              email: onValue.user!.email.toString(),
+              profilePhoto: onValue.user!.photoURL.toString(),
               totalWorkHours: 0,
               taskCompleted: 0,
-              user_id: googleAccount.value!.id,
+              user_id: onValue.user!.uid.toString(),
             );
             await fireStore
                 .collection(AppConstants.userCollectionName)
-                .doc(googleAccount.value!.id)
+                .doc(onValue.user!.uid)
                 .set(
-              userData.toMap(),
-            )
-                .then((onValue) async {
+                  userData.toMap(),
+                )
+                .then((collection) async {
               sharedPreferences.setString(
                 AppConstants.userId,
-                googleAccount.value!.id,
+                onValue.user!.uid,
               );
               await userController
-                  .getUser(userId: googleAccount.value!.id)
+                  .getUser(userId: onValue.user!.uid)
                   .then((onValue) {
                 CustomDialog.cancelDialog();
                 Get.offAllNamed(
@@ -219,9 +220,102 @@ class AuthController extends GetxController implements GetxService {
       }
     } catch (e) {
       CustomDialog.cancelDialog();
-      print(e.toString(),);
+      print(
+        e.toString(),
+      );
+    }
+  }
 
+  Future<void> loginWithFacebook() async {
+    CustomDialog.showDialog();
+    try {
+      final LoginResult loginResult = await _facebookAuth.login();
+      final faceBookData = _facebookAuth.getUserData();
+      if (loginResult.isNull) {
+        print("user doc is empty");
+        CustomDialog.cancelDialog();
+      } else {
+        print("user doc is not empty");
+        final AccessToken accessToken = loginResult.accessToken!;
 
+        OAuthCredential oAuthCredential = FacebookAuthProvider.credential(
+          accessToken.toString(),
+        );
+
+        await _auth.signInWithCredential(oAuthCredential).then((onValue) async {
+          final DocumentSnapshot userDoc = await fireStore
+              .collection(AppConstants.userCollectionName)
+              .doc(onValue.user!.uid)
+              .get();
+
+          if (userDoc.exists) {
+            print("user doc exists");
+            CustomDialog.cancelDialog();
+            await userController.getUser(
+              userId: onValue.user!.uid,
+            );
+            sharedPreferences.setString(
+              AppConstants.userId,
+              onValue.user!.uid,
+            );
+            Get.offAllNamed(
+              RouteHelpers.getMainPage(),
+            );
+          } else {
+            print("user doc does not exists");
+            final UserModel userData = UserModel(
+              id: onValue.user!.uid.toString(),
+              userName: onValue.user!.displayName.toString(),
+              email: onValue.user!.email.toString(),
+              profilePhoto: onValue.user!.photoURL.toString(),
+              totalWorkHours: 0,
+              taskCompleted: 0,
+              user_id: onValue.user!.uid.toString(),
+            );
+            await fireStore
+                .collection(AppConstants.userCollectionName)
+                .doc(onValue.user!.uid)
+                .set(
+                  userData.toMap(),
+                )
+                .then((collection) async {
+              sharedPreferences.setString(
+                AppConstants.userId,
+                onValue.user!.uid,
+              );
+              await userController
+                  .getUser(userId: onValue.user!.uid)
+                  .then((onValue) {
+                CustomDialog.cancelDialog();
+                Get.offAllNamed(
+                  RouteHelpers.getMainPage(),
+                );
+              });
+            }).catchError((onError) {
+              CustomDialog.cancelDialog();
+              if (onError is FirebaseException) {
+                utilsController.showToast(onError.toString());
+              } else {
+                print("Something went wrong");
+              }
+            });
+          }
+        }).catchError((onError) {
+          CustomDialog.cancelDialog();
+          if (onError is FirebaseAuthException) {
+            utilsController.showToast(
+              onError.toString(),
+            );
+          } else {
+            print("Something went wrong");
+          }
+        });
+      }
+    } catch (e) {
+      CustomDialog.cancelDialog();
+      print(
+        e.toString(),
+      );
     }
   }
 }

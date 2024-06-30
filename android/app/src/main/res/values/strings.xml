@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Habit App</string>
+    <string name="facebook_app_id">821165623286425</string>
+    <string name="fb_login_protocol_scheme">fb821165623286425</string>
+    <string name="facebook_client_token">1aae40ba080c3787aae6aa43b8d93a73</string>
+
+
+</resources>
