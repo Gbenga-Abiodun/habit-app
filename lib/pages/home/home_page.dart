@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_initicon/flutter_initicon.dart';
-import 'package:flutter_randomcolor/flutter_randomcolor.dart';
+import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
 import 'package:habit_app/base/custom_dialog.dart';
@@ -26,14 +25,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var options = Options(
-      format: Format.hex,
-      colorType: ColorType.orange,
-    );
-    var colorHex = RandomColor.getColor(options);
-    Color color = Color(int.parse(colorHex.replaceFirst('#', '0xFF')));
-    print("color random + $color",);
-
     return Scaffold(
       backgroundColor: AppColors.scaffoldBg2,
       body: AppScrollView(
@@ -46,7 +37,6 @@ class HomePage extends StatelessWidget {
             CustomAppBar(
               hasCircleImage: true,
               pageTitle: "HomePage",
-
               imageChild: userController.userModel!.profilePhoto.isNotEmpty
                   ? Container(
                       width: Dimensions.height11 * 4,
@@ -61,12 +51,18 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     )
-                  : Initicon(
-                      color: Colors.white,
-                      size: Dimensions.height11 * 4,
-                      text: userController.userModel!.userName,
-                      backgroundColor: color,
-                      elevation: 0,
+                  : Container(
+                      width: Dimensions.height11 * 4,
+                      height: Dimensions.height11 * 4,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                            Assets.imagesOnboardingOneAvatar,
+                          ),
+                        ),
+                      ),
                     ),
               leadingIcon: Icon(
                 Icons.menu_outlined,
@@ -146,7 +142,9 @@ class HomePage extends StatelessWidget {
                                   text: "Sun".toUpperCase(),
                                   fontWeight: FontWeight.w800,
                                   size: Dimensions.height10,
-                                  color: AppColors.eclipse.withOpacity(0.5,),
+                                  color: AppColors.eclipse.withOpacity(
+                                    0.5,
+                                  ),
                                 ),
                                 // SizedBox(height: 12,),
                                 SmallText(

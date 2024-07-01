@@ -271,7 +271,7 @@ class AuthController extends GetxController implements GetxService {
               id: onValue.user!.uid.toString(),
               userName: onValue.user!.displayName.toString(),
               email: onValue.user!.email.toString(),
-              profilePhoto: onValue.user!.photoURL.toString() + "?access_token=${loginResult.accessToken!.tokenString}",
+              profilePhoto: onValue.user!.photoURL.toString(),
               totalWorkHours: 0,
               taskCompleted: 0,
               user_id: onValue.user!.uid.toString(),

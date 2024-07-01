@@ -15,6 +15,7 @@ class Assets {
   static const String imagesGirl = 'assets/images/girl.png';
   static const String imagesOnboardingOneAvatar = 'assets/images/onboarding_one_avatar.png';
   static const String imagesOnboardingOneImg = 'assets/images/onboarding_one_img.png';
+  static const String imagesProfile = 'assets/images/profile.jpg';
   static const String imagesSplashScreen = 'assets/images/Splash Screen.jpg';
   static const String imagesSplashScreencropped = 'assets/images/Splash Screen cropped.jpg';
   static const String lottiesLoadingIndicator = 'assets/lotties/loading_indicator.json';

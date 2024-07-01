@@ -12,10 +12,11 @@ import 'helpers/dependencies.dart' as dep;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dep.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await dep.init();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,

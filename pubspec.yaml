@@ -49,11 +49,11 @@ dependencies:
 
   sqflite:
   flutter_svg_provider: ^1.0.7
-  flutter_initicon: ^2.0.0
+
   dropdown_button2: ^2.3.9
   shared_preferences: ^2.2.3
   flutter_facebook_auth: ^7.0.1
-  flutter_randomcolor: ^1.0.15
+  flutter_profile_picture: ^2.0.0
 
 
 dev_dependencies:

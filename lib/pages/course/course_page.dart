@@ -48,7 +48,7 @@ class CoursePage extends StatelessWidget {
             ),
             const CourseCard(),
             SizedBox(
-              height: Dimensions.height12 * 2,
+              height: Dimensions.font12,
             ),
             Stack(
               children: [
@@ -120,8 +120,42 @@ class CoursePage extends StatelessWidget {
                     ],
                   ),
                 ),
+                Column(
+                  children: [
+                    SizedBox(height: Dimensions.height10 * 5,),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Dimensions.height10 * 2,
+                      ),
+                      height: Dimensions.height12 * 33.5,
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        physics: AlwaysScrollableScrollPhysics(),
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: Dimensions.height10 * 19,
+                            margin: EdgeInsets.only(
+                              bottom: Dimensions.height12,
+
+                            ),
+
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(
+                                Dimensions.height12,
+                              ),
+                            ),
+                          );
+                        },),
+                    ),
+                  ],
+                ),
               ],
-            )
+            ),
+
+
           ],
         ),
       ),

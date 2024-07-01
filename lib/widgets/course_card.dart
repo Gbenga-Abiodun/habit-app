@@ -67,7 +67,7 @@ class CourseCard extends StatelessWidget {
                       children: [
                         SmallText(
                           text:
-                              "Find what fascinates you as you explore \nthese habit courses.",
+                              "Find what fascinates you as you \nexplore these habit courses.",
                           // fontFamily: "Klasik",
                           size: Dimensions.height12,
                           fontWeight: FontWeight.w700,
