@@ -97,7 +97,7 @@ class RouteHelpers {
     ),
     GetPage(
       name: community,
-      page: () => const CommunityPage(),
+      page: () =>  CommunityPage(),
       transition: Transition.cupertinoDialog,
     ),
     GetPage(

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:habit_app/navigation/community_page_navigation.dart';
 import 'package:habit_app/navigation/course_page_navigation.dart';
 import 'package:habit_app/navigation/home_page_navigation.dart';
+import 'package:habit_app/navigation/settings_page_navigation.dart';
 import 'package:habit_app/pages/community/community_page.dart';
 import 'package:habit_app/pages/course/course_page.dart';
 import 'package:habit_app/pages/habit/new_habit_page.dart';
@@ -54,7 +55,7 @@ class MainPage extends StatelessWidget {
                 HomePageNavigation(),
                 CoursePageNavigation(),
                 CommunityPageNavigation(),
-                SettingsPage(),
+                SettingsPageNavigation(),
               ],
             ),
             extendBody: true,
