@@ -144,14 +144,14 @@ class HomePage extends StatelessWidget {
                                 ),
                                 SmallText(
                                   text: "Sun".toUpperCase(),
-                                  fontWeight: FontWeight.w700,
+                                  fontWeight: FontWeight.w800,
                                   size: Dimensions.height10,
-                                  color: AppColors.eclipse,
+                                  color: AppColors.eclipse.withOpacity(0.5,),
                                 ),
                                 // SizedBox(height: 12,),
                                 SmallText(
                                   text: "17",
-                                  fontWeight: FontWeight.w700,
+                                  fontWeight: FontWeight.w800,
                                   size: Dimensions.font16,
                                   color: AppColors.eclipse,
                                 )

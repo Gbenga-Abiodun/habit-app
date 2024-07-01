@@ -234,18 +234,18 @@ class AuthController extends GetxController implements GetxService {
           "email",
         ],
       );
-      final faceBookData = _facebookAuth.getUserData();
+      final faceBookData =await  _facebookAuth.getUserData();
       if (loginResult.isNull) {
         print("user doc is empty");
         CustomDialog.cancelDialog();
       } else {
         print("user doc is not empty");
-        final AccessToken accessToken = loginResult.accessToken!;
 
         OAuthCredential oAuthCredential = FacebookAuthProvider.credential(
-          accessToken.tokenString,
+          loginResult.accessToken!.tokenString,
         );
 
+        print("oauth" +loginResult.accessToken!.tokenString,);
         await _auth.signInWithCredential(oAuthCredential).then((onValue) async {
           final DocumentSnapshot userDoc = await fireStore
               .collection(AppConstants.userCollectionName)
@@ -271,7 +271,7 @@ class AuthController extends GetxController implements GetxService {
               id: onValue.user!.uid.toString(),
               userName: onValue.user!.displayName.toString(),
               email: onValue.user!.email.toString(),
-              profilePhoto: onValue.user!.photoURL.toString(),
+              profilePhoto: onValue.user!.photoURL.toString() + "?access_token=${loginResult.accessToken!.tokenString}",
               totalWorkHours: 0,
               taskCompleted: 0,
               user_id: onValue.user!.uid.toString(),
@@ -308,6 +308,9 @@ class AuthController extends GetxController implements GetxService {
           CustomDialog.cancelDialog();
           if (onError is FirebaseAuthException) {
             utilsController.showToast(
+              onError.toString(),
+            );
+            print(
               onError.toString(),
             );
           } else {
