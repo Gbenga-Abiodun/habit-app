@@ -73,7 +73,7 @@ class HomeCard extends StatelessWidget {
           ),
           Container(
             height: Dimensions.height10 * 50,
-            width: Dimensions.height10 * 11,
+            width: Dimensions.height10 * 10,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,

@@ -13,10 +13,10 @@ class CustomMinutesWheel extends GetView<UtilsController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Dimensions.height10 * 22,
+      height: Dimensions.height10 * 23,
       child: ListWheelScrollView.useDelegate(
         itemExtent: 50,
-        perspective: 0.002,
+        perspective: 0.005,
         physics: FixedExtentScrollPhysics(),
         controller: controller.scrollControllerMinutes,
         childDelegate: ListWheelChildBuilderDelegate(
@@ -41,10 +41,10 @@ class CustomHourWheel extends GetView<UtilsController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Dimensions.height10 * 22,
+      height: Dimensions.height10 * 23,
       child: ListWheelScrollView.useDelegate(
         itemExtent: 50,
-        perspective: 0.002,
+        perspective: 0.005,
 
         physics: FixedExtentScrollPhysics(),
         controller: controller.scrollControllerHour,

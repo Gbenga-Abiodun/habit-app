@@ -60,34 +60,32 @@ class CommunityPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 48,
+              height: Dimensions.height12  *2.166666666666667,
             ),
             Container(
               padding: EdgeInsets.symmetric(
                 horizontal: Dimensions.height10 * 2,
               ),
               width: MediaQuery.of(context).size.width,
-              height: 620,
+              height: Dimensions.height10 * 62,
               child: ListView.builder(
                 itemCount: 5,
                 padding: EdgeInsets.zero,
                 physics: AlwaysScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                 return Container(
-                   width: MediaQuery.of(context).size.width,
-                   height: Dimensions.height10 * 15,
-                   margin: EdgeInsets.only(
-                     bottom: Dimensions.height12,
-
-                   ),
-
-                   decoration: BoxDecoration(
-                     color: Colors.white,
-                     borderRadius: BorderRadius.circular(
-                       Dimensions.height12,
-                     ),
-                   ),
-                 );
+                  return Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: Dimensions.height10 * 16,
+                    margin: EdgeInsets.only(
+                      bottom: Dimensions.height12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(
+                        Dimensions.height12,
+                      ),
+                    ),
+                  );
                 },
               ),
             )

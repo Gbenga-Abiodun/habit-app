@@ -47,7 +47,7 @@ class CustomSettingsCard extends StatelessWidget {
                   size: Dimensions.height10 * 2,
                   color: AppColors.eclipse,
                 ),
-                // SizedBox(height: Dimensions.height8/2,),
+                SizedBox(height: Dimensions.height8/2,),
                 SmallText(
                   text: userController.userModel!.email,
                   // fontFamily: "Klasik",
@@ -58,8 +58,21 @@ class CustomSettingsCard extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: Dimensions.height11 * 2,
+                  height: Dimensions.font18,
                 ),
+                Container(
+                  width: Dimensions.height10 * 12,
+
+                  height: Dimensions.height10 * 4,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: AppColors.textInputColor,
+                    borderRadius: BorderRadius.circular(
+                        Dimensions.height8,
+                    ),
+                  ),
+                  child: SmallText(text: "View", color: AppColors.eclipse, size:  Dimensions.height14, fontWeight: FontWeight.w800,),
+                )
 
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.start,

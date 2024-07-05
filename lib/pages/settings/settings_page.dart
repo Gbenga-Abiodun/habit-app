@@ -28,7 +28,7 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: Dimensions.height12 *  4,
+            height: Dimensions.height12 *  2.6,
           ),
           CustomSettingsCard(),
         ],
