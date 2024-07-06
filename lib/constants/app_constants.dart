@@ -3,6 +3,6 @@ class AppConstants {
   static String userCollectionName = "users";
   static String cachedUserDataFileName = "userDataCache";
   static String baseUrl = "http://192.168.249.167:8080/";
-  static String commentUrl = "/community";
+  static String commentUrl = "comment";
 
 }

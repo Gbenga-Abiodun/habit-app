@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:habit_app/constants/app_constants.dart';
 import 'package:habit_app/controller/auth_controller.dart';
+import 'package:habit_app/controller/comment_controller.dart';
 import 'package:habit_app/controller/nav_controller.dart';
 import 'package:habit_app/controller/onboarding_controller.dart';
 import 'package:habit_app/controller/user_controller.dart';
@@ -57,6 +58,11 @@ Future<void> init() async {
       sharedPreferences: Get.find(),
       utilsController: Get.find(),
       userController: Get.find(),
+    ),
+  );
+  Get.lazyPut(
+    () => CommentController(
+      commentRepository: Get.find(),
     ),
   );
   Get.lazyPut(

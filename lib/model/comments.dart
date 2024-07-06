@@ -19,14 +19,6 @@ class CommentModel {
     }
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['message'] = this.message;
-  //   if (this.comments != null) {
-  //     data['comments'] = this.comments!.map((v) => v.toJson()).toList();
-  //   }
-  //   return data;
-  // }
 }
 
 class Comments {
@@ -44,12 +36,4 @@ class Comments {
     time = json['time'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['userName'] = this.userName;
-    data['comment'] = this.comment;
-    data['time'] = this.time;
-    return data;
-  }
 }

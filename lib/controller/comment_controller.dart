@@ -14,10 +14,13 @@ class CommentController extends GetxController {
   Future<void> getComments() async {
     Response response = await commentRepository.getCommentList();
     if (response.statusCode == 200) {
+      print(response.body);
+      print("Gotten the request!");
       _commentList = [];
       _commentList.addAll(
         CommentModel.fromJson(response.body).comments,
       );
+
       print(_commentList);
     } else {
       print("could not get the request");
