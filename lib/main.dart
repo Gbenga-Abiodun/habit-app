@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:habit_app/controller/comment_controller.dart';
 import 'package:habit_app/pages/main/main_page.dart';
 import 'package:habit_app/pages/splash/splash_page.dart';
 import 'package:habit_app/routes/route_helper.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.find<CommentController>().getComments();
     return GetMaterialApp(
       builder: (context, child) {
         return Overlay(
