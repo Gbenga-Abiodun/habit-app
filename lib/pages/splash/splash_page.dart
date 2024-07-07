@@ -12,6 +12,7 @@ import 'package:habit_app/utils/colors.dart';
 import 'package:habit_app/utils/dimensions.dart';
 import 'package:habit_app/widgets/big_text.dart';
 
+import '../../controller/comment_controller.dart';
 import '../../generated/assets.dart';
 import '../../widgets/scroll_view.dart';
 
@@ -23,10 +24,12 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  Future<void> loadControllers() async {
+    Get.find<UserController>().loadLoggedInUser();
 
-  Future<void> loadControllers() async{
-     Get.find<UserController>().loadLoggedInUser();
+    Get.find<CommentController>().getComments();
   }
+
   @override
   void initState() {
     // TODO: implement initState

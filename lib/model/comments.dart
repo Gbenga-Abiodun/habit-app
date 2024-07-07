@@ -26,14 +26,25 @@ class Comments {
   String? userName;
   String? comment;
   String? time;
+  String? avatarUrl;
 
-  Comments({this.id, this.userName, this.comment, this.time});
+  Comments({this.id, this.userName, this.comment, this.time, this.avatarUrl});
 
   Comments.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userName = json['userName'];
     comment = json['comment'];
     time = json['time'];
+    avatarUrl = json['avatarUrl'];
   }
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['userName'] = this.userName;
+    data['comment'] = this.comment;
+    data['time'] = this.time;
+    data['avatarUrl'] = this.avatarUrl;
+    return data;
+  }
 }

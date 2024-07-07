@@ -22,9 +22,10 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then(
-    (value) => runApp(
-      const MyApp(),
-    ),
+        (value) =>
+        runApp(
+          const MyApp(),
+        ),
   );
 }
 
@@ -33,26 +34,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<CommentController>().getComments();
-    return GetMaterialApp(
-      builder: (context, child) {
-        return Overlay(
-          initialEntries: [
-            OverlayEntry(
-              builder: (context) => child!,
+    return GetBuilder<CommentController>(
+        builder: (_) {
+          return GetMaterialApp(
+            builder: (context, child) {
+              return Overlay(
+                initialEntries: [
+                  OverlayEntry(
+                    builder: (context) => child!,
+                  ),
+                ],
+              );
+            },
+            debugShowCheckedModeBanner: false,
+            title: 'Monumental Habits',
+            getPages: RouteHelpers.routes,
+            initialRoute: RouteHelpers.getInitial(),
+            theme: ThemeData(
+              fontFamily: "Manrope",
+              // primarySwatch: Colors.,
             ),
-          ],
-        );
-      },
-      debugShowCheckedModeBanner: false,
-      title: 'Monumental Habits',
-      getPages: RouteHelpers.routes,
-      initialRoute: RouteHelpers.getInitial(),
-      theme: ThemeData(
-        fontFamily: "Manrope",
-        // primarySwatch: Colors.,
-      ),
-      // home: MainPage(),
-    );
+            // home: MainPage(),
+          );
+        });
   }
 }
