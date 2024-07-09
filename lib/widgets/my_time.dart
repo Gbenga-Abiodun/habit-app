@@ -21,7 +21,7 @@ class MyTime extends GetView<UtilsController> {
       alignment: Alignment.center,
       child: SmallText(
         text: minutes < 10 ? "0" + minutes.toString() : minutes.toString(),
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w700,
         size: wheelSelectedIndex == minutes ? Dimensions.height12 * 2.666666666666667 : Dimensions.height11 * 2,
         color: wheelSelectedIndex == minutes ? AppColors.eclipse : AppColors.eclipse.withOpacity(0.45),
       ),

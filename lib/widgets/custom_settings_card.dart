@@ -42,7 +42,7 @@ class CustomSettingsCard extends StatelessWidget {
                 SmallText(
                   text:
                   "Check Your Profile",
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w700,
 
                   size: Dimensions.height10 * 2,
                   color: AppColors.eclipse,
@@ -52,7 +52,7 @@ class CustomSettingsCard extends StatelessWidget {
                   text: userController.userModel!.email,
                   // fontFamily: "Klasik",
                   size: Dimensions.height12,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                   textAlign: TextAlign.start,
                   color: AppColors.eclipse.withOpacity(0.5),
                 ),
@@ -71,7 +71,7 @@ class CustomSettingsCard extends StatelessWidget {
                         Dimensions.height8,
                     ),
                   ),
-                  child: SmallText(text: "View", color: AppColors.eclipse, size:  Dimensions.height14, fontWeight: FontWeight.w800,),
+                  child: SmallText(text: "View", color: AppColors.eclipse, size:  Dimensions.height14, fontWeight: FontWeight.w700,),
                 )
 
                 // Row(

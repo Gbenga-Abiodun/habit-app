@@ -45,7 +45,7 @@ class CustomDialog {
                     text: "Signing In",
                     size: Dimensions.font18,
                     color: AppColors.eclipse,
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w700,
                   ),
                   SizedBox(
                     width: Dimensions.height10 * 4,

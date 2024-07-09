@@ -9,6 +9,8 @@ class SmallText extends StatelessWidget {
  final double? height;
   final TextDecoration? decoration;
 
+  TextOverflow textOverflow;
+
   final FontWeight? fontWeight;
 
   final String? fontFamily;
@@ -18,6 +20,7 @@ class SmallText extends StatelessWidget {
   final TextAlign? textAlign;
 
   final Color? decorationColor;
+  final int? maxLines;
 
   double size;
 
@@ -28,7 +31,9 @@ class SmallText extends StatelessWidget {
     this.fontWeight = FontWeight.w200,
     this.size = 0,
     this.decoration,
+    this.maxLines = 3,
     this.decorationColor,
+    this.textOverflow = TextOverflow.ellipsis,
     this.fontFamily = "Manrope", this.textAlign, this.letterSpacing, this.height,
   }) : super(key: key);
 
@@ -36,6 +41,8 @@ class SmallText extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoSizeText(
       text,
+      maxLines: maxLines,
+      overflow: textOverflow,
       textAlign: textAlign,
       style: TextStyle(
         decoration: decoration,

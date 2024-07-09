@@ -71,7 +71,7 @@ class ReminderPage extends GetView<NavController> {
                         // SizedBox(height: Dimensions.height10,),
                         SmallText(
                           text: "06:00 AM",
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w700,
                           color:  index.isEven
                               ? AppColors.eclipse
                               : AppColors.textInputColor,

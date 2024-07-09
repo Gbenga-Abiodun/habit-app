@@ -88,7 +88,7 @@ class WheelsButton extends GetView<UtilsController> {
         child: SmallText(
           text: title,
           size: Dimensions.height11 * 2,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w700,
           color: textColor,
           fontFamily: "Manrope",
         ),

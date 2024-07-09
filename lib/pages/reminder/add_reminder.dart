@@ -46,20 +46,20 @@ class AddReminder extends GetView<UtilsController> {
                       ),
                       child: SmallText(
                         text: "Cancel",
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w700,
                         size: Dimensions.font17,
                         color: AppColors.textInputColor,
                       ),
                     ),
                     SmallText(
                       text: "Add Reminders",
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w700,
                       size: Dimensions.font18,
                       color: AppColors.eclipse,
                     ),
                     SmallText(
                       text: "Save",
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w700,
                       size: Dimensions.font17,
                       color: AppColors.textInputColor,
                     ),

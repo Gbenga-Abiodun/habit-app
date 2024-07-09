@@ -36,6 +36,7 @@ class Assets {
   static const String svgsGoogle = 'assets/svgs/google.svg';
   static const String svgsGoogleIcon = 'assets/svgs/Google Icon.svg';
   static const String svgsLoupe1 = 'assets/svgs/loupe 1.svg';
+  static const String svgsLove = 'assets/svgs/love.svg';
   static const String svgsMail = 'assets/svgs/mail.svg';
   static const String svgsMark = 'assets/svgs/mark.svg';
   static const String svgsOnBoardingTwo = 'assets/svgs/onBoarding_two.svg';
@@ -47,8 +48,10 @@ class Assets {
   static const String svgsSearch = 'assets/svgs/search.svg';
   static const String svgsSettings = 'assets/svgs/Settings.svg';
   static const String svgsSettingsActive = 'assets/svgs/Settings Active.svg';
+  static const String svgsShareicon = 'assets/svgs/share icon.svg';
   static const String svgsSignin = 'assets/svgs/sign in.svg';
   static const String svgsSolidbookreader = 'assets/svgs/solid book reader.svg';
+  static const String svgsSpeechBubble1 = 'assets/svgs/speech-bubble 1.svg';
   static const String svgsSplashScreen = 'assets/svgs/Splash Screen.svg';
   static const String svgsStart = 'assets/svgs/start.svg';
   static const String svgsSupportive = 'assets/svgs/supportive.svg';
