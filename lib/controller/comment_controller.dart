@@ -11,7 +11,10 @@ class CommentController extends GetxController {
   // creating a getter for the comment list
   List<dynamic> get commentList => _commentList;
 
+  var isLoading = true.obs;
+
   Future<void> getComments() async {
+    isLoading.value = true;
     Response response = await commentRepository.getCommentList();
     if (response.statusCode == 200) {
       print(response.body);
@@ -20,9 +23,11 @@ class CommentController extends GetxController {
       _commentList.addAll(
         CommentModel.fromJson(response.body).comments,
       );
+      isLoading.value = false;
 
       print(_commentList);
     } else {
+      isLoading.value = false;
       print("could not get the request");
     }
   }

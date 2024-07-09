@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:habit_app/base/shimmer/children/community_list_shimmer.dart';
 import 'package:habit_app/constants/app_constants.dart';
 import 'package:habit_app/controller/comment_controller.dart';
 import 'package:habit_app/model/comments.dart';
@@ -35,31 +36,31 @@ class CommunityPage extends StatelessWidget {
               pageTitle: "Community",
               imageChild: userController.userModel!.profilePhoto.isNotEmpty
                   ? Container(
-                      width: Dimensions.height11 * 4,
-                      height: Dimensions.height11 * 4,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: CachedNetworkImageProvider(
-                            userController.userModel!.profilePhoto,
-                          ),
-                        ),
-                      ),
-                    )
-                  : Container(
-                      width: Dimensions.height11 * 4,
-                      height: Dimensions.height11 * 4,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                            Assets.imagesOnboardingOneAvatar,
-                          ),
-                        ),
-                      ),
+                width: Dimensions.height11 * 4,
+                height: Dimensions.height11 * 4,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: CachedNetworkImageProvider(
+                      userController.userModel!.profilePhoto,
                     ),
+                  ),
+                ),
+              )
+                  : Container(
+                width: Dimensions.height11 * 4,
+                height: Dimensions.height11 * 4,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      Assets.imagesOnboardingOneAvatar,
+                    ),
+                  ),
+                ),
+              ),
               leadingIcon: Icon(
                 Icons.menu_outlined,
                 color: AppColors.eclipse,
@@ -73,20 +74,28 @@ class CommunityPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                 horizontal: Dimensions.height10 * 2,
               ),
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
               height: Dimensions.height10 * 62,
-              child: ListView.builder(
-                itemCount: commentController.commentList.length,
-                padding: EdgeInsets.zero,
-                physics: AlwaysScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return buildComments(
-                    context,
-                    commentController.commentList[index],
-                    index,
-                  );
-                },
-              ),
+              child: Obx(() {
+                return ListView.builder(
+                  itemCount: commentController.isLoading.isFalse
+                      ? commentController.commentList.length
+                      : 4,
+                  padding: EdgeInsets.zero,
+                  physics: AlwaysScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return  commentController.isLoading.isFalse
+                        ? buildComments(
+                      context,
+                      commentController.commentList[index],
+                      index,
+                    ) : CommunityListShimmer();
+                  },
+                );
+              }),
             )
           ],
         ),
@@ -96,7 +105,10 @@ class CommunityPage extends StatelessWidget {
 
   Widget buildComments(BuildContext context, Comments comment, int index) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
       height: Dimensions.height10 * 16,
       margin: EdgeInsets.only(
         bottom: Dimensions.height12,
@@ -130,7 +142,8 @@ class CommunityPage extends StatelessWidget {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: CachedNetworkImageProvider(
-                            "${AppConstants.baseUrl}${comment.avatarUrl.toString()}",
+                            "${AppConstants.baseUrl}${comment.avatarUrl
+                                .toString()}",
                           ),
                         ),
                       ),
@@ -211,7 +224,7 @@ class CommunityPage extends StatelessWidget {
                     SvgPicture.asset(
                       Assets.svgsLove,
                     ),
-                    SizedBox(width: Dimensions.height8/3,),
+                    SizedBox(width: Dimensions.height8 / 3,),
                     SmallText(
                       text: "3.1k",
                       size: Dimensions.height8,
@@ -230,7 +243,7 @@ class CommunityPage extends StatelessWidget {
                     SvgPicture.asset(
                       Assets.svgsSpeechBubble1,
                     ),
-                    SizedBox(width: Dimensions.height8/3,),
+                    SizedBox(width: Dimensions.height8 / 3,),
                     SmallText(
                       text: "22",
                       size: Dimensions.height8,
