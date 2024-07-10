@@ -8,6 +8,7 @@ import 'package:habit_app/controller/comment_controller.dart';
 import 'package:habit_app/model/comments.dart';
 import 'package:habit_app/widgets/scroll_view.dart';
 import 'package:habit_app/widgets/small_text.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../controller/user_controller.dart';
 import '../../generated/assets.dart';
@@ -81,21 +82,22 @@ class CommunityPage extends StatelessWidget {
               height: Dimensions.height10 * 62,
               child: Obx(() {
                 return ListView.builder(
-                  itemCount: commentController.isLoading.isFalse
-                      ? commentController.commentList.length
-                      : 4,
-                  padding: EdgeInsets.zero,
-                  physics: AlwaysScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return  commentController.isLoading.isFalse
-                        ? buildComments(
-                      context,
-                      commentController.commentList[index],
-                      index,
-                    ) : CommunityListShimmer();
-                  },
-                );
+                    itemCount: commentController.isLoading.isFalse
+                        ? commentController.commentList.length
+                        : 4,
+                    padding: EdgeInsets.zero,
+                    physics: AlwaysScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return  commentController.isLoading.isFalse
+                          ?
+                        buildComments(
+                        context,
+                        commentController.commentList[index],
+                        index,
+                      ) : CommunityListShimmer();
+                    });
               }),
+
             )
           ],
         ),
@@ -109,7 +111,7 @@ class CommunityPage extends StatelessWidget {
           .of(context)
           .size
           .width,
-      height: Dimensions.height10 * 16,
+      height: Dimensions.height10 * 17,
       margin: EdgeInsets.only(
         bottom: Dimensions.height12,
       ),
@@ -159,7 +161,7 @@ class CommunityPage extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           size: Dimensions.height14,
                           color: AppColors.eclipse,
-                        ),
+                        ) ,
                         SmallText(
                           text: "41 mins ago",
                           fontWeight: FontWeight.w500,
@@ -209,54 +211,58 @@ class CommunityPage extends StatelessWidget {
               size: Dimensions.height14,
             ),
           ),
-          SizedBox(
-            height: Dimensions.height12,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  right: Dimensions.font16,
+          Spacer(),
+          Padding(
+            padding:  EdgeInsets.only(
+              bottom:Dimensions.height12,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    right: Dimensions.font16,
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        Assets.svgsLove,
+                      ),
+                      SizedBox(width: Dimensions.height8 / 3,),
+                      SmallText(
+                        text: "3.1k",
+                        size: Dimensions.height8,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.eclipse,
+                      ),
+                    ],
+                  ),
                 ),
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      Assets.svgsLove,
-                    ),
-                    SizedBox(width: Dimensions.height8 / 3,),
-                    SmallText(
-                      text: "3.1k",
-                      size: Dimensions.height8,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.eclipse,
-                    ),
-                  ],
+                Container(
+                  margin: EdgeInsets.only(
+                    right: Dimensions.font16,
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        Assets.svgsSpeechBubble1,
+                      ),
+                      SizedBox(width: Dimensions.height8 / 3,),
+                      SmallText(
+                        text: "22",
+                        size: Dimensions.height8,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.eclipse,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  right: Dimensions.font16,
-                ),
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      Assets.svgsSpeechBubble1,
-                    ),
-                    SizedBox(width: Dimensions.height8 / 3,),
-                    SmallText(
-                      text: "22",
-                      size: Dimensions.height8,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.eclipse,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           )
         ],
       ),
     );
   }
+
 }

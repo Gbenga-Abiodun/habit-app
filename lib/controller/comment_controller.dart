@@ -14,20 +14,22 @@ class CommentController extends GetxController {
   var isLoading = true.obs;
 
   Future<void> getComments() async {
-    isLoading.value = true;
+    // isLoaded.value = true;
     Response response = await commentRepository.getCommentList();
     if (response.statusCode == 200) {
+
+      //Todo: change to true
+      isLoading.value = false;
       print(response.body);
       print("Gotten the request!");
       _commentList = [];
       _commentList.addAll(
         CommentModel.fromJson(response.body).comments,
       );
-      isLoading.value = false;
+
 
       print(_commentList);
     } else {
-      isLoading.value = false;
       print("could not get the request");
     }
   }
