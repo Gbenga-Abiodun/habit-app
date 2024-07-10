@@ -91,7 +91,30 @@ class CommunityListShimmer extends StatelessWidget {
         color: AppColors.eclipse.withOpacity(
           0.2,
         ),
-        height: Dimensions.height10 * 6,
+        height: Dimensions.height10 * 4,
+      ),
+    );
+
+    var commentSideShimmer = Padding(
+      padding:  EdgeInsets.only(
+        bottom:Dimensions.height12,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+              right: Dimensions.font16,
+            ),
+            color: AppColors.eclipse.withOpacity(
+              0.2,
+            ),
+            child: SizedBox(
+              width: Dimensions.height12 * 5.583333333333333,
+              height: Dimensions.height11,
+            ),
+          ),
+        ],
       ),
     );
 
@@ -125,18 +148,18 @@ class CommunityListShimmer extends StatelessWidget {
           Divider(
             color: AppColors.scaffoldBg2,
           ),
-          Shimmer.fromColors(
+          BaseShimmer(
             child: Column(
               children: [
                 SizedBox(
                   height: Dimensions.font10,
                 ),
                 contentCommentShimmer,
+                SizedBox(
+                  height: Dimensions.font10,
+                ),
+                commentSideShimmer,
               ],
-            ),
-            baseColor: Colors.white,
-            highlightColor: Colors.blueGrey.withOpacity(
-              0.1,
             ),
           ),
         ],
